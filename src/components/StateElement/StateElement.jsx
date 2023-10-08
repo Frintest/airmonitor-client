@@ -2,7 +2,7 @@ import s from "./StateElement.module.scss";
 
 const StateElement = (props) => {
    return (
-      <td className={s.block}>
+      <li className={s.block}>
          <div className={s.nameWrap}>
             <p className={s.name}>Температура</p>
          </div>
@@ -19,7 +19,7 @@ const StateElement = (props) => {
             </div>
          </div>
          {/* {props.name} = {props.value} */}
-      </td>
+      </li>
    );
 };
 

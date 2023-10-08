@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./CurrentState.module.scss";
 import StateElement from "../StateElement/StateElement";
+import GeneralData from "./GeneralData/GeneralData";
 
 const CurrentState = (props) => {
    React.useEffect(() => {
@@ -12,20 +13,21 @@ const CurrentState = (props) => {
    // });
 
    return (
-      <table className={s.container}>
-         <tr>
-            <StateElement />
-            <StateElement />
-            <StateElement />
-            <StateElement />
-         </tr>
-         <tr>
-            <StateElement />
-            <StateElement />
-            <StateElement />
-            <StateElement />
-         </tr>
-      </table>
+      <section className="section">
+         <div className={"container " + s.container}>
+            <GeneralData />
+            <ul className={s.table}>
+               <StateElement />
+               <StateElement />
+               <StateElement />
+               <StateElement />
+               <StateElement />
+               <StateElement />
+               <StateElement />
+               <StateElement />
+            </ul>
+         </div>
+      </section>
    );
 };
 

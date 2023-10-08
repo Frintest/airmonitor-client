@@ -1,11 +1,12 @@
 @import "./../../scss/utilities/variables.scss";
 
 .container {
-   border: 1px solid $gray;
-   border-collapse: collapse;
+   display: flex;
+   justify-content: space-between;
+}
 
-   tr,
-   td {
-      border: 1px solid $gray;
-   }
+.table {
+   display: grid;
+   grid-template-columns: 246px 246px 246px 246px;
+   // grid-gap: 5px;
 }
