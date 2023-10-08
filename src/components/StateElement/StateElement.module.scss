@@ -1,0 +1,61 @@
+@import "./../../scss/utilities/variables.scss";
+
+.block {
+   width: 246px;
+   height: 246px;
+   padding-top: 20px;
+   padding-left: 20px;
+}
+
+.nameWrap {
+   padding: 8px 18px;
+   border: 1px solid $gray;
+   border-radius: 100vh;
+   width: fit-content;
+}
+
+.name {
+   font-size: 14px;
+   letter-spacing: 3.5%;
+   color: $black;
+   font-weight: 500;
+}
+
+.value {
+   margin-top: 20px;
+   margin-left: 10px;
+   font-size: 40px;
+   letter-spacing: 2%;
+   font-weight: 500;
+   color: $blue;
+}
+
+.measureUnit {
+   font-size: 24px;
+   padding-left: 10px;
+}
+
+.moreinfo {
+   display: flex;
+   margin-top: 34px;
+}
+
+.perday {
+   letter-spacing: 2%;
+   color: $gray;
+}
+
+.infoWrap {
+   margin-left: 16px;
+}
+
+.max,
+.min {
+   font-size: 20px;
+   font-weight: 500;
+   color: $black;
+}
+
+.min {
+   margin-top: 7px;
+}

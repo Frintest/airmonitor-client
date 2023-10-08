@@ -1,22 +1,31 @@
 import React from "react";
-import "./CurrentState.module.scss";
+import s from "./CurrentState.module.scss";
+import StateElement from "../StateElement/StateElement";
 
 const CurrentState = (props) => {
    React.useEffect(() => {
-      props.getLastStateThunk();
+      // props.getLastStateThunk();
    }, []);
 
+   // const stateElements = props.state.stateAir.map(({ sensor_name, ui_name, value }) => {
+   //    return <StateElement name={ui_name} value={value} key={sensor_name} />;
+   // });
+
    return (
-      <ul>
-         <li>pm2 = {props.state.pm2}</li>
-         <li>pm0 = {props.state.pm10}</li>
-         <li>temp = {props.state.temp}</li>
-         <li>humidity = {props.state.humidity}</li>
-         <li>pressure = {props.state.pressure}</li>
-         <li>CO2 = {props.state.CO2}</li>
-         <li>TVOC = {props.state.TVOC}</li>
-         <li>eCO2 = {props.state.eCO2}</li>
-      </ul>
+      <table className={s.container}>
+         <tr>
+            <StateElement />
+            <StateElement />
+            <StateElement />
+            <StateElement />
+         </tr>
+         <tr>
+            <StateElement />
+            <StateElement />
+            <StateElement />
+            <StateElement />
+         </tr>
+      </table>
    );
 };
 
