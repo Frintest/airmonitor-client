@@ -12,23 +12,53 @@
 }
 
 .menu {
+   width: 30px;
+   height: 30px;
    cursor: pointer;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+   &:hover {
+      .menuLineCenter {
+         background: transparent;
+      }
+
+      .menuLine::before {
+         top: calc(50% - 1px);
+         transform: rotate(45deg) translate(0, -50%);
+      }
+
+      .menuLine::after {
+         top: calc(-50% + 0px);
+         transform: rotate(-45deg) translate(0, 50%);
+      }
+   }
 }
 
 .menuLine {
-   width: 24px;
+   transition: 0.3s;
+   width: 28px;
    height: 2px;
    background: $black;
+   position: relative;
 
-   &Center {
-      width: 28px;
+   &::before,
+   &::after {
+      content: "";
+      position: absolute;
+      width: 24px;
+      height: 2px;
+      background: $black;
+      left: 0;
+      transition: 0.3s;
    }
 
-   &Top {
-      margin-bottom: 6px;
+   &::before {
+      bottom: 6px;
    }
 
-   &Bottom {
-      margin-top: 6px;
+   &::after {
+      top: 6px;
    }
 }

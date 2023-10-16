@@ -106,6 +106,7 @@ export const getLastState = (data) => ({ type: GET_LAST_STATE, data });
 export const getLastStateThunk = () => (dispatch) => {
    API.getState().then((data) => {
       dispatch(getLastState(data));
+		console.log(data);
    });
 };
 

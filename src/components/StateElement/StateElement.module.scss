@@ -6,6 +6,27 @@
    padding-top: 20px;
    padding-left: 20px;
    border: 1px solid $gray;
+   cursor: pointer;
+	transition: .4s;
+
+   &:hover {
+      background: rgba($blue, 0.4);
+
+      .nameWrap {
+         border-color: $light;
+      }
+
+      .name,
+      .perday {
+         color: $light;
+      }
+
+      .value,
+      .min,
+      .max {
+         color: #fff;
+      }
+   }
 }
 
 .block:first-child {

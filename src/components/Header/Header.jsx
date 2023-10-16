@@ -5,10 +5,9 @@ const Header = () => {
       <header className={s.header}>
          <div className={"container " + s.container}>
             <div className={s.menu}>
-               <div className={s.menuLine + " " + s.menuLineTop}></div>
                <div className={s.menuLine + " " + s.menuLineCenter}></div>
-               <div className={s.menuLine + " " + s.menuLineBottom}></div>
             </div>
+
             <div className={s.logo}>
                <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -25,6 +24,7 @@ const Header = () => {
                   />
                </svg>
             </div>
+
             <span></span>
          </div>
       </header>

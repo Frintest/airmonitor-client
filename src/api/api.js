@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-   baseURL: "http://airmonitor.servermc.ru:8080/",
+   baseURL: "https://airmonitor.servermc.ru",
 });
 
 export const API = {

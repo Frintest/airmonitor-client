@@ -1,8 +1,14 @@
 @import "./../../scss/utilities/variables.scss";
 
+.stateSection {
+   background: url(./../../assets/images/bg-state.jpg) center center no-repeat;
+   background-size: cover;
+}
+
 .container {
    display: flex;
    justify-content: space-between;
+   padding-top: 50px;
 }
 
 .table {

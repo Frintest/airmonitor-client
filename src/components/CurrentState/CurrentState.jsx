@@ -5,7 +5,7 @@ import GeneralData from "./GeneralData/GeneralData";
 
 const CurrentState = (props) => {
    React.useEffect(() => {
-      // props.getLastStateThunk();
+      props.getLastStateThunk();
    }, []);
 
    // const stateElements = props.state.stateAir.map(({ sensor_name, ui_name, value }) => {
@@ -13,7 +13,7 @@ const CurrentState = (props) => {
    // });
 
    return (
-      <section className="section">
+      <section className={"section " + s.stateSection}>
          <div className={"container " + s.container}>
             <GeneralData />
             <ul className={s.table}>
