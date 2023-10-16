@@ -1,6 +1,6 @@
 * {
    box-sizing: border-box;
-   font-family: "Yanone Kaffeesatz", sans-serif;
+   font-family: "Roboto", sans-serif;
 
    &,
    &::before,
@@ -8,6 +8,13 @@
       margin: 0;
       padding: 0;
    }
+}
+
+body {
+   height: 100vh;
+	padding-top: 120px;
+   background: url(../../assets/images/bg-state-2.jpg) center center no-repeat;
+   background-size: cover;
 }
 
 ul,

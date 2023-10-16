@@ -1,5 +1,8 @@
-.container {
-   width: 1200px;
+#wrapper {
+   width: 1260px;
+   display: grid;
+   grid-template-columns: 165px 1fr;
+   grid-gap: 70px;
    margin: 0 auto;
    overflow: hidden;
 }

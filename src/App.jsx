@@ -1,11 +1,11 @@
-import Header from "./components/Header/Header";
-import CurrentStateContainer from "./components/CurrentState/CurrentStateContainer";
+import GeneralData from "./components/GeneralData/GeneralData";
+import StateAirContainer from "./components/StateAir/StateAirContainer";
 
 const App = () => {
    return (
       <>
-         <Header />
-         <CurrentStateContainer />
+         <GeneralData />
+         <StateAirContainer />
       </>
    );
 };
