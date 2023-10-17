@@ -1,10 +1,10 @@
-import GeneralData from "./components/GeneralData/GeneralData";
+// import GeneralData from "./components/GeneralData/GeneralData";
 import StateAirContainer from "./components/StateAir/StateAirContainer";
 
 const App = () => {
    return (
       <>
-         <GeneralData />
+         {/* <GeneralData /> */}
          <StateAirContainer />
       </>
    );
