@@ -10,9 +10,7 @@ const StateAirElement = (props) => {
 
          <p className={s.value}>
             {props.value}
-            <span className={s.unit}>
-               {props.unit}
-            </span>
+            <span className={s.unit}>{props.unit}</span>
          </p>
       </div>
    );

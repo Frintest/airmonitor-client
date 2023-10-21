@@ -1,0 +1,60 @@
+.list {
+   display: flex;
+   align-items: center;
+   margin-bottom: 30px;
+}
+
+.item {
+   width: 40px;
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 1px solid #fff;
+   border-radius: 10px;
+   background: transparent;
+   font-size: 18px;
+   color: #fff;
+   cursor: pointer;
+
+   & + & {
+      margin-left: 12px;
+   }
+
+   &.Main {
+      width: auto;
+      padding: 0 20px;
+   }
+
+   &.NotExists {
+      border-color: rgba(#f4f4f4, 0.3);
+      cursor: default;
+   }
+
+   &.Active {
+      background: #fff;
+      color: #181818;
+   }
+
+   &.Add {
+      position: relative;
+		cursor: pointer;
+
+      &::before,
+      &::after {
+         content: "";
+         position: absolute;
+         width: 16px;
+         height: 2px;
+			top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         background: #bed0da;
+         border-radius: 10px;
+      }
+
+      &::after {
+         transform: translate(-50%, -50%) rotate(90deg);
+      }
+   }
+}
