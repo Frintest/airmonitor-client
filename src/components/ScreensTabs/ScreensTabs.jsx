@@ -1,10 +1,16 @@
 import s from "./ScreensTabs.module.scss";
 
 export const ScreensTabs = (props) => {
+   // React.useEffect(() => {
+   //    props.setLastAirStateThunk();
+   // }, []);
+
    const tabs = props.state.screens.map((el, index) => {
       const tabAdd = index > 0 && !el.isExists && props.state.screens[index - 1].isExists;
 
       const TabClick = () => {
+			props.setLastAirStateThunk(index);
+
          if (el.isExists && !el.isActive) {
             props.ToggleScreenThunk(index);
          }

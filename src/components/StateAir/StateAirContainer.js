@@ -1,10 +1,9 @@
 import StateAir from "./StateAir";
-import { getLastStateThunk } from "../../redux/get-last-state-reducer";
+import { setLastAirStateThunk } from "../../redux/screens-tabs-reducer";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
-	state: state.getLastNoteReducer,
-	screensTabsState: state.ScreensTabsReducer,
+	state: state.ScreensTabsReducer,
 });
 
-export default connect(mapStateToProps, { getLastStateThunk })(StateAir);
+export default connect(mapStateToProps, { setLastAirStateThunk })(StateAir);

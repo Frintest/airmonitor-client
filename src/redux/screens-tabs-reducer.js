@@ -1,5 +1,7 @@
-import { getLastStateThunk } from "./get-last-state-reducer";
+import e from "express";
+import { API } from "../api/api";
 
+const UPDATE_AIR_STATE = "UPDATE_AIR_STATE";
 const CREATE_SCREENS = "CREATE_SCREENS";
 const TOGGLE_SCREENS = "TOGGLE_SCREENS";
 
@@ -10,7 +12,7 @@ const initialState = {
 			value: "Главная",
 			isExists: true,
 			isActive: true,
-			elements: getLastStateThunk(),
+			elements: [],
 		},
 		{
 			id: 1,
@@ -66,7 +68,7 @@ const ScreensTabsReducer = (state = initialState, action) => {
 					el.isActive = false;
 				}
 
-				if (index == action.id) {
+				if (index === action.id) {
 					el.isExists = true;
 					el.isActive = true;
 				}
@@ -78,12 +80,17 @@ const ScreensTabsReducer = (state = initialState, action) => {
 				...state,
 				screens: [...screens],
 				activeScreenIndex: action.id,
-			}
+			};
 		};
 		case TOGGLE_SCREENS: {
 			let screens = state.screens.map((el) => {
-				if (el.isActive) el.isActive = false;
-				if (el.id == action.id) el.isActive = true;
+				if (el.isActive) {
+					el.isActive = false;
+				};
+
+				if (el.id === action.id) {
+					el.isActive = true;
+				}
 
 				return el;
 			});
@@ -92,11 +99,51 @@ const ScreensTabsReducer = (state = initialState, action) => {
 				...state,
 				screens: [...screens],
 				activeScreenIndex: action.id,
-			}
+			};
+		}
+		case UPDATE_AIR_STATE: {
+			const updateElements = () => {
+				state.screens[action.id].elements.map((el) => {
+					if (action.id == 0) {
+						el.elements = [...action.data];
+					}
+
+					return el;
+				});
+
+				// else {
+				// 	return state.screens[action.id].elements.map((el) => {
+				// 		action.data.map((new_el) => {
+				// 			if (el.sensor_name === new_el.sensor_name) {
+				// 				el = new_el;
+				// 			}
+				// 		});
+
+				// 		return el;
+				// 	});
+				// }
+			};
+
+			let screens = [
+				...state.screens,
+			];
+
+			return {
+				...state,
+				screens: [...screens],
+			};
 		}
 		default:
 			return state;
 	}
+};
+
+const setLastAirState = (data, id) => ({ type: UPDATE_AIR_STATE, data, id });
+
+export const setLastAirStateThunk = (id) => (dispatch) => {
+	API.getState(data => {
+		dispatch(setLastAirState(data, id));
+	});
 };
 
 const CreateScreen = (id) => ({ type: CREATE_SCREENS, id });
