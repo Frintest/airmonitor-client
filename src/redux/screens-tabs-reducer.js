@@ -1,3 +1,5 @@
+import { getLastStateThunk } from "./get-last-state-reducer";
+
 const CREATE_SCREENS = "CREATE_SCREENS";
 const TOGGLE_SCREENS = "TOGGLE_SCREENS";
 
@@ -8,7 +10,7 @@ const initialState = {
 			value: "Главная",
 			isExists: true,
 			isActive: true,
-			elements: [],
+			elements: getLastStateThunk(),
 		},
 		{
 			id: 1,
@@ -53,6 +55,7 @@ const initialState = {
 			elements: [],
 		},
 	],
+	activeScreenIndex: 0,
 };
 
 const ScreensTabsReducer = (state = initialState, action) => {
@@ -74,6 +77,7 @@ const ScreensTabsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				screens: [...screens],
+				activeScreenIndex: action.id,
 			}
 		};
 		case TOGGLE_SCREENS: {
@@ -87,6 +91,7 @@ const ScreensTabsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				screens: [...screens],
+				activeScreenIndex: action.id,
 			}
 		}
 		default:

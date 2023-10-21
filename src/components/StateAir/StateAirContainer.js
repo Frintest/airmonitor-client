@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
 	state: state.getLastNoteReducer,
+	screensTabsState: state.ScreensTabsReducer,
 });
 
 export default connect(mapStateToProps, { getLastStateThunk })(StateAir);
