@@ -1,3 +1,4 @@
+import React from "react";
 import s from "./ScreensTabs.module.scss";
 
 export const ScreensTabs = (props) => {

@@ -1,7 +1,7 @@
-import { ScreensTabs } from "./ScreensTabs";
-import { setLastAirStateThunk } from "../../redux/screens-tabs-reducer";
-import { CreateScreenThunk } from "../../redux/screens-tabs-reducer";
-import { ToggleScreenThunk } from "../../redux/screens-tabs-reducer";
+import { ScreensTabs } from "./ScreensTabs.jsx";
+import { setLastAirStateThunk } from "../../redux/screens-tabs-reducer.js";
+import { CreateScreenThunk } from "../../redux/screens-tabs-reducer.js";
+import { ToggleScreenThunk } from "../../redux/screens-tabs-reducer.js";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({

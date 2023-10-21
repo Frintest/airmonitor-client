@@ -1,5 +1,4 @@
-import e from "express";
-import { API } from "../api/api";
+import { API } from "../api/api.js";
 
 const UPDATE_AIR_STATE = "UPDATE_AIR_STATE";
 const CREATE_SCREENS = "CREATE_SCREENS";

@@ -1,5 +1,5 @@
 import React from "react";
-import StateAirElement from "./StateAirElement/StateAirElement";
+import StateAirElement from "./StateAirElement/StateAirElement.jsx";
 import s from "./StateAir.module.scss";
 
 const StateAir = (props) => {

@@ -1,4 +1,4 @@
-import StateAir from "./StateAir";
+import StateAir from "./StateAir.jsx";
 import { setLastAirStateThunk } from "../../redux/screens-tabs-reducer";
 import { connect } from "react-redux";
 
