@@ -1,37 +1,59 @@
 import React from "react";
 import s from "./ScreensTabs.module.scss";
+import { ScreenSettings } from "./ScreenSettings/ScreenSettings.jsx";
 
 export const ScreensTabs = (props) => {
-   const tabs = props.state.screens.map((el, index) => {
-      const tabAdd = index > 0 && !el.isExists && props.state.screens[index - 1].isExists;
+   const [isVisible, setVisible] = React.useState(false);
 
+   const tabs = props.state.screens.map((el, index) => {
       const TabClick = () => {
-			props.updateAirStateThunk(index);
+         props.updateAirStateThunk(index);
+
+         if (!el.isExists) {
+            props.CreateScreenThunk(index);
+         }
 
          if (el.isExists && !el.isActive) {
             props.ToggleScreensThunk(index);
          }
-         if (tabAdd) {
-            props.CreateScreenThunk(index);
-         }
       };
 
       return (
-         <li
-            className={
-               s.item +
-               (el.id == 0 ? " " + s.Main : "") +
-               (!el.isExists ? " " + s.NotExists : "") +
-               (el.isActive ? " " + s.Active : "") +
-               (tabAdd ? " " + s.Add : "")
-            }
-            key={el.id}
-            onClick={TabClick}
-         >
-            {el.isExists && el.value}
+         <li className={s.itemWrap} key={el.id} onClick={TabClick}>
+            <button
+               className={
+                  s.item +
+                  (el.id === 0 ? " " + s.itemMain : "") +
+                  (!el.isExists ? " " + s.itemNotExists : "") +
+                  (el.isActive ? " " + s.itemActive : "")
+               }
+            >
+               {el.isExists && el.value}
+            </button>
          </li>
       );
    });
 
-   return <ul className={s.list}>{tabs}</ul>;
+   return (
+      <>
+         <div className={s.wrap}>
+            <ul className={s.list}>{tabs}</ul>
+            {props.state.activeScreenIndex !== 0 && (
+               <button
+                  className={
+                     s.changeScreenBtn + " " + s.item + " " + s.itemMain + " " + s.itemActive
+                  }
+                  onClick={() => setVisible(true)}
+               >
+                  Изменить экран
+               </button>
+            )}
+         </div>
+         <ScreenSettings
+            isVisible={isVisible}
+            setVisible={() => setVisible(false)}
+            RemoveScreenThunk={props.RemoveScreenThunk}
+         />
+      </>
+   );
 };

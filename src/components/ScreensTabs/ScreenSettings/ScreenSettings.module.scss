@@ -1,0 +1,67 @@
+@import "./../../../scss/utilities/variables.scss";
+
+.wrap {
+   display: none;
+   max-width: 460px;
+   padding: 25px;
+   background: #f8fafc;
+   border-radius: 15px;
+
+   &.visible {
+      display: block;
+   }
+}
+
+.header {
+   margin-bottom: 30px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+}
+
+.heading {
+   color: #0f172a;
+}
+
+.closeBtn {
+   width: 25px;
+   height: 25px;
+   position: relative;
+   display: block;
+   background: transparent;
+   border: none;
+   cursor: pointer;
+
+   &::before,
+   &::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 1px;
+      border-radius: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #0f172a;
+   }
+
+   &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+   }
+
+   &::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+   }
+}
+
+.removeBtn {
+   margin-top: 100px;
+   height: 40px;
+   padding: 0 18px;
+   border-radius: 100vh;
+   background: $high-value;
+   font-size: 17px;
+   color: #fff;
+   cursor: pointer;
+   border: none;
+}

@@ -1,7 +1,16 @@
-.list {
+.wrap {
    display: flex;
    align-items: center;
    margin-bottom: 30px;
+}
+
+.list {
+   display: flex;
+   align-items: center;
+
+   .itemWrap + .itemWrap {
+      margin-left: 12px;
+   }
 }
 
 .item {
@@ -11,42 +20,28 @@
    justify-content: center;
    align-items: center;
    border: 1px solid #fff;
-   border-radius: 10px;
+   border-radius: 100vh;
    background: transparent;
-   font-size: 18px;
+   font-size: 17px;
    color: #fff;
    cursor: pointer;
 
-   & + & {
-      margin-left: 12px;
-   }
-
-   &.Main {
+   &Main {
       width: auto;
-      padding: 0 20px;
+      padding: 0 18px;
    }
 
-   &.NotExists {
+   &NotExists {
+		position: relative;
       border-color: rgba(#f4f4f4, 0.3);
-      cursor: default;
-   }
-
-   &.Active {
-      background: #fff;
-      color: #181818;
-   }
-
-   &.Add {
-      position: relative;
-		cursor: pointer;
-
-      &::before,
+		
+		&::before,
       &::after {
          content: "";
          position: absolute;
          width: 16px;
          height: 2px;
-			top: 50%;
+         top: 50%;
          left: 50%;
          transform: translate(-50%, -50%);
          background: #bed0da;
@@ -57,4 +52,14 @@
          transform: translate(-50%, -50%) rotate(90deg);
       }
    }
+
+   &Active {
+      background: #fff;
+      color: #181818;
+   }
+}
+
+.changeScreenBtn {
+   display: block;
+   margin-left: 36px;
 }
