@@ -1,7 +1,7 @@
 import { API } from "../api/api.js";
 
 const UPDATE_AIR_STATE = "UPDATE_AIR_STATE";
-const CREATE_SCREENS = "CREATE_SCREENS";
+const CREATE_SCREEN = "CREATE_SCREEN";
 const TOGGLE_SCREENS = "TOGGLE_SCREENS";
 
 const initialState = {
@@ -59,9 +59,9 @@ const initialState = {
 	activeScreenIndex: 0,
 };
 
-const ScreensTabsReducer = (state = initialState, action) => {
+const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case CREATE_SCREENS: {
+		case CREATE_SCREEN: {
 			let screens = state.screens.map((el, index) => {
 				if (el.isActive) {
 					el.isActive = false;
@@ -101,60 +101,53 @@ const ScreensTabsReducer = (state = initialState, action) => {
 			};
 		}
 		case UPDATE_AIR_STATE: {
-			const updateElements = () => {
-				state.screens[action.id].elements.map((el) => {
-					if (action.id == 0) {
-						el.elements = [...action.data];
-					}
+			const screens = state.screens.map((el, index) => {
+				if (index == action.id && action.id == 0) {
+					el.elements = action.data;
+				} else {
+					el.elements = el.elements.map((item) => {
+						action.data.map((new_el) => {
+							if (item.sensor_name === new_el.sensor_name) {
+								item = new_el;
+							}
+						});
 
-					return el;
-				});
+						return item;
+					});
+				}
 
-				// else {
-				// 	return state.screens[action.id].elements.map((el) => {
-				// 		action.data.map((new_el) => {
-				// 			if (el.sensor_name === new_el.sensor_name) {
-				// 				el = new_el;
-				// 			}
-				// 		});
-
-				// 		return el;
-				// 	});
-				// }
-			};
-
-			let screens = [
-				...state.screens,
-			];
+				return el;
+			});
 
 			return {
 				...state,
 				screens: [...screens],
 			};
-		}
+		};
+
 		default:
 			return state;
 	}
 };
 
-const setLastAirState = (data, id) => ({ type: UPDATE_AIR_STATE, data, id });
+const updateAirState = (data, id) => ({ type: UPDATE_AIR_STATE, data, id });
 
-export const setLastAirStateThunk = (id) => (dispatch) => {
+export const updateAirStateThunk = (id) => (dispatch) => {
 	API.getState(data => {
-		dispatch(setLastAirState(data, id));
+		dispatch(updateAirState(data, id));
 	});
 };
 
-const CreateScreen = (id) => ({ type: CREATE_SCREENS, id });
+const CreateScreen = (id) => ({ type: CREATE_SCREEN, id });
 
 export const CreateScreenThunk = (id) => (dispatch) => {
 	dispatch(CreateScreen(id));
 };
 
-const ToggleScreen = (id) => ({ type: TOGGLE_SCREENS, id });
+const ToggleScreens = (id) => ({ type: TOGGLE_SCREENS, id });
 
-export const ToggleScreenThunk = (id) => (dispatch) => {
-	dispatch(ToggleScreen(id));
+export const ToggleScreensThunk = (id) => (dispatch) => {
+	dispatch(ToggleScreens(id));
 };
 
-export default ScreensTabsReducer;
+export default ScreensReducer;

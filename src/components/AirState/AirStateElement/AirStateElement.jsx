@@ -1,6 +1,7 @@
-import s from "./StateAirElement.module.scss";
+import React from "react";
+import s from "./AirStateElement.module.scss";
 
-const StateAirElement = (props) => {
+const AirStateElement = (props) => {
    return (
       <div className={s.element}>
          <div>
@@ -16,4 +17,4 @@ const StateAirElement = (props) => {
    );
 };
 
-export default StateAirElement;
+export default AirStateElement;
