@@ -5,20 +5,22 @@ import { ScreenSettingsElement } from "./ScreenSettingsElement/ScreenSettingsEle
 export const ScreenSettings = (props) => {
    return (
       <div className={s.wrap + (props.isVisible ? " " + s.visible : "")}>
-         <div className={s.header}>
-            <p className={s.heading}>Блоки</p>
-            <button className={s.closeBtn} onClick={() => props.setVisible(false)}></button>
+         <div className={s.block}>
+            <div className={s.header}>
+               <p className={s.heading}>Блоки</p>
+               <button className={s.closeBtn} onClick={() => props.setVisible(false)}></button>
+            </div>
+            {}
+            <button
+               className={s.removeBtn}
+               onClick={() => {
+                  props.setVisible(false);
+                  props.clearScreenThunk();
+               }}
+            >
+               Очистить экран
+            </button>
          </div>
-         {}
-         <button
-            className={s.removeBtn}
-            onClick={() => {
-               props.setVisible(false);
-               props.RemoveScreenThunk();
-            }}
-         >
-            Удалить экран
-         </button>
       </div>
    );
 };

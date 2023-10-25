@@ -1,44 +1,38 @@
 import { API } from "../api/api.js";
 
 const UPDATE_AIR_STATE = "UPDATE_AIR_STATE";
-const CREATE_SCREEN = "CREATE_SCREEN";
 const TOGGLE_SCREENS = "TOGGLE_SCREENS";
-const REMOVE_SCREEN = "REMOVE_SCREEN";
+const CLEAR_SCREEN = "CLEAR_SCREEN";
 
 const initialState = {
 	screens: [
 		{
 			id: 0,
 			value: "Главная",
-			isExists: true,
 			isActive: true,
 			elements: [],
 		},
 		{
 			id: 1,
 			value: 1,
-			isExists: false,
 			isActive: false,
 			elements: [],
 		},
 		{
 			id: 2,
 			value: 2,
-			isExists: false,
 			isActive: false,
 			elements: [],
 		},
 		{
 			id: 3,
 			value: 3,
-			isExists: false,
 			isActive: false,
 			elements: [],
 		},
 		{
 			id: 4,
 			value: 4,
-			isExists: false,
 			isActive: false,
 			elements: [],
 		},
@@ -69,28 +63,7 @@ const ScreensReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				screens: [...screens],
-			};
-		};
-
-		case CREATE_SCREEN: {
-			let screens = state.screens.map((el, index) => {
-				if (el.isActive) {
-					el.isActive = false;
-				}
-
-				if (index === action.id) {
-					el.isExists = true;
-					el.isActive = true;
-				}
-
-				return el;
-			});
-
-			return {
-				...state,
-				screens: [...screens],
-				activeScreenIndex: action.id,
+				screens: screens,
 			};
 		};
 
@@ -109,19 +82,19 @@ const ScreensReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				screens: [...screens],
+				screens: screens,
 				activeScreenIndex: action.id,
 			};
 		};
 
-		case REMOVE_SCREEN: {
+		case CLEAR_SCREEN: {
 			const screens = state.screens.map((el) => {
 				if (el.id === 0) {
 					el.isActive = true;
+					state.activeScreenIndex = 0;
 				}
 
-				if (el.id === state.activeScreenIndex) {
-					el.isExists = false;
+				if (el.id !== 0 && el.isActive === true) {
 					el.isActive = false;
 				}
 
@@ -130,7 +103,7 @@ const ScreensReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				screens: [...screens],
+				screens: screens,
 			};
 		};
 
@@ -140,9 +113,8 @@ const ScreensReducer = (state = initialState, action) => {
 };
 
 const updateAirState = (data, id) => ({ type: UPDATE_AIR_STATE, data, id });
-const CreateScreen = (id) => ({ type: CREATE_SCREEN, id });
-const ToggleScreens = (id) => ({ type: TOGGLE_SCREENS, id });
-const RemoveScreen = () => ({ type: REMOVE_SCREEN });
+const toggleScreens = (id) => ({ type: TOGGLE_SCREENS, id });
+const clearScreen = () => ({ type: CLEAR_SCREEN });
 
 export const updateAirStateThunk = (id) => (dispatch) => {
 	API.getState(data => {
@@ -150,16 +122,12 @@ export const updateAirStateThunk = (id) => (dispatch) => {
 	});
 };
 
-export const CreateScreenThunk = (id) => (dispatch) => {
-	dispatch(CreateScreen(id));
+export const toggleScreensThunk = (id) => (dispatch) => {
+	dispatch(toggleScreens(id));
 };
 
-export const ToggleScreensThunk = (id) => (dispatch) => {
-	dispatch(ToggleScreens(id));
-};
-
-export const RemoveScreenThunk = () => (dispatch) => {
-	dispatch(RemoveScreen());
+export const clearScreenThunk = () => (dispatch) => {
+	dispatch(clearScreen());
 };
 
 export default ScreensReducer;

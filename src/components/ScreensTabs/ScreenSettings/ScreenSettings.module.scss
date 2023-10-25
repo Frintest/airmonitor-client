@@ -1,15 +1,28 @@
 @import "./../../../scss/utilities/variables.scss";
 
 .wrap {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: rgba(0, 0, 0, 0.5);
    display: none;
-   max-width: 460px;
-   padding: 25px;
-   background: #f8fafc;
-   border-radius: 15px;
 
    &.visible {
       display: block;
    }
+}
+
+.block {
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 460px;
+   padding: 25px;
+   background: $blocks-color;
+   border-radius: 15px;
 }
 
 .header {
@@ -20,7 +33,7 @@
 }
 
 .heading {
-   color: #0f172a;
+   color: $content-color;
 }
 
 .closeBtn {
@@ -42,7 +55,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      background: #0f172a;
+      background: $content-color;
    }
 
    &::before {

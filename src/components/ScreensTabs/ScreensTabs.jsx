@@ -9,12 +9,8 @@ export const ScreensTabs = (props) => {
       const TabClick = () => {
          props.updateAirStateThunk(index);
 
-         if (!el.isExists) {
-            props.CreateScreenThunk(index);
-         }
-
-         if (el.isExists && !el.isActive) {
-            props.ToggleScreensThunk(index);
+         if (!el.isActive) {
+            props.toggleScreensThunk(index);
          }
       };
 
@@ -24,11 +20,10 @@ export const ScreensTabs = (props) => {
                className={
                   s.item +
                   (el.id === 0 ? " " + s.itemMain : "") +
-                  (!el.isExists ? " " + s.itemNotExists : "") +
                   (el.isActive ? " " + s.itemActive : "")
                }
             >
-               {el.isExists && el.value}
+               {el.value}
             </button>
          </li>
       );
@@ -52,7 +47,7 @@ export const ScreensTabs = (props) => {
          <ScreenSettings
             isVisible={isVisible}
             setVisible={() => setVisible(false)}
-            RemoveScreenThunk={props.RemoveScreenThunk}
+            clearScreenThunk={props.clearScreenThunk}
          />
       </>
    );
