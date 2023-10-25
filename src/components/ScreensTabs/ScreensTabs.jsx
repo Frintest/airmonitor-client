@@ -48,6 +48,7 @@ export const ScreensTabs = (props) => {
             isVisible={isVisible}
             setVisible={() => setVisible(false)}
             clearScreenThunk={props.clearScreenThunk}
+				data={props.state.data}
          />
       </>
    );

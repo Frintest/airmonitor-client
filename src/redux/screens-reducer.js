@@ -5,6 +5,7 @@ const TOGGLE_SCREENS = "TOGGLE_SCREENS";
 const CLEAR_SCREEN = "CLEAR_SCREEN";
 
 const initialState = {
+	data: [],
 	screens: [
 		{
 			id: 0,
@@ -45,7 +46,8 @@ const ScreensReducer = (state = initialState, action) => {
 		case UPDATE_AIR_STATE: {
 			const screens = state.screens.map((el, index) => {
 				if (index == action.id && action.id == 0) {
-					el.elements = action.data;
+					state.data = action.data;
+					el.elements = state.data;
 				} else {
 					el.elements = el.elements.map((item) => {
 						action.data.map((new_el) => {
