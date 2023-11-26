@@ -12,12 +12,13 @@
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "socket.io": "^4.7.2",
-    "socket.io-client": "^4.7.2"
+    "socket.io-client": "^4.7.2",
+    "swr": "^2.2.4"
   },
   "scripts": {
-	 "start": "webpack serve --config webpack.dev.js",
-	 "dev": "webpack --config webpack.dev.js",
-	 "build": "webpack --config webpack.prod.js"
+    "start": "webpack serve --config webpack.dev.js",
+    "dev": "webpack --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "browserslist": {
     "production": [

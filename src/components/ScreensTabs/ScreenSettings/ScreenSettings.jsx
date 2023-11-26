@@ -3,9 +3,15 @@ import s from "./ScreenSettings.module.scss";
 import { ScreenSettingsElement } from "./ScreenSettingsElement/ScreenSettingsElement.jsx";
 
 export const ScreenSettings = (props) => {
-   console.log(props);
    const elements = props.data.map((el) => {
-      return <ScreenSettingsElement ui_name={el.ui_name} key={el.ui_name} />;
+      return (
+         <ScreenSettingsElement
+            ui_name={el.ui_name}
+				sensor_name={el.sensor_name}
+            key={el.sensor_name}
+            addAirPropInScreenThunk={props.addAirPropInScreenThunk}
+         />
+      );
    });
 
    return (

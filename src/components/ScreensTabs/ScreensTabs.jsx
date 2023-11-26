@@ -4,6 +4,9 @@ import { ScreenSettings } from "./ScreenSettings/ScreenSettings.jsx";
 
 export const ScreensTabs = (props) => {
    const [isVisible, setVisible] = React.useState(false);
+	React.useEffect(() => {
+		props.updateAirStateThunk(0);
+	});
 
    const tabs = props.state.screens.map((el, index) => {
       const TabClick = () => {
@@ -48,7 +51,8 @@ export const ScreensTabs = (props) => {
             isVisible={isVisible}
             setVisible={() => setVisible(false)}
             clearScreenThunk={props.clearScreenThunk}
-				data={props.state.data}
+				addAirPropInScreenThunk={props.addAirPropInScreenThunk}
+            data={props.state.data}
          />
       </>
    );
