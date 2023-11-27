@@ -10,6 +10,7 @@ export const ScreenSettings = (props) => {
 				sensor_name={el.sensor_name}
             key={el.sensor_name}
             addAirPropInScreenThunk={props.addAirPropInScreenThunk}
+				removeAirPropInScreenThunk={props.removeAirPropInScreenThunk}
          />
       );
    });

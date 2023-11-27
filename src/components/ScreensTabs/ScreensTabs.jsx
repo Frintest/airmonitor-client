@@ -52,6 +52,7 @@ export const ScreensTabs = (props) => {
             setVisible={() => setVisible(false)}
             clearScreenThunk={props.clearScreenThunk}
 				addAirPropInScreenThunk={props.addAirPropInScreenThunk}
+				removeAirPropInScreenThunk={props.removeAirPropInScreenThunk}
             data={props.state.data}
          />
       </>

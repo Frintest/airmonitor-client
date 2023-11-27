@@ -2,7 +2,18 @@ import React from "react";
 import s from "./ScreenSettingsElement.module.scss";
 
 export const ScreenSettingsElement = (props) => {
-	
+   const [isChecked, setIsChecked] = React.useState(false);
+   const onToggleCheckbox = () => {
+      setIsChecked((isChecked) => {
+         if (!isChecked) {
+            props.addAirPropInScreenThunk(props.sensor_name);
+         } else {
+            props.removeAirPropInScreenThunk(props.sensor_name);
+         }
+
+         return isChecked;
+      });
+   };
    return (
       <div className={s.wrap}>
          <label className={s.label} htmlFor={props.ui_name}>
@@ -11,9 +22,8 @@ export const ScreenSettingsElement = (props) => {
                className={s.checkbox}
                type="checkbox"
                id={props.sensor_name}
-               onChange={() => {
-                  props.addAirPropInScreenThunk(props.sensor_name);
-               }}
+					checked={isChecked}
+               onChange={onToggleCheckbox}
             />
          </label>
       </div>
