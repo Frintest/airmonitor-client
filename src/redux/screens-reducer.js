@@ -29,7 +29,7 @@ const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
 			const screens = state.screens.map((el, index) => {
-				if (index == action.id && action.id == 0) {
+				if (index === action.id && action.id === 0) {
 					state.data = action.data;
 					el.elements = action.data;
 				}
@@ -97,7 +97,7 @@ const ScreensReducer = (state = initialState, action) => {
 
 		case ADD_AIR_PROP_IN_SCREEN: {
 			const screens = state.screens.map((el) => {
-				if (el.id == state.activeScreenIndex) {
+				if (el.id === state.activeScreenIndex) {
 					const airProp = state.data.find((el) => el.sensor_name === action.name);
 					el.elements.push(airProp);
 				}
@@ -112,7 +112,7 @@ const ScreensReducer = (state = initialState, action) => {
 
 		case REMOVE_AIR_PROP_IN_SCREEN: {
 			const screens = state.screens.map((el) => {
-				if (el.id == state.activeScreenIndex) {
+				if (el.id === state.activeScreenIndex) {
 					el.elements = el.elements.filter((el) => el.sensor_name != action.name);
 				}
 
