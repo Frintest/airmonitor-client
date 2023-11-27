@@ -53,7 +53,7 @@ export const ScreensTabs = (props) => {
             clearScreenThunk={props.clearScreenThunk}
 				addAirPropInScreenThunk={props.addAirPropInScreenThunk}
 				removeAirPropInScreenThunk={props.removeAirPropInScreenThunk}
-            data={props.state.data}
+            state={props.state}
          />
       </>
    );

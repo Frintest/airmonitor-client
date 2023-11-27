@@ -23,6 +23,7 @@ const initialState = {
 	data: [],
 	screens: generateScreens(6), // include main screen
 	activeScreenIndex: 0,
+	checkboxScreenSettings: {},
 };
 
 const ScreensReducer = (state = initialState, action) => {
@@ -32,18 +33,17 @@ const ScreensReducer = (state = initialState, action) => {
 				if (index === action.id && action.id === 0) {
 					state.data = action.data;
 					el.elements = action.data;
-				}
-				// } else {
-				// 	el.elements = el.elements.map((item) => {
-				// 		action.data.map((new_el) => {
-				// 			if (item.sensor_name === new_el.sensor_name) {
-				// 				item = new_el;
-				// 			}
-				// 		});
+				} else {
+					el.elements = el.elements.map((item) => {
+						action.data.map((new_el) => {
+							if (item.sensor_name === new_el.sensor_name) {
+								item = new_el;
+							}
+						});
 
-				// 		return item;
-				// 	});
-				// }
+						return item;
+					});
+				}
 
 				return el;
 			});
@@ -71,6 +71,7 @@ const ScreensReducer = (state = initialState, action) => {
 				...state,
 				screens: screens,
 				activeScreenIndex: action.id,
+				checkboxScreenSettings: {},
 			};
 		};
 
@@ -97,6 +98,8 @@ const ScreensReducer = (state = initialState, action) => {
 
 		case ADD_AIR_PROP_IN_SCREEN: {
 			const screens = state.screens.map((el) => {
+				state.checkboxScreenSettings[action.name] = true;
+
 				if (el.id === state.activeScreenIndex) {
 					const airProp = state.data.find((el) => el.sensor_name === action.name);
 					el.elements.push(airProp);
@@ -111,6 +114,8 @@ const ScreensReducer = (state = initialState, action) => {
 		}
 
 		case REMOVE_AIR_PROP_IN_SCREEN: {
+			state.checkboxScreenSettings[action.name] = false;
+
 			const screens = state.screens.map((el) => {
 				if (el.id === state.activeScreenIndex) {
 					el.elements = el.elements.filter((el) => el.sensor_name != action.name);
