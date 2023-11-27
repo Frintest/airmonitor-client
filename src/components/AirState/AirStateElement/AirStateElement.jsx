@@ -5,7 +5,7 @@ const AirStateElement = (props) => {
    return (
       <div className={s.element}>
          <div>
-            <span className={s.name}>{props.name}:</span>
+            <span className={s.name}>{props.name}</span>
             <span className={s.status}>Normal</span>
          </div>
 

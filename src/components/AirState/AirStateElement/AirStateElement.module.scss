@@ -19,11 +19,23 @@
 .name {
    font-weight: 700;
    font-size: 20px;
+   position: relative;
+
+   &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+		transform: translate(0, -50%);
+      right: -10px;
+      width: 2px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.45);
+   }
 }
 
 .status {
    font-size: 20px;
-   padding-left: 10px;
+   padding-left: 20px;
 }
 
 .value {
