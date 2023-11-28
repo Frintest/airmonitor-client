@@ -9,9 +9,9 @@ import "focus-visible";
 
 const root = ReactDOM.createRoot(document.getElementById("wrapper"));
 root.render(
-	<BrowserRouter>
-		<Provider store={store}>
+	<Provider store={store}>
+		<BrowserRouter>
 			<App />
-		</Provider>
-	</BrowserRouter>
+		</BrowserRouter>
+	</Provider>
 );

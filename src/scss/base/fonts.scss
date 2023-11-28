@@ -1,0 +1,32 @@
+@font-face {
+   font-family: "Roboto";
+   // webpack ищет файл шрифта в папе scss, а не относительно данного scss файла
+   src: url(../assets/fonts/roboto/roboto-light.woff) format("woff");
+   font-weight: 300;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Roboto";
+   src: url(../assets/fonts/roboto/roboto-regular.woff) format("woff");
+   font-weight: 400;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Roboto";
+   src: url(../assets/fonts/roboto/roboto-medium.woff) format("woff");
+   font-weight: 500;
+   font-style: normal;
+   font-display: swap;
+}
+
+@font-face {
+   font-family: "Roboto";
+   src: url(../assets/fonts/roboto/roboto-bold.woff) format("woff");
+   font-weight: 700;
+   font-style: normal;
+   font-display: swap;
+}
