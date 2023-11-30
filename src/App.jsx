@@ -4,17 +4,30 @@ import ScreensTabsContainer from "./components/ScreensTabs/ScreensTabsContainer.
 import AirStateContainer from "./components/AirState/AirStateContainer.js";
 import AirPropContainer from "./components/AirProp/AirPropContainer.js";
 
-const App = () => {
+export const App = (props) => {
+   const getAirPropsRoutes = () => {
+      let airPropsRoutes = [];
+      if (props.state.data) {
+         airPropsRoutes = props.state.data.map((el) => {
+            return (
+               <Route
+                  path={`${el.sensor_name}`}
+                  element={<AirPropContainer />}
+                  key={el.sensor_name}
+               />
+            );
+         });
+      }
+      return airPropsRoutes;
+   };
+
    return (
       <>
          <ScreensTabsContainer />
-         <AirStateContainer />
          <Routes>
             <Route path="/" element={<AirStateContainer />} />
-            <Route path="/pm1" element={<AirPropContainer />} />
+            {getAirPropsRoutes()}
          </Routes>
       </>
    );
 };
-
-export default App;
