@@ -9,8 +9,8 @@ export const ScreenSettings = (props) => {
             ui_name={el.ui_name}
             sensor_name={el.sensor_name}
             key={el.sensor_name}
-            addAirPropInScreenThunk={props.addAirPropInScreenThunk}
-            removeAirPropInScreenThunk={props.removeAirPropInScreenThunk}
+            addAirPropInScreen={props.addAirPropInScreen}
+            removeAirPropInScreen={props.removeAirPropInScreen}
             isChecked={props.state.checkboxScreenSettings[el.sensor_name]}
          />
       );
@@ -30,7 +30,7 @@ export const ScreenSettings = (props) => {
                className={s.removeBtn}
                onClick={() => {
                   props.setVisible(false);
-                  props.clearScreenThunk();
+                  props.clearScreen();
                }}
             >
                Очистить экран

@@ -136,31 +136,15 @@ const ScreensReducer = (state = initialState, action) => {
 };
 
 const updateAirState = (data, id) => ({ type: UPDATE_AIR_STATE, data, id });
-const toggleScreens = (id) => ({ type: TOGGLE_SCREENS, id });
-const clearScreen = () => ({ type: CLEAR_SCREEN });
-const addAirPropInScreen = (name) => ({ type: ADD_AIR_PROP_IN_SCREEN, name });
-const removeAirPropInScreen = (name) => ({ type: REMOVE_AIR_PROP_IN_SCREEN, name });
+export const toggleScreens = (id) => ({ type: TOGGLE_SCREENS, id });
+export const clearScreen = () => ({ type: CLEAR_SCREEN });
+export const addAirPropInScreen = (name) => ({ type: ADD_AIR_PROP_IN_SCREEN, name });
+export const removeAirPropInScreen = (name) => ({ type: REMOVE_AIR_PROP_IN_SCREEN, name });
 
 export const updateAirStateThunk = (id) => (dispatch) => {
 	API.getState(data => {
 		dispatch(updateAirState(data, id));
 	});
-};
-
-export const toggleScreensThunk = (id) => (dispatch) => {
-	dispatch(toggleScreens(id));
-};
-
-export const clearScreenThunk = () => (dispatch) => {
-	dispatch(clearScreen());
-};
-
-export const addAirPropInScreenThunk = (name) => (dispatch) => {
-	dispatch(addAirPropInScreen(name));
-};
-
-export const removeAirPropInScreenThunk = (name) => (dispatch) => {
-	dispatch(removeAirPropInScreen(name));
 };
 
 export default ScreensReducer;

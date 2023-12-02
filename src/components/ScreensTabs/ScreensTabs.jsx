@@ -4,16 +4,16 @@ import { ScreenSettings } from "./ScreenSettings/ScreenSettings.jsx";
 
 export const ScreensTabs = (props) => {
    const [isVisible, setVisible] = React.useState(false);
-	React.useEffect(() => {
-		props.updateAirStateThunk(0);
-	});
+   React.useEffect(() => {
+      props.updateAirStateThunk(0);
+   });
 
    const tabs = props.state.screens.map((el, index) => {
       const TabClick = () => {
          props.updateAirStateThunk(index);
 
          if (!el.isActive) {
-            props.toggleScreensThunk(index);
+            props.toggleScreens(index);
          }
       };
 
@@ -50,9 +50,9 @@ export const ScreensTabs = (props) => {
          <ScreenSettings
             isVisible={isVisible}
             setVisible={() => setVisible(false)}
-            clearScreenThunk={props.clearScreenThunk}
-				addAirPropInScreenThunk={props.addAirPropInScreenThunk}
-				removeAirPropInScreenThunk={props.removeAirPropInScreenThunk}
+            clearScreen={props.clearScreen}
+            addAirPropInScreen={props.addAirPropInScreen}
+            removeAirPropInScreen={props.removeAirPropInScreen}
             state={props.state}
          />
       </>

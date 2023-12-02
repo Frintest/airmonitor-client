@@ -4,9 +4,9 @@ import s from "./ScreenSettingsElement.module.scss";
 export const ScreenSettingsElement = (props) => {
    const onToggleCheckbox = () => {
       if (!props.isChecked) {
-         props.addAirPropInScreenThunk(props.sensor_name);
+         props.addAirPropInScreen(props.sensor_name);
       } else {
-         props.removeAirPropInScreenThunk(props.sensor_name);
+         props.removeAirPropInScreen(props.sensor_name);
       }
    };
    return (
@@ -17,7 +17,7 @@ export const ScreenSettingsElement = (props) => {
                className={s.checkbox}
                type="checkbox"
                id={props.sensor_name}
-					checked={props.isChecked}
+               checked={props.isChecked}
                onChange={onToggleCheckbox}
             />
          </label>
