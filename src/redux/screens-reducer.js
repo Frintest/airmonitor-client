@@ -5,6 +5,7 @@ const TOGGLE_SCREENS = "TOGGLE_SCREENS";
 const CLEAR_SCREEN = "CLEAR_SCREEN";
 const ADD_AIR_PROP_IN_SCREEN = "ADD_AIR_PROP_IN_SCREEN";
 const REMOVE_AIR_PROP_IN_SCREEN = "REMOVE_AIR_PROP_IN_SCREEN";
+const GET_COLORS_LEVEL = "GET_COLORS_LEVEL";
 
 const generateScreens = (screenCount) => {
 	const screens = [];
@@ -19,11 +20,64 @@ const generateScreens = (screenCount) => {
 	return screens;
 };
 
+const standards = {
+	pm1: {},
+	temp: {},
+	humidity: {},
+	pm2: {
+		content: [
+			{ value: 75, desc: "Хорошо", level: 1 },
+			{ value: 115, desc: "Лёгкое загрязнение", level: 2 },
+			{ value: 150, desc: "Умеренное  загрязнение", level: 3 },
+			{ value: 250, desc: "Сильное загрязнение", level: 4 },
+			{ value: 500, desc: "Опасно", level: 5 },
+		],
+		source: "China Standard GB 3095—2012",
+	},
+	pm10: {
+		content: [
+			{ value: 150, desc: "Хорошо", level: 1 },
+			{ value: 250, desc: "Лёгкое загрязнение", level: 2 },
+			{ value: 350, desc: "Умеренное  загрязнение", level: 3 },
+			{ value: 420, desc: "Сильное загрязнение", level: 4 },
+			{ value: 600, desc: "Опасно", level: 5 },
+		],
+		source: "China Standard GB 3095—2012",
+	},
+	TVOC: {
+		content: [
+			{ value: 0.3, desc: "Хорошо", level: 1 },
+			{ value: 1, desc: "Лёгкое загрязнение", level: 2 },
+			{ value: 3, desc: "Умеренное  загрязнение", level: 3 },
+			{ value: 10, desc: "Сильное загрязнение", level: 4 },
+			{ value: "10+", desc: "Опасно", level: 5 },
+		],
+		source: "China Standard GB/T 18883—2002",
+	},
+	CO2: {
+		content: [
+			{ value: 1000, desc: "Хорошо", level: 1 },
+			{ value: 2000, desc: "Умеренное содержание", level: 2 },
+			{ value: 3000, desc: "Высокое содержание", level: 3 },
+			{ value: "3000+", desc: "Опасно", level: 4 },
+		],
+		source: "China Standard GB/T 18883—2002",
+	},
+};
+
 const initialState = {
 	data: [],
 	screens: generateScreens(6), // include main screen
 	activeScreenIndex: 0,
 	checkboxScreenSettings: {},
+	standards: standards,
+	levelColors: {
+		'1': { lightColor: '#22d3ee', darkColor: '#06b6d4' },
+		'2': { lightColor: '#34d399', darkColor: '#10b981' },
+		'3': { lightColor: '#fbbf24', darkColor: '#fbbf24' },
+		'4': { lightColor: '#fb923c', darkColor: '#f97316' },
+		'5': { lightColor: '#f87171', darkColor: '#ef4444' },
+	}
 };
 
 const ScreensReducer = (state = initialState, action) => {
@@ -140,6 +194,7 @@ export const toggleScreens = (id) => ({ type: TOGGLE_SCREENS, id });
 export const clearScreen = () => ({ type: CLEAR_SCREEN });
 export const addAirPropInScreen = (name) => ({ type: ADD_AIR_PROP_IN_SCREEN, name });
 export const removeAirPropInScreen = (name) => ({ type: REMOVE_AIR_PROP_IN_SCREEN, name });
+export const getColorsLevel = (level) => ({ type: GET_COLORS_LEVEL, level });
 
 export const updateAirStateThunk = (id) => (dispatch) => {
 	API.getState(data => {

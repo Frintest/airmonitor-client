@@ -1,5 +1,6 @@
 import React from "react";
 import s from "./ScreenSettingsElement.module.scss";
+import { formatText } from "../../../../redux/utilities/helpers/format-text-airprop";
 
 export const ScreenSettingsElement = (props) => {
    const onToggleCheckbox = () => {
@@ -12,7 +13,7 @@ export const ScreenSettingsElement = (props) => {
    return (
       <div className={s.wrap}>
          <label className={s.label} htmlFor={props.ui_name}>
-            <span className={s.name}>{props.ui_name}</span>
+            <span className={s.name}>{formatText(props.ui_name)}</span>
             <input
                className={s.checkbox}
                type="checkbox"
