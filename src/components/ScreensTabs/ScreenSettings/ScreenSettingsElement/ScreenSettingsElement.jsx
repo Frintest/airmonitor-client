@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./ScreenSettingsElement.module.scss";
-import { formatText } from "../../../../redux/utilities/helpers/format-text-airprop";
+import { formatText } from "../../../../utilities/helpers/format-text-airprop";
 
 export const ScreenSettingsElement = (props) => {
    const onToggleCheckbox = () => {

@@ -29,11 +29,14 @@
    }
 }
 
+.info {
+   padding: 58px 50px;
+}
+
 .maininfo {
    display: flex;
    align-items: center;
    justify-content: space-between;
-   padding: 58px 50px;
 
    &__valueWrap {
       display: flex;
@@ -112,4 +115,8 @@
       font-weight: 700;
       background: #444;
    }
+}
+
+.chart {
+	margin-top: 80px;
 }

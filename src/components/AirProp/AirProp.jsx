@@ -1,7 +1,8 @@
 import React from "react";
 import s from "./AirProp.module.scss";
 import { Link } from "react-router-dom";
-import { formatText } from "../../redux/utilities/helpers/format-text-airprop";
+import { formatText } from "../../utilities/helpers/format-text-airprop";
+import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
 
 export const AirProp = (props) => {
    React.useEffect(() => {
@@ -9,15 +10,13 @@ export const AirProp = (props) => {
    });
 
    const getAirPropByName = () => {
-      const el = props.state.data.find(
-         (el) => `/${el.sensor_name}` === props.router.location.pathname
-      );
-
-      if (el) {
-         // console.log(el.ui_name); // TODO это хороший индикатор того, что нужно обновлять state.data если данные изменились, а не каждые 3 секунды
-         return el;
-      }
+      return props.state.data.find((el) => `/${el.sensor_name}` === props.router.location.pathname);
    };
+   const currentAirProp = getAirPropByName();
+
+   React.useEffect(() => {
+      props.addAirPropHistoryThunk(currentAirProp.sensor_name);
+   });
 
    const getColorsLevel = (level) => {
       const fromColor = props.state.levelColors[level].darkColor;
@@ -25,9 +24,7 @@ export const AirProp = (props) => {
       return [fromColor, toColor];
    };
 
-   const airprop = getAirPropByName();
-   const standardsState = props.state.standards[airprop.sensor_name];
-   const source = standardsState.source;
+   const standardsState = props.state.standards[currentAirProp.sensor_name];
 
    const getStandardsElements = () => {
       return standardsState.content.map((el) => {
@@ -61,20 +58,31 @@ export const AirProp = (props) => {
                   />
                </svg>
             </Link>
-            <p className={s.header__title}>{formatText(airprop.ui_name)}</p>
+            <p className={s.header__title}>{formatText(currentAirProp.ui_name)}</p>
          </div>
 
-         <div className={s.maininfo}>
-            <div className={s.maininfo__valueWrap}>
-               <p className={s.maininfo__value}>{airprop.value}</p>
-               <span className={s.maininfo__unit}>{formatText(airprop.unit)}</span>
-            </div>
-            {standardsState.content && (
-               <div className={s.maininfo__standards}>
-                  <p className={s.maininfo__standardsSource}>*{source}</p>
-                  <div className={s.maininfo__standardsList}>{getStandardsElements()}</div>
+         <div className={s.info}>
+            <div className={s.maininfo}>
+               <div className={s.maininfo__valueWrap}>
+                  <p className={s.maininfo__value}>{currentAirProp.value}</p>
+                  <span className={s.maininfo__unit}>{formatText(currentAirProp.unit)}</span>
                </div>
-            )}
+               {standardsState.content && (
+                  <div className={s.maininfo__standards}>
+                     <p className={s.maininfo__standardsSource}>*{standardsState.source}</p>
+                     <div className={s.maininfo__standardsList}>{getStandardsElements()}</div>
+                  </div>
+               )}
+            </div>
+
+            <div className={s.chart}>
+               {props.state.airPropHistory[currentAirProp.sensor_name] && (
+                  <HistoryChart
+                     history={props.state.airPropHistory}
+                     name={currentAirProp.sensor_name}
+                  />
+               )}
+            </div>
          </div>
       </section>
    );

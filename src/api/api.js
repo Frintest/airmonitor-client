@@ -7,8 +7,13 @@ socket.on('connect', () => {
 });
 
 export const API = {
-	getState(callback) {
+	getAirState(callback) {
 		socket.on('getAirState', data => {
+			callback(data);
+		});
+	},
+	getAirPropHistory(callback) {
+		socket.on('getAirPropHistory', data => {
 			callback(data);
 		});
 	},

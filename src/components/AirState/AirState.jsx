@@ -4,7 +4,9 @@ import s from "./AirState.module.scss";
 
 const AirState = (props) => {
    const stateElements = props.state.screens[props.state.activeScreenIndex].elements.map((el) => {
-      return <AirStateElement {...el} key={el.sensor_name} />;
+      return (
+         <AirStateElement el={el} key={el.sensor_name} />
+      );
    });
 
    return <div className={s.wrap}>{stateElements}</div>;
