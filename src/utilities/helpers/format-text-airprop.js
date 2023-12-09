@@ -1,4 +1,5 @@
 import React from "react";
+
 export const formatText = (text) => {
 	const subBeginIndex = text.indexOf("<sub>");
 	const supBeginIndex = text.indexOf("<sup>");
@@ -12,5 +13,5 @@ export const formatText = (text) => {
 		indexTag = <sup>{text.slice(supBeginIndex + 5)}</sup>;
 	}
 
-	return [mainText, indexTag];
+	return <>{mainText}{indexTag}</>;
 };

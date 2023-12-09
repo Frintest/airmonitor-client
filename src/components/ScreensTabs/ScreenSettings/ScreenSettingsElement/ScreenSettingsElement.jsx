@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./ScreenSettingsElement.module.scss";
-import { formatText } from "../../../../utilities/helpers/format-text-airprop";
+import { formatText } from "../../../../utilities/helpers/format-text-airprop.js";
 
 export const ScreenSettingsElement = (props) => {
    const onToggleCheckbox = () => {
@@ -10,6 +10,7 @@ export const ScreenSettingsElement = (props) => {
          props.removeAirPropInScreen(props.sensor_name);
       }
    };
+
    return (
       <div className={s.wrap}>
          <label className={s.label} htmlFor={props.ui_name}>

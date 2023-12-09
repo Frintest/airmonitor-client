@@ -8,10 +8,10 @@ export const ScreenSettings = (props) => {
          <ScreenSettingsElement
             ui_name={el.ui_name}
             sensor_name={el.sensor_name}
-            key={el.sensor_name}
             addAirPropInScreen={props.addAirPropInScreen}
             removeAirPropInScreen={props.removeAirPropInScreen}
             isChecked={props.state.checkboxScreenSettings[el.sensor_name]}
+				key={el.sensor_name}
          />
       );
    });

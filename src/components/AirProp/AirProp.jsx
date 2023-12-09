@@ -30,7 +30,7 @@ export const AirProp = (props) => {
       return standardsState.content.map((el) => {
          const [fromColor, toColor] = getColorsLevel(el.level);
          return (
-            <div className={s.maininfo__standardsItemWrap}>
+            <div className={s.maininfo__standardsItemWrap} key={el.level}>
                <div className={s.maininfo__standardsItem}>
                   <div
                      className={s.maininfo__standardsValue}
