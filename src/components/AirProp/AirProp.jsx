@@ -10,7 +10,7 @@ export const AirProp = (props) => {
    });
 
    const getAirPropByName = () => {
-      return props.state.data.find((el) => `/${el.sensor_name}` === props.router.location.pathname);
+      return props.data.find((el) => `/${el.sensor_name}` === props.router.location.pathname);
    };
    const currentAirProp = getAirPropByName();
 
@@ -19,12 +19,12 @@ export const AirProp = (props) => {
    });
 
    const getColorsLevel = (level) => {
-      const fromColor = props.state.levelColors[level].darkColor;
-      const toColor = props.state.levelColors[level].lightColor;
+      const fromColor = props.levelColors[level].darkColor;
+      const toColor = props.levelColors[level].lightColor;
       return [fromColor, toColor];
    };
 
-   const standardsState = props.state.standards[currentAirProp.sensor_name];
+   const standardsState = props.standards[currentAirProp.sensor_name];
 
    const getStandardsElements = () => {
       return standardsState.content.map((el) => {
@@ -46,7 +46,7 @@ export const AirProp = (props) => {
          );
       });
    };
-	console.log('rerender');
+
    return (
       <section className={s.airprop}>
          <div className={s.header}>
@@ -76,11 +76,8 @@ export const AirProp = (props) => {
             </div>
 
             <div className={s.chart}>
-               {props.state.airPropHistory[currentAirProp.sensor_name] && (
-                  <HistoryChart
-                     history={props.state.airPropHistory}
-                     name={currentAirProp.sensor_name}
-                  />
+               {props.history[currentAirProp.sensor_name] && (
+                  <HistoryChart history={props.history} name={currentAirProp.sensor_name} />
                )}
             </div>
          </div>

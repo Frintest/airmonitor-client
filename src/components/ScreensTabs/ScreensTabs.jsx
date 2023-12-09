@@ -8,7 +8,7 @@ export const ScreensTabs = (props) => {
       props.updateAirStateThunk(0);
    });
 
-   const tabs = props.state.screens.map((el, index) => {
+   const tabs = props.screens.map((el, index) => {
       const TabClick = () => {
          props.updateAirStateThunk(index);
 
@@ -36,7 +36,7 @@ export const ScreensTabs = (props) => {
       <>
          <div className={s.wrap}>
             <ul className={s.list}>{tabs}</ul>
-            {props.state.activeScreenIndex !== 0 && (
+            {props.activeScreenIndex !== 0 && (
                <button
                   className={
                      s.changeScreenBtn + " " + s.item + " " + s.itemMain + " " + s.itemActive
@@ -53,7 +53,8 @@ export const ScreensTabs = (props) => {
             clearScreen={props.clearScreen}
             addAirPropInScreen={props.addAirPropInScreen}
             removeAirPropInScreen={props.removeAirPropInScreen}
-            state={props.state}
+            checkboxScreenSettings={props.checkboxScreenSettings}
+            data={props.data}
          />
       </>
    );

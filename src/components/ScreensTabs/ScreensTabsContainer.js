@@ -3,7 +3,10 @@ import { updateAirStateThunk, toggleScreens, clearScreen, addAirPropInScreen, re
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
-	state: state.ScreensReducer,
+	data: state.ScreensReducer.data,
+	screens: state.ScreensReducer.screens,
+	checkboxScreenSettings: state.ScreensReducer.checkboxScreenSettings,
+	activeScreenIndex: state.ScreensReducer.activeScreenIndex,
 });
 
 export default connect(mapStateToProps, { updateAirStateThunk, toggleScreens, clearScreen, addAirPropInScreen, removeAirPropInScreen })(ScreensTabs);

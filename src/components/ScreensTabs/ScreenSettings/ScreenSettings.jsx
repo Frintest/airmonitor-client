@@ -3,14 +3,14 @@ import s from "./ScreenSettings.module.scss";
 import { ScreenSettingsElement } from "./ScreenSettingsElement/ScreenSettingsElement.jsx";
 
 export const ScreenSettings = (props) => {
-   const elements = props.state.data.map((el) => {
+   const elements = props.data.map((el) => {
       return (
          <ScreenSettingsElement
             ui_name={el.ui_name}
             sensor_name={el.sensor_name}
             addAirPropInScreen={props.addAirPropInScreen}
             removeAirPropInScreen={props.removeAirPropInScreen}
-            isChecked={props.state.checkboxScreenSettings[el.sensor_name]}
+            isChecked={props.checkboxScreenSettings[el.sensor_name]}
 				key={el.sensor_name}
          />
       );
