@@ -1,8 +1,9 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import ScreensTabsContainer from "./components/ScreensTabs/ScreensTabsContainer.js";
+import { Layout } from "./components/Layout/Layout.jsx";
 import AirStateContainer from "./components/AirState/AirStateContainer.js";
 import AirPropContainer from "./components/AirProp/AirPropContainer.js";
+import { NotFound } from "./components/NotFound/NotFound.jsx";
 
 export const App = (props) => {
    const getAirPropsRoutes = () => {
@@ -23,10 +24,13 @@ export const App = (props) => {
 
    return (
       <>
-         <ScreensTabsContainer />
          <Routes>
-            <Route path="/" element={<AirStateContainer />} />
-            {getAirPropsRoutes()}
+            <Route path="/" element={<Layout />}>
+               <Route index element={<AirStateContainer />} />
+               <Route path="*" element={<NotFound />} />
+					{/* TODO NotFound load */}
+               {getAirPropsRoutes()}
+            </Route>
          </Routes>
       </>
    );

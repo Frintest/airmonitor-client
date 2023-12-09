@@ -46,7 +46,7 @@ export const AirProp = (props) => {
          );
       });
    };
-
+	console.log('rerender');
    return (
       <section className={s.airprop}>
          <div className={s.header}>
