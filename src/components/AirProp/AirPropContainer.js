@@ -1,7 +1,7 @@
 import { AirProp } from "./AirProp.jsx";
 import { connect } from "react-redux";
 import { updateAirStateThunk, addAirPropHistoryThunk } from "../../redux/screens-reducer";
-import { withRouter } from "../common/withRouter.jsx";
+import { withRouter } from "./../../hoc/withRouter.jsx";
 
 const mapStateToProps = (state) => ({
 	data: state.ScreensReducer.data,

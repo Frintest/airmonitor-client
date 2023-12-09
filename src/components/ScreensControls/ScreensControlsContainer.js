@@ -1,4 +1,4 @@
-import { ScreensTabs } from "./ScreensTabs.jsx";
+import { ScreensControls } from "./ScreensControls.jsx";
 import { updateAirStateThunk, toggleScreens, clearScreen, addAirPropInScreen, removeAirPropInScreen } from "../../redux/screens-reducer.js";
 import { connect } from "react-redux";
 
@@ -9,4 +9,4 @@ const mapStateToProps = (state) => ({
 	activeScreenIndex: state.ScreensReducer.activeScreenIndex,
 });
 
-export default connect(mapStateToProps, { updateAirStateThunk, toggleScreens, clearScreen, addAirPropInScreen, removeAirPropInScreen })(ScreensTabs);
+export default connect(mapStateToProps, { updateAirStateThunk, toggleScreens, clearScreen, addAirPropInScreen, removeAirPropInScreen })(ScreensControls);

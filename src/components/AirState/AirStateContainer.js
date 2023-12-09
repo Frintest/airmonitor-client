@@ -1,4 +1,4 @@
-import AirState from "./AirState.jsx";
+import { AirState } from "./AirState.jsx";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({

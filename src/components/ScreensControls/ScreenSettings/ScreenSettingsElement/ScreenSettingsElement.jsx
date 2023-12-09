@@ -2,7 +2,7 @@ import React from "react";
 import s from "./ScreenSettingsElement.module.scss";
 import { formatText } from "../../../../utilities/helpers/format-text-airprop.js";
 
-export const ScreenSettingsElement = (props) => {
+export const ScreenSettingsElement = React.memo((props) => {
    const onToggleCheckbox = () => {
       if (!props.isChecked) {
          props.addAirPropInScreen(props.sensor_name);
@@ -25,4 +25,4 @@ export const ScreenSettingsElement = (props) => {
          </label>
       </div>
    );
-};
+});
