@@ -20,7 +20,7 @@ export const ScreenSettings = (props) => {
       <div className={s.wrap + (props.isVisible ? " " + s.visible : "")}>
          <div className={s.block}>
             <div className={s.header}>
-               <p className={s.heading}>Блоки</p>
+               <p className={s.heading}>Компоненты</p>
                <button className={s.closeBtn} onClick={() => props.setVisible(false)}></button>
             </div>
 

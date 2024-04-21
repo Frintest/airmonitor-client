@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout.jsx";
-import AirStateContainer from "./components/AirState/AirStateContainer.js";
+import ScreenContainer from "./components/Screen/ScreenContainer.js";
 import AirPropContainer from "./components/AirProp/AirPropContainer.js";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
 
@@ -26,7 +26,7 @@ export const App = (props) => {
       <>
          <Routes>
             <Route path="/" element={<Layout />}>
-               <Route index element={<AirStateContainer />} />
+               <Route index element={<ScreenContainer />} />
                <Route path="*" element={<NotFound />} />
 					{/* TODO NotFound load */}
                {getAirPropsRoutes()}

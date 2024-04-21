@@ -1,4 +1,4 @@
-import { AirState } from "./AirState.jsx";
+import { Screen } from "./Screen.jsx";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
@@ -6,4 +6,4 @@ const mapStateToProps = (state) => ({
 	activeScreenIndex: state.ScreensReducer.activeScreenIndex,
 });
 
-export default connect(mapStateToProps)(AirState);
+export default connect(mapStateToProps)(Screen);

@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import s from "./AirStateElement.module.scss";
-import { formatText } from "../../../utilities/helpers/format-text-airprop";
+import s from "./ScreenItem.module.scss";
+import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 
-const AirStateElement = (props) => {
+export const ScreenItem = (props) => {
    return (
       <Link
          to={`/${props.el.sensor_name}`}
@@ -21,5 +21,3 @@ const AirStateElement = (props) => {
       </Link>
    );
 };
-
-export default AirStateElement;
