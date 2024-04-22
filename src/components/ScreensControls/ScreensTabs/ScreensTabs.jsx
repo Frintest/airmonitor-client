@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./ScreensTabs.module.scss";
 
-export const ScreensTabs = React.memo((props) => {
+export const ScreensTabs = (props) => {
    const tabs = props.screens.map((el, index) => {
       const TabClick = () => {
          props.updateAirStateThunk(index);
@@ -27,4 +27,4 @@ export const ScreensTabs = React.memo((props) => {
    });
 
    return <ul className={s.list}>{tabs}</ul>;
-});
+};

@@ -17,7 +17,7 @@ export const ScreensControls = (props) => {
                updateAirStateThunk={props.updateAirStateThunk}
                toggleScreens={props.toggleScreens}
             />
-            {props.activeScreenIndex !== 0 && (
+            {props.activeScreen.isChange && (
                <button
                   className={s.changeScreenBtn + " " + s.item + " " + s.itemActive}
                   onClick={() => setVisible(true)}
@@ -32,7 +32,7 @@ export const ScreensControls = (props) => {
             clearScreen={props.clearScreen}
             addAirPropInScreen={props.addAirPropInScreen}
             removeAirPropInScreen={props.removeAirPropInScreen}
-            checkboxScreenSettings={props.checkboxScreenSettings}
+            activeScreen={props.activeScreen}
             data={props.data}
          />
       </>

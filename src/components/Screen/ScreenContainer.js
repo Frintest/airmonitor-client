@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
 	screens: state.ScreensReducer.screens,
-	activeScreenIndex: state.ScreensReducer.activeScreenIndex,
+	activeScreen: state.ScreensReducer.activeScreen,
 });
 
 export default connect(mapStateToProps)(Screen);
