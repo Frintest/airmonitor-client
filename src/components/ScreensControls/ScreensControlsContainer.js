@@ -3,8 +3,8 @@ import {
 	updateAirStateThunk,
 	setActiveScreen,
 	clearScreen,
-	addAirPropInScreen,
-	removeAirPropInScreen
+	addScreenItem,
+	removeScreenItem
 } from "../../redux/screens-reducer.js";
 import { connect } from "react-redux";
 
@@ -23,6 +23,6 @@ export default connect(mapStateToProps, {
 	updateAirStateThunk,
 	setActiveScreen,
 	clearScreen,
-	addAirPropInScreen,
-	removeAirPropInScreen
+	addScreenItem,
+	removeScreenItem
 })(ScreensControls);

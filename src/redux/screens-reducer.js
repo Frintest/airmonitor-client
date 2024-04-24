@@ -3,8 +3,8 @@ import { API } from "../api/api.js";
 const UPDATE_AIR_STATE = "UPDATE_AIR_STATE";
 const SET_ACTIVE_SCREEN = "SET_ACTIVE_SCREEN";
 const CLEAR_SCREEN = "CLEAR_SCREEN";
-const ADD_AIR_PROP_IN_SCREEN = "ADD_AIR_PROP_IN_SCREEN";
-const REMOVE_AIR_PROP_IN_SCREEN = "REMOVE_AIR_PROP_IN_SCREEN";
+const ADD_SCREEN_ITEM = "ADD_SCREEN_ITEM";
+const REMOVE_SCREEN_ITEM = "REMOVE_SCREEN_ITEM";
 const ADD_AIR_PROP_HISTORY = "ADD_AIR_PROP_HISTORY";
 
 const generateScreens = (screenCount) => {
@@ -129,7 +129,7 @@ const ScreensReducer = (state = initialState, action) => {
 			};
 		}
 
-		case ADD_AIR_PROP_IN_SCREEN: {
+		case ADD_SCREEN_ITEM: {
 			const screens = state.screens.map((el) => {
 				if (el.id === state.activeScreen) {
 					const airProp = state.data.find((el) => el.sensor_name === action.name);
@@ -144,7 +144,7 @@ const ScreensReducer = (state = initialState, action) => {
 			};
 		}
 
-		case REMOVE_AIR_PROP_IN_SCREEN: {
+		case REMOVE_SCREEN_ITEM: {
 			const screens = state.screens.map((el) => {
 				if (el.id === state.activeScreen) {
 					el.elements = el.elements.filter((el) => el.sensor_name != action.name);
@@ -194,8 +194,8 @@ const getActiveScreen = (screens, active) => {
 };
 
 export const clearScreen = () => ({ type: CLEAR_SCREEN });
-export const addAirPropInScreen = (name) => ({ type: ADD_AIR_PROP_IN_SCREEN, name });
-export const removeAirPropInScreen = (name) => ({ type: REMOVE_AIR_PROP_IN_SCREEN, name });
+export const addScreenItem = (name) => ({ type: ADD_SCREEN_ITEM, name });
+export const removeScreenItem = (name) => ({ type: REMOVE_SCREEN_ITEM, name });
 
 export const addAirPropHistory = (data, name) => ({ type: ADD_AIR_PROP_HISTORY, data, name });
 export const addAirPropHistoryThunk = (name) => (dispatch) => {

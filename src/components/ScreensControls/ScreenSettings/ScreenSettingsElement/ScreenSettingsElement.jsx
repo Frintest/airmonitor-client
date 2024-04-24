@@ -5,9 +5,9 @@ import { formatText } from "../../../../utilities/helpers/format-text-airprop.js
 export const ScreenSettingsElement = React.memo((props) => {
    const onToggleCheckbox = () => {
       if (!props.isChecked) {
-         props.addAirPropInScreen(props.sensor_name);
+         props.addScreenItem(props.sensor_name);
       } else {
-         props.removeAirPropInScreen(props.sensor_name);
+         props.removeScreenItem(props.sensor_name);
       }
    };
 

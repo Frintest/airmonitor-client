@@ -31,8 +31,8 @@ export const ScreensControls = (props) => {
             isVisible={isVisible}
             setVisible={() => setVisible(false)}
             clearScreen={props.clearScreen}
-            addAirPropInScreen={props.addAirPropInScreen}
-            removeAirPropInScreen={props.removeAirPropInScreen}
+            addScreenItem={props.addScreenItem}
+            removeScreenItem={props.removeScreenItem}
             activeScreen={props.activeScreen}
             data={props.data}
          />

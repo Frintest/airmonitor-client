@@ -12,8 +12,8 @@ export const ScreenSettings = (props) => {
          <ScreenSettingsElement
             ui_name={el.ui_name}
             sensor_name={el.sensor_name}
-            addAirPropInScreen={props.addAirPropInScreen}
-            removeAirPropInScreen={props.removeAirPropInScreen}
+            addScreenItem={props.addScreenItem}
+            removeScreenItem={props.removeScreenItem}
             isChecked={isChecked}
             key={el.sensor_name}
          />
