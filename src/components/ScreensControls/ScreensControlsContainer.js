@@ -2,7 +2,6 @@ import { ScreensControls } from "./ScreensControls.jsx";
 import {
 	updateAirStateThunk,
 	setActiveScreen,
-	setInactiveScreen,
 	clearScreen,
 	addAirPropInScreen,
 	removeAirPropInScreen
@@ -23,7 +22,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
 	updateAirStateThunk,
 	setActiveScreen,
-	setInactiveScreen,
 	clearScreen,
 	addAirPropInScreen,
 	removeAirPropInScreen
