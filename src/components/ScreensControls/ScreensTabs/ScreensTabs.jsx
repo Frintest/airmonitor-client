@@ -2,25 +2,24 @@ import React from "react";
 import s from "./ScreensTabs.module.scss";
 
 export const ScreensTabs = (props) => {
-   const tabs = props.screens.map((el, index) => {
+   const tabs = props.screens.map((screen) => {
       const TabClick = () => {
-         props.updateAirStateThunk(index);
-
-         if (!el.isActive) {
-            props.toggleScreens(index);
+         props.updateAirStateThunk(screen.id);
+         if (!screen.isActive) {
+            props.setActiveScreen(screen.id);
          }
       };
 
       return (
-         <li className={s.itemWrap} key={el.id} onClick={TabClick}>
+         <li className={s.itemWrap} key={screen.id} onClick={TabClick}>
             <button
                className={
                   s.item +
-                  (el.id === 0 ? " " + s.itemMain : "") +
-                  (el.isActive ? " " + s.itemActive : "")
+                  (screen.id === 0 ? " " + s.itemMain : "") +
+                  (screen.isActive ? " " + s.itemActive : "")
                }
             >
-               {el.value}
+               {screen.value}
             </button>
          </li>
       );

@@ -15,7 +15,8 @@ export const ScreensControls = (props) => {
             <ScreensTabs
                screens={props.screens}
                updateAirStateThunk={props.updateAirStateThunk}
-               toggleScreens={props.toggleScreens}
+               setActiveScreen={props.setActiveScreen}
+               setInactiveScreen={props.setInactiveScreen}
             />
             {props.activeScreen.isChange && (
                <button

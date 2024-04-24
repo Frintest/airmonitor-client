@@ -1,7 +1,7 @@
 import { API } from "../api/api.js";
 
 const UPDATE_AIR_STATE = "UPDATE_AIR_STATE";
-const TOGGLE_SCREENS = "TOGGLE_SCREENS";
+const SET_ACTIVE_SCREEN = "SET_ACTIVE_SCREEN";
 const CLEAR_SCREEN = "CLEAR_SCREEN";
 const ADD_AIR_PROP_IN_SCREEN = "ADD_AIR_PROP_IN_SCREEN";
 const REMOVE_AIR_PROP_IN_SCREEN = "REMOVE_AIR_PROP_IN_SCREEN";
@@ -109,18 +109,14 @@ const ScreensReducer = (state = initialState, action) => {
 			};
 		}
 
-		case TOGGLE_SCREENS: {
+		case SET_ACTIVE_SCREEN: {
 			let screens = state.screens.map((el) => {
 				if (el.isActive) {
 					el.isActive = false;
 				}
-
-				if (el.id === action.id) {
-					el.isActive = true;
-				}
-
 				return el;
 			});
+			screens[action.id].isActive = true;
 
 			return {
 				...state,
@@ -196,7 +192,7 @@ const ScreensReducer = (state = initialState, action) => {
 };
 
 const updateAirState = (data, id) => ({ type: UPDATE_AIR_STATE, data, id });
-export const toggleScreens = (id) => ({ type: TOGGLE_SCREENS, id });
+export const setActiveScreen = (id) => ({ type: SET_ACTIVE_SCREEN, id });
 export const clearScreen = () => ({ type: CLEAR_SCREEN });
 export const addAirPropInScreen = (name) => ({ type: ADD_AIR_PROP_IN_SCREEN, name });
 export const removeAirPropInScreen = (name) => ({ type: REMOVE_AIR_PROP_IN_SCREEN, name });
