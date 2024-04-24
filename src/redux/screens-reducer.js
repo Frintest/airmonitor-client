@@ -110,13 +110,7 @@ const ScreensReducer = (state = initialState, action) => {
 		}
 
 		case SET_ACTIVE_SCREEN: {
-			let screens = state.screens.map((el) => {
-				if (el.isActive) {
-					el.isActive = false;
-				}
-				return el;
-			});
-			screens[action.id].isActive = true;
+			const screens = getActiveScreen(state.screens, action.id);
 
 			return {
 				...state,
@@ -126,19 +120,8 @@ const ScreensReducer = (state = initialState, action) => {
 		}
 
 		case CLEAR_SCREEN: {
-			const screens = state.screens.map((el) => {
-				if (el.id === 0) {
-					el.isActive = true;
-					state.activeScreen = 0;
-				}
-
-				if (el.id !== 0 && el.isActive === true) {
-					el.elements = [];
-					el.isActive = false;
-				}
-
-				return el;
-			});
+			const screens = getActiveScreen(state.screens, state.activeScreen);
+			screens[state.activeScreen].elements = [];
 
 			return {
 				...state,
@@ -192,18 +175,29 @@ const ScreensReducer = (state = initialState, action) => {
 };
 
 const updateAirState = (data, id) => ({ type: UPDATE_AIR_STATE, data, id });
-export const setActiveScreen = (id) => ({ type: SET_ACTIVE_SCREEN, id });
-export const clearScreen = () => ({ type: CLEAR_SCREEN });
-export const addAirPropInScreen = (name) => ({ type: ADD_AIR_PROP_IN_SCREEN, name });
-export const removeAirPropInScreen = (name) => ({ type: REMOVE_AIR_PROP_IN_SCREEN, name });
-export const addAirPropHistory = (data, name) => ({ type: ADD_AIR_PROP_HISTORY, data, name });
-
 export const updateAirStateThunk = (id) => (dispatch) => {
 	API.getAirState((data) => {
 		dispatch(updateAirState(data, id));
 	});
 };
 
+export const setActiveScreen = (id) => ({ type: SET_ACTIVE_SCREEN, id });
+const getActiveScreen = (screens, active) => {
+	let activeScreens = screens.map((el) => {
+		if (el.isActive) {
+			el.isActive = false;
+		}
+		return el;
+	});
+	activeScreens[active].isActive = true;
+	return activeScreens;
+};
+
+export const clearScreen = () => ({ type: CLEAR_SCREEN });
+export const addAirPropInScreen = (name) => ({ type: ADD_AIR_PROP_IN_SCREEN, name });
+export const removeAirPropInScreen = (name) => ({ type: REMOVE_AIR_PROP_IN_SCREEN, name });
+
+export const addAirPropHistory = (data, name) => ({ type: ADD_AIR_PROP_HISTORY, data, name });
 export const addAirPropHistoryThunk = (name) => (dispatch) => {
 	API.getAirPropHistory((data) => {
 		dispatch(addAirPropHistory(data, name));
