@@ -7,9 +7,9 @@ const ADD_SCREEN_ITEM = "ADD_SCREEN_ITEM";
 const REMOVE_SCREEN_ITEM = "REMOVE_SCREEN_ITEM";
 const ADD_AIR_PROP_HISTORY = "ADD_AIR_PROP_HISTORY";
 
-const generateScreens = (screenCount) => {
+const generateScreens = (count) => {
 	const screens = [];
-	for (let i = 0; i < screenCount; i++) {
+	for (let i = 0; i < count; i++) {
 		screens[i] = {
 			id: i,
 			value: i === 0 ? "Главная" : i,
@@ -27,40 +27,40 @@ const standards = {
 	humidity: {},
 	pm2: {
 		content: [
-			{ value: 75, desc: "Хорошо", level: 1 },
-			{ value: 115, desc: "Лёгкое загрязнение", level: 2 },
-			{ value: 150, desc: "Умеренное  загрязнение", level: 3 },
-			{ value: 250, desc: "Сильное загрязнение", level: 4 },
-			{ value: 500, desc: "Опасно", level: 5 },
+			{ value: 75, text: "Хорошо", level: 1 },
+			{ value: 115, text: "Лёгкое загрязнение", level: 2 },
+			{ value: 150, text: "Умеренное  загрязнение", level: 3 },
+			{ value: 250, text: "Сильное загрязнение", level: 4 },
+			{ value: 500, text: "Опасно", level: 5 },
 		],
 		source: "China Standard GB 3095—2012",
 	},
 	pm10: {
 		content: [
-			{ value: 150, desc: "Хорошо", level: 1 },
-			{ value: 250, desc: "Лёгкое загрязнение", level: 2 },
-			{ value: 350, desc: "Умеренное  загрязнение", level: 3 },
-			{ value: 420, desc: "Сильное загрязнение", level: 4 },
-			{ value: 600, desc: "Опасно", level: 5 },
+			{ value: 150, text: "Хорошо", level: 1 },
+			{ value: 250, text: "Лёгкое загрязнение", level: 2 },
+			{ value: 350, text: "Умеренное  загрязнение", level: 3 },
+			{ value: 420, text: "Сильное загрязнение", level: 4 },
+			{ value: 600, text: "Опасно", level: 5 },
 		],
 		source: "China Standard GB 3095—2012",
 	},
 	TVOC: {
 		content: [
-			{ value: 0.3, desc: "Хорошо", level: 1 },
-			{ value: 1, desc: "Лёгкое загрязнение", level: 2 },
-			{ value: 3, desc: "Умеренное  загрязнение", level: 3 },
-			{ value: 10, desc: "Сильное загрязнение", level: 4 },
-			{ value: "10+", desc: "Опасно", level: 5 },
+			{ value: 0.3, text: "Хорошо", level: 1 },
+			{ value: 1, text: "Лёгкое загрязнение", level: 2 },
+			{ value: 3, text: "Умеренное  загрязнение", level: 3 },
+			{ value: 10, text: "Сильное загрязнение", level: 4 },
+			{ value: "10+", text: "Опасно", level: 5 },
 		],
 		source: "German Indoor Air Guidance Values",
 	},
 	CO2: {
 		content: [
-			{ value: 1000, desc: "Хорошо", level: 1 },
-			{ value: 2000, desc: "Умеренное содержание", level: 2 },
-			{ value: 3000, desc: "Высокое содержание", level: 3 },
-			{ value: "3000+", desc: "Опасно", level: 4 },
+			{ value: 1000, text: "Хорошо", level: 1 },
+			{ value: 2000, text: "Умеренное содержание", level: 2 },
+			{ value: 3000, text: "Высокое содержание", level: 3 },
+			{ value: "3000+", text: "Опасно", level: 4 },
 		],
 		source: "China Standard GB/T 18883—2002",
 	},

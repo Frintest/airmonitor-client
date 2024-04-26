@@ -34,11 +34,16 @@ export const AirProp = (props) => {
          </div>
 
          <div className={s.info}>
-            <Standards
-               levelColors={props.levelColors}
-               standards={props.standards}
-               currentAirProp={currentAirProp}
-            />
+            <div className={s.maininfo}>
+               <div className={s.maininfo__valueWrap}>
+                  <p className={s.maininfo__value}>{currentAirProp.value}</p>
+                  <span className={s.maininfo__unit}>{formatText(currentAirProp.unit)}</span>
+               </div>
+               <Standards
+                  levelColors={props.levelColors}
+                  standards={props.standards[currentAirProp.sensor_name]}
+               />
+            </div>
 
             <div className={s.chart}>
                {props.history[currentAirProp.sensor_name] && (

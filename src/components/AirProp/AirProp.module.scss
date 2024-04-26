@@ -29,6 +29,30 @@
    }
 }
 
+.maininfo {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   &__valueWrap {
+      display: flex;
+      align-items: flex-end;
+   }
+
+   &__value {
+      font-size: 54px;
+      color: $content-color;
+      font-weight: 500;
+      letter-spacing: -0.0625rem;
+   }
+
+   &__unit {
+      margin-left: 12px;
+      margin-bottom: 11px;
+      color: $content-color;
+   }
+}
+
 .info {
    padding: 58px 50px;
 }

@@ -1,21 +1,18 @@
 import React from "react";
 import s from "./Standards.module.scss";
-import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 
-export const Standards = React.memo((props) => {
-   const getColorsLevel = (level) => {
+export const Standards = (props) => {
+   const getLevelColors = (level) => {
       const fromColor = props.levelColors[level].darkColor;
       const toColor = props.levelColors[level].lightColor;
       return [fromColor, toColor];
    };
 
-   const standardsState = props.standards[props.currentAirProp.sensor_name];
-
-   const getStandardsElements = () => {
-      return standardsState.content.map((el) => {
-         const [fromColor, toColor] = getColorsLevel(el.level);
+   const elements = () => {
+      return props.standards.content.map((el) => {
+         const [fromColor, toColor] = getLevelColors(el.level);
          return (
-            <div className={s.maininfo__standardsItemWrap} key={el.level}>
+            <li className={s.maininfo__standardsItemWrap} key={el.level}>
                <div className={s.maininfo__standardsItem}>
                   <div
                      className={s.maininfo__standardsValue}
@@ -25,25 +22,19 @@ export const Standards = React.memo((props) => {
                   >
                      {el.value}
                   </div>
-                  <p className={s.maininfo__standardsDesc}>{el.desc}</p>
+                  <p className={s.maininfo__standardsDesc}>{el.text}</p>
                </div>
-            </div>
+            </li>
          );
       });
    };
 
    return (
-      <div className={s.maininfo}>
-         <div className={s.maininfo__valueWrap}>
-            <p className={s.maininfo__value}>{props.currentAirProp.value}</p>
-            <span className={s.maininfo__unit}>{formatText(props.currentAirProp.unit)}</span>
+      props.standards.content && (
+         <div className={s.maininfo__standards}>
+            <p className={s.maininfo__standardsSource}>*{props.standards.source}</p>
+            <ul className={s.maininfo__standardsList}>{elements()}</ul>
          </div>
-         {standardsState.content && (
-            <div className={s.maininfo__standards}>
-               <p className={s.maininfo__standardsSource}>*{standardsState.source}</p>
-               <div className={s.maininfo__standardsList}>{getStandardsElements()}</div>
-            </div>
-         )}
-      </div>
+      )
    );
-});
+};
