@@ -4,7 +4,6 @@ import s from "./ScreensTabs.module.scss";
 export const ScreensTabs = (props) => {
    const tabs = props.screens.map((screen) => {
       const TabClick = () => {
-         props.updateAirStateThunk(screen.id);
          if (!screen.isActive) {
             props.setActiveScreen(screen.id);
          }

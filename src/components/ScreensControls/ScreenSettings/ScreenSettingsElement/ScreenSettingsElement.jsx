@@ -3,7 +3,7 @@ import s from "./ScreenSettingsElement.module.scss";
 import { formatText } from "../../../../utilities/helpers/format-text-airprop.js";
 
 export const ScreenSettingsElement = React.memo((props) => {
-   const onToggleCheckbox = () => {
+   const onClick = () => {
       if (!props.isChecked) {
          props.addScreenItem(props.sensor_name);
       } else {
@@ -20,7 +20,7 @@ export const ScreenSettingsElement = React.memo((props) => {
                type="checkbox"
                id={props.sensor_name}
                checked={props.isChecked}
-               onChange={onToggleCheckbox}
+               onChange={onClick}
             />
          </label>
       </div>

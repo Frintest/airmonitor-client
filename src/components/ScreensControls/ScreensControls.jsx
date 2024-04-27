@@ -5,16 +5,12 @@ import { ScreensTabs } from "./ScreensTabs/ScreensTabs.jsx";
 
 export const ScreensControls = (props) => {
    const [isVisible, setVisible] = React.useState(false);
-   React.useEffect(() => {
-      props.updateAirStateThunk(0);
-   });
 
    return (
       <>
          <div className={s.wrap}>
             <ScreensTabs
                screens={props.screens}
-               updateAirStateThunk={props.updateAirStateThunk}
                setActiveScreen={props.setActiveScreen}
                setInactiveScreen={props.setInactiveScreen}
             />

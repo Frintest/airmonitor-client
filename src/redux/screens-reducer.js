@@ -72,40 +72,27 @@ const initialState = {
 	activeScreen: 0,
 	standards,
 	levelColors: {
-		1: { lightColor: "#22d3ee", darkColor: "#06b6d4" },
-		2: { lightColor: "#34d399", darkColor: "#10b981" },
-		3: { lightColor: "#fbbf24", darkColor: "#fbbf24" },
-		4: { lightColor: "#fb923c", darkColor: "#f97316" },
-		5: { lightColor: "#f87171", darkColor: "#ef4444" },
+		1: { light: "#22d3ee", dark: "#06b6d4" },
+		2: { light: "#34d399", dark: "#10b981" },
+		3: { light: "#fbbf24", dark: "#fbbf24" },
+		4: { light: "#fb923c", dark: "#f97316" },
+		5: { light: "#f87171", dark: "#ef4444" },
 	},
-	airPropHistory: {},
+	history: {},
 };
 
 const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
-			const screens = state.screens.map((el, index) => {
-				if (index === action.id && action.id === 0) {
-					state.data = action.data;
-					el.elements = state.data;
-				} else {
-					el.elements = el.elements.map((item) => {
-						action.data.map((new_el) => {
-							if (item.sensor_name === new_el.sensor_name) {
-								item = new_el;
-							}
-						});
-
-						return item;
-					});
-				}
-
-				return el;
+			const screens = state.screens.slice();
+			screens[action.id].elements.map((item) => {
+				return action.data.find((data) => data.sensor_name === item.sensor_name);
 			});
 
 			return {
 				...state,
 				screens,
+				data: action.data,
 			};
 		}
 
@@ -162,9 +149,9 @@ const ScreensReducer = (state = initialState, action) => {
 		case ADD_AIR_PROP_HISTORY: {
 			return {
 				...state,
-				airPropHistory: {
+				history: {
 					[action.name]: action.data,
-					...state.airPropHistory,
+					...state.history,
 				},
 			};
 		}

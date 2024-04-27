@@ -1,4 +1,5 @@
 import { Screen } from "./Screen.jsx";
+import { updateAirStateThunk } from "../../redux/screens-reducer.js";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => ({
@@ -6,4 +7,4 @@ const mapStateToProps = (state) => ({
 	activeScreen: state.ScreensReducer.activeScreen,
 });
 
-export default connect(mapStateToProps)(Screen);
+export default connect(mapStateToProps, { updateAirStateThunk })(Screen);
