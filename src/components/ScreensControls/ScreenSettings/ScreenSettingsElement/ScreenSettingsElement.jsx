@@ -2,7 +2,7 @@ import React from "react";
 import s from "./ScreenSettingsElement.module.scss";
 import { formatText } from "../../../../utilities/helpers/format-text-airprop.js";
 
-export const ScreenSettingsElement = React.memo((props) => {
+export const ScreenSettingsElement = (props) => {
    const onClick = () => {
       if (!props.isChecked) {
          props.addScreenItem(props.sensor_name);
@@ -25,4 +25,4 @@ export const ScreenSettingsElement = React.memo((props) => {
          </label>
       </div>
    );
-});
+};

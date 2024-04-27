@@ -3,12 +3,14 @@ import { ScreenItem } from "./ScreenItem/ScreenItem.jsx";
 import s from "./Screen.module.scss";
 
 export const Screen = (props) => {
-	React.useEffect(() => {
+   React.useEffect(() => {
       props.updateAirStateThunk(props.activeScreen);
    });
 
-   const items = props.screens[props.activeScreen].elements.map((el) => {
-      return <ScreenItem el={el} key={el.sensor_name} />;
+   const screen = props.screens[props.activeScreen];
+   const elements = Object.values(screen.elements).map((item) => {
+      return <ScreenItem item={item} key={item.sensor_name} />;
    });
-   return <div className={s.wrap}>{items}</div>;
+
+   return <div className={s.wrap}>{elements}</div>;
 };

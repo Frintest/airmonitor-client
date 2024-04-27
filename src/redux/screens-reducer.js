@@ -8,14 +8,22 @@ const REMOVE_SCREEN_ITEM = "REMOVE_SCREEN_ITEM";
 const ADD_AIR_PROP_HISTORY = "ADD_AIR_PROP_HISTORY";
 
 const generateScreens = (count) => {
-	const screens = [];
-	for (let i = 0; i < count; i++) {
+	const screens = [
+		{
+			id: 0,
+			value: "Главная",
+			isActive: true,
+			elements: {},
+			isChange: false,
+		}
+	];
+	for (let i = 1; i < count; i++) {
 		screens[i] = {
 			id: i,
-			value: i === 0 ? "Главная" : i,
-			isActive: i === 0 ? true : false,
-			elements: [],
-			isChange: i !== 0 ? true : false,
+			value: i,
+			isActive: false,
+			elements: {},
+			isChange: true,
 		};
 	}
 	return screens;
@@ -27,39 +35,39 @@ const standards = {
 	humidity: {},
 	pm2: {
 		content: [
-			{ value: 75, text: "Хорошо", level: 1 },
-			{ value: 115, text: "Лёгкое загрязнение", level: 2 },
-			{ value: 150, text: "Умеренное  загрязнение", level: 3 },
-			{ value: 250, text: "Сильное загрязнение", level: 4 },
-			{ value: 500, text: "Опасно", level: 5 },
+			{ value: "75", text: "Хорошо", level: 1 },
+			{ value: "115", text: "Лёгкое загрязнение", level: 2 },
+			{ value: "150", text: "Умеренное  загрязнение", level: 3 },
+			{ value: "250", text: "Сильное загрязнение", level: 4 },
+			{ value: "500", text: "Опасно", level: 5 },
 		],
 		source: "China Standard GB 3095—2012",
 	},
 	pm10: {
 		content: [
-			{ value: 150, text: "Хорошо", level: 1 },
-			{ value: 250, text: "Лёгкое загрязнение", level: 2 },
-			{ value: 350, text: "Умеренное  загрязнение", level: 3 },
-			{ value: 420, text: "Сильное загрязнение", level: 4 },
-			{ value: 600, text: "Опасно", level: 5 },
+			{ value: "150", text: "Хорошо", level: 1 },
+			{ value: "250", text: "Лёгкое загрязнение", level: 2 },
+			{ value: "350", text: "Умеренное  загрязнение", level: 3 },
+			{ value: "420", text: "Сильное загрязнение", level: 4 },
+			{ value: "600", text: "Опасно", level: 5 },
 		],
 		source: "China Standard GB 3095—2012",
 	},
 	TVOC: {
 		content: [
-			{ value: 0.3, text: "Хорошо", level: 1 },
-			{ value: 1, text: "Лёгкое загрязнение", level: 2 },
-			{ value: 3, text: "Умеренное  загрязнение", level: 3 },
-			{ value: 10, text: "Сильное загрязнение", level: 4 },
+			{ value: "0.3", text: "Хорошо", level: 1 },
+			{ value: "1", text: "Лёгкое загрязнение", level: 2 },
+			{ value: "3", text: "Умеренное  загрязнение", level: 3 },
+			{ value: "10", text: "Сильное загрязнение", level: 4 },
 			{ value: "10+", text: "Опасно", level: 5 },
 		],
 		source: "German Indoor Air Guidance Values",
 	},
 	CO2: {
 		content: [
-			{ value: 1000, text: "Хорошо", level: 1 },
-			{ value: 2000, text: "Умеренное содержание", level: 2 },
-			{ value: 3000, text: "Высокое содержание", level: 3 },
+			{ value: "1000", text: "Хорошо", level: 1 },
+			{ value: "2000", text: "Умеренное содержание", level: 2 },
+			{ value: "3000", text: "Высокое содержание", level: 3 },
 			{ value: "3000+", text: "Опасно", level: 4 },
 		],
 		source: "China Standard GB/T 18883—2002",
@@ -67,7 +75,7 @@ const standards = {
 };
 
 const initialState = {
-	data: [],
+	data: {},
 	screens: generateScreens(6), // include main screen
 	activeScreen: 0,
 	standards,
@@ -84,15 +92,30 @@ const initialState = {
 const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
-			const screens = state.screens.slice();
-			screens[action.id].elements.map((item) => {
-				return action.data.find((data) => data.sensor_name === item.sensor_name);
+			// tod разделение data и screens update
+			let data = {};
+			action.data.forEach((item) => {
+				data[item.sensor_name] = item;
 			});
+
+			const screens = state.screens.slice();
+			let screen = screens[action.id];
+			let elements = screen.elements;
+			screen.elements = Object.values(elements).map((item) => {
+				if (item != {}) {
+					elements[item.sensor_name] = data[item.sensor_name];
+				}
+			});
+			screen.elements = elements;
+
+			if (action.id === 0) {
+				screens[0].elements = data;
+			};
 
 			return {
 				...state,
 				screens,
-				data: action.data,
+				data,
 			};
 		}
 
@@ -101,14 +124,15 @@ const ScreensReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				screens: screens,
+				screens,
 				activeScreen: action.id,
 			};
 		}
 
 		case CLEAR_SCREEN: {
 			const screens = getActiveScreen(state.screens, state.activeScreen);
-			screens[state.activeScreen].elements = [];
+			const id = state.activeScreen;
+			screens[id].elements = {};
 
 			return {
 				...state,
@@ -117,14 +141,10 @@ const ScreensReducer = (state = initialState, action) => {
 		}
 
 		case ADD_SCREEN_ITEM: {
-			const screens = state.screens.map((el) => {
-				if (el.id === state.activeScreen) {
-					const airProp = state.data.find((el) => el.sensor_name === action.name);
-					el.elements.push(airProp);
-				}
+			const screens = state.screens.slice();
+			const id = state.activeScreen;
+			screens[id].elements[action.name] = state.data[action.name];
 
-				return el;
-			});
 			return {
 				...state,
 				screens,
@@ -132,13 +152,9 @@ const ScreensReducer = (state = initialState, action) => {
 		}
 
 		case REMOVE_SCREEN_ITEM: {
-			const screens = state.screens.map((el) => {
-				if (el.id === state.activeScreen) {
-					el.elements = el.elements.filter((el) => el.sensor_name != action.name);
-				}
-
-				return el;
-			});
+			const screens = state.screens.slice();
+			const id = state.activeScreen;
+			delete screens[id].elements[action.name];
 
 			return {
 				...state,

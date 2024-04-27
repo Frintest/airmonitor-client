@@ -6,21 +6,15 @@ import AirPropContainer from "./components/AirProp/AirPropContainer.js";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
 
 export const App = (props) => {
-   const getAirPropsRoutes = () => {
-      let airPropsRoutes = [];
-      if (props.state.data) {
-         airPropsRoutes = props.state.data.map((el) => {
-            return (
-               <Route
-                  path={`${el.sensor_name}`}
-                  element={<AirPropContainer />}
-                  key={el.sensor_name}
-               />
-            );
-         });
-      }
-      return airPropsRoutes;
-   };
+   let elements = Object.values(props.state.data).map((item) => {
+      return (
+         <Route
+            path={`${item.sensor_name}`}
+            element={<AirPropContainer />}
+            key={item.sensor_name}
+         />
+      );
+   });
 
    return (
       <>
@@ -28,8 +22,8 @@ export const App = (props) => {
             <Route path="/" element={<Layout />}>
                <Route index element={<ScreenContainer />} />
                <Route path="*" element={<NotFound />} />
-					{/* TODO NotFound load */}
-               {getAirPropsRoutes()}
+               {/* TODO NotFound load */}
+               {elements}
             </Route>
          </Routes>
       </>
