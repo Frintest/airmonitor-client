@@ -93,29 +93,29 @@ const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
 			// tod разделение data и screens update
-			let data = {};
-			action.data.forEach((item) => {
-				data[item.sensor_name] = item;
-			});
+			// let data = {};
+			// action.data.forEach((item) => {
+			// 	data[item.sensor_name] = item;
+			// });
 
 			const screens = state.screens.slice();
 			let screen = screens[action.id];
 			let elements = screen.elements;
 			screen.elements = Object.values(elements).map((item) => {
 				if (item != {}) {
-					elements[item.sensor_name] = data[item.sensor_name];
+					elements[item.sensor_name] = action.data[item.sensor_name];
 				}
 			});
 			screen.elements = elements;
 
 			if (action.id === 0) {
-				screens[0].elements = data;
+				screens[0].elements = action.data;
 			};
 
 			return {
 				...state,
 				screens,
-				data,
+				data: action.data,
 			};
 		}
 
