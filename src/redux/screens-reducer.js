@@ -5,7 +5,7 @@ const SET_ACTIVE_SCREEN = "SET_ACTIVE_SCREEN";
 const CLEAR_SCREEN = "CLEAR_SCREEN";
 const ADD_SCREEN_ITEM = "ADD_SCREEN_ITEM";
 const REMOVE_SCREEN_ITEM = "REMOVE_SCREEN_ITEM";
-const ADD_AIR_PROP_HISTORY = "ADD_AIR_PROP_HISTORY";
+const UPDATE_AIR_HISTORY = "UPDATE_AIR_HISTORY";
 
 const generateScreens = (count) => {
 	const screens = [
@@ -76,6 +76,7 @@ const standards = {
 
 const initialState = {
 	data: {},
+	history: {},
 	screens: generateScreens(6), // include main screen
 	activeScreen: 0,
 	standards,
@@ -86,18 +87,12 @@ const initialState = {
 		4: { light: "#fb923c", dark: "#f97316" },
 		5: { light: "#f87171", dark: "#ef4444" },
 	},
-	history: {},
 };
 
 const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
 			// tod разделение data и screens update
-			// let data = {};
-			// action.data.forEach((item) => {
-			// 	data[item.sensor_name] = item;
-			// });
-
 			const screens = state.screens.slice();
 			let screen = screens[action.id];
 			let elements = screen.elements;
@@ -162,7 +157,7 @@ const ScreensReducer = (state = initialState, action) => {
 			};
 		}
 
-		case ADD_AIR_PROP_HISTORY: {
+		case UPDATE_AIR_HISTORY: {
 			return {
 				...state,
 				history: {
@@ -200,10 +195,10 @@ export const clearScreen = () => ({ type: CLEAR_SCREEN });
 export const addScreenItem = (name) => ({ type: ADD_SCREEN_ITEM, name });
 export const removeScreenItem = (name) => ({ type: REMOVE_SCREEN_ITEM, name });
 
-export const addAirPropHistory = (data, name) => ({ type: ADD_AIR_PROP_HISTORY, data, name });
-export const addAirPropHistoryThunk = (name) => (dispatch) => {
+export const updateAirHistory = (data, name) => ({ type: UPDATE_AIR_HISTORY, data, name });
+export const updateAirHistoryThunk = (name) => (dispatch) => {
 	API.getAirPropHistory((data) => {
-		dispatch(addAirPropHistory(data, name));
+		dispatch(updateAirHistory(data, name));
 	});
 };
 

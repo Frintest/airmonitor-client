@@ -31,16 +31,16 @@ const { Server } = require("socket.io");
 		}
 	});
 
-	const getAirPropHistory = async () => {
+	const getHistory = async () => {
 		let [initial_data] = await pool.query('SELECT pm2, timestamp FROM Sensor ORDER BY id DESC LIMIT 10');
-		let data = initial_data.map((el) => {
-			return el.pm2
+		let data = initial_data.map((item) => {
+			return item.pm2
 		});
 
 		return initial_data;
 	};
 
-	const getLastAirState = async () => {
+	const getAirState = async () => {
 		let [initial_data] = await pool.query(`SELECT * FROM Sensor ORDER BY id DESC LIMIT 1`);
 		let data = initial_data[0];
 
@@ -93,20 +93,20 @@ const { Server } = require("socket.io");
 	};
 
 	io.on('connection', socket => {
-		const _getLastAirState = async () => {
-			const data = await getLastAirState();
+		const getAirStateSocket = async () => {
+			const data = await getAirState();
 			socket.emit('getAirState', data);
 		};
 
-		const _getAirPropHistory = async () => {
-			const data = await getAirPropHistory();
-			socket.emit('getAirPropHistory', data);
+		const getHistorySocket = async () => {
+			const data = await getHistory();
+			socket.emit('getHistory', data);
 		};
 
-		//_getLastAirState();
-		setInterval(_getAirPropHistory, 10000);
-		_getLastAirState();
-		setInterval(_getLastAirState, 10000);
+		getAirStateSocket();
+		getHistorySocket();
+		// setInterval(getAirStateSocket, 10000);
+		// setInterval(getHistorySocket, 10000);
 	});
 
 	server.listen(3001, () => {

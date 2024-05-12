@@ -5,6 +5,7 @@ import s from "./Screen.module.scss";
 export const Screen = (props) => {
    React.useEffect(() => {
       props.updateAirStateThunk(props.activeScreen);
+		props.updateAirHistoryThunk("pm2");
    });
 
    const screen = props.screens[props.activeScreen];

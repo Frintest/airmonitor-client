@@ -3,8 +3,8 @@ import s from "./Standards.module.scss";
 
 export const Standards = (props) => {
    const getLevelColors = (level) => {
-      const fromColor = props.levelColors[level].darkColor;
-      const toColor = props.levelColors[level].lightColor;
+      const fromColor = props.levelColors[level].dark;
+      const toColor = props.levelColors[level].light;
       return [fromColor, toColor];
    };
 

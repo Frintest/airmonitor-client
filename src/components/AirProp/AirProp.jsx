@@ -1,7 +1,7 @@
 import React from "react";
 import s from "./AirProp.module.scss";
 import { Link } from "react-router-dom";
-import { formatText } from "../../utilities/helpers/format-text-airprop";
+import { formatText } from "../../utilities/helpers/format-text-airprop.js";
 import { Standards } from "./Standards/Standards.jsx";
 import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
 
@@ -10,14 +10,8 @@ export const AirProp = (props) => {
       props.updateAirStateThunk(0);
    });
 
-   const getAirPropByName = () => {
-      return props.data.find((el) => `/${el.sensor_name}` === props.router.location.pathname);
-   };
-   const currentAirProp = getAirPropByName();
-
-   React.useEffect(() => {
-      props.addAirPropHistoryThunk(currentAirProp.sensor_name);
-   });
+	const path = props.router.location.pathname.slice(1);
+	const item = props.data[path];
 
    return (
       <section className={s.airprop}>
@@ -30,25 +24,27 @@ export const AirProp = (props) => {
                   />
                </svg>
             </Link>
-            <p className={s.header__title}>{formatText(currentAirProp.ui_name)}</p>
+            <p className={s.header__title}>{formatText(item.ui_name)}</p>
          </div>
 
          <div className={s.info}>
             <div className={s.maininfo}>
                <div className={s.maininfo__valueWrap}>
-                  <p className={s.maininfo__value}>{currentAirProp.value}</p>
-                  <span className={s.maininfo__unit}>{formatText(currentAirProp.unit)}</span>
+                  <p className={s.maininfo__value}>{item.value}</p>
+                  <span className={s.maininfo__unit}>{formatText(item.unit)}</span>
                </div>
                <Standards
                   levelColors={props.levelColors}
-                  standards={props.standards[currentAirProp.sensor_name]}
+                  standards={props.standards[item.sensor_name]}
                />
             </div>
 
             <div className={s.chart}>
-               {props.history[currentAirProp.sensor_name] && (
-                  <HistoryChart history={props.history} name={currentAirProp.sensor_name} />
-               )}
+               <HistoryChart
+                  history={props.history}
+                  name="pm2"
+                  updateAirHistoryThunk={props.updateAirHistoryThunk}
+               />
             </div>
          </div>
       </section>

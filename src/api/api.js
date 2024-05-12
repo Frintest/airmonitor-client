@@ -1,19 +1,21 @@
 import { io } from 'socket.io-client';
 
-const socket = io("http://airmonitor.servermc.ru");
+const PORT = 3001;
+const WEBSOCKET_URL = `http://airmonitor.servermc.ru:${PORT}`;
+const socket = io(WEBSOCKET_URL);
 
 socket.on('connect', () => {
-	console.log('Connect socket...');
+	console.log('Client connected');
 });
 
 export const API = {
 	getAirState(callback) {
-		socket.on('getAirState', data => {
+		socket.once('air-state:update', data => {
 			callback(data);
 		});
 	},
 	getAirPropHistory(callback) {
-		socket.on('getAirPropHistory', data => {
+		socket.once('air-history:update', data => {
 			callback(data);
 		});
 	},
