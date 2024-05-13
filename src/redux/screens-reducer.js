@@ -83,7 +83,7 @@ const initialState = {
 	levelColors: {
 		1: { light: "#22d3ee", dark: "#06b6d4" },
 		2: { light: "#34d399", dark: "#10b981" },
-		3: { light: "#fbbf24", dark: "#fbbf24" },
+		3: { light: "#fbbf24", dark: "#f59e0b" },
 		4: { light: "#fb923c", dark: "#f97316" },
 		5: { light: "#f87171", dark: "#ef4444" },
 	},

@@ -10,8 +10,9 @@ export const AirProp = (props) => {
       props.updateAirStateThunk(0);
    });
 
-	const path = props.router.location.pathname.slice(1);
-	const item = props.data[path];
+   const path = props.router.location.pathname.slice(1);
+   const item = props.data[path];
+   const history = props.history["pm2"];
 
    return (
       <section className={s.airprop}>
@@ -41,9 +42,11 @@ export const AirProp = (props) => {
 
             <div className={s.chart}>
                <HistoryChart
-                  history={props.history}
-                  name="pm2"
+                  history={history}
+                  sensor_name={item.sensor_name}
+                  ui_name={item.ui_name}
                   updateAirHistoryThunk={props.updateAirHistoryThunk}
+                  levelColors={props.levelColors}
                />
             </div>
          </div>
