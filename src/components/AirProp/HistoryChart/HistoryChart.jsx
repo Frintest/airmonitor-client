@@ -46,7 +46,7 @@ export const HistoryChart = (props) => {
 
       for (let i = 0; i < dataset.length; i++) {
          const value = dataset[i];
-         const background = backgroundPalette(value).alpha(0.8).hex();
+         const background = backgroundPalette(value).alpha(0.75).hex();
          const border = borderPalette(value).alpha(0.92).hex();
 
          backgroundList[i] = background;
@@ -61,9 +61,51 @@ export const HistoryChart = (props) => {
 
    const values = history.map((data) => data.y);
 
+   const hoverLine = {
+      id: "hoveLine",
+      afterDatasetsDraw(chart, args, plugins) {
+         const {
+            ctx,
+            chartArea: { top, bottom, left, right, width, height },
+            scales: { x, y },
+            tooltip,
+         } = chart;
+
+         if (tooltip._active.length > 0) {
+            const xCoor = x.getPixelForValue(tooltip.dataPoints[0].dataIndex);
+            const yCoor = y.getPixelForValue(tooltip.dataPoints[0].parsed.y);
+
+            // vertical line
+            ctx.save();
+            ctx.beginPath(); // делает линию независимой (=> вычитает точку)
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "rgba(15, 23, 42, 0.6)";
+            ctx.setLineDash([6, 6]); // [черта, пустота]
+            ctx.moveTo(xCoor, top);
+            ctx.lineTo(xCoor, bottom);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.setLineDash([]); // артефакты left bottom графика
+
+            // horizontal line
+            ctx.save();
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "rgba(15, 23, 42, 0.6)";
+            ctx.setLineDash([6, 6]);
+            ctx.moveTo(left, yCoor);
+            ctx.lineTo(right, yCoor);
+            ctx.stroke();
+            ctx.closePath();
+            ctx.setLineDash([]);
+         }
+      },
+   };
+
    return (
       <Chart
          type="line"
+         plugins={[hoverLine]}
          data={{
             datasets: [
                {
