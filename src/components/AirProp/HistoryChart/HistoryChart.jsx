@@ -2,8 +2,11 @@ import React from "react";
 import s from "./HistoryChart.module.scss";
 import { Chart } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
+import gradient from "chartjs-plugin-gradient";
+import chroma from "chroma-js";
 
 ChartJS.register(...registerables);
+ChartJS.register(gradient);
 
 export const HistoryChart = (props) => {
    const getAirPropHistory = () => {
@@ -19,82 +22,44 @@ export const HistoryChart = (props) => {
 
    const history = getAirPropHistory();
 
-   const splitHistory = () => {
-      let segmentsHistory = [];
-      let currentSegment = {
-         array: [history[0]],
-         darkColor: "",
-         lightColor: "",
-      };
-
-      for (let i = 1; i < history.length; i++) {
-         const level1 = history[i - 1].y < 1500 && history[i].y < 1500;
-         const level2 =
-            history[i - 1].y < 2000 &&
-            history[i - 1].y >= 1500 &&
-            history[i].y < 2000 &&
-            history[i].y >= 1500;
-         const level3 = history[i - 1].y >= 2000 && history[i].y >= 2000;
-
-         let colors = {};
-
-         if (level1) {
-            colors = props.levelColors["1"];
-         }
-         if (level2) {
-            colors = props.levelColors["2"];
-         }
-         if (level3) {
-            colors = props.levelColors["3"];
-         }
-
-         let darkColor = colors.dark;
-         let lightColor = colors.light;
-
-         if (level1 || level2 || level3) {
-            currentSegment.array.push(history[i]);
-            currentSegment.darkColor = darkColor;
-            currentSegment.lightColor = `${lightColor}66`;
-         } else {
-            currentSegment.array.push(history[i]); // плавные переходы
-
-            segmentsHistory.push({ ...currentSegment }); // shallow copy
-
-            // create segment
-            currentSegment.array = [history[i]];
-            currentSegment.darkColor = "";
-            currentSegment.lightColor = "";
-         }
-      }
-
-      segmentsHistory.push(currentSegment);
-
-      return segmentsHistory;
+   const createPalette = (palette) => {
+      const colorRange = chroma.scale(palette).domain([1000, 4000]);
+      return colorRange;
    };
 
-   const segmentsArray = splitHistory();
+   const colors = props.levelColors;
 
-   const segments = segmentsArray.map((segment) => {
+   const level1 = colors["1"];
+   const level2 = colors["2"];
+   const level3 = colors["3"];
+   const level4 = colors["4"];
+
+   const backgroundColors = [level1.light, level2.light, level3.light, level4.light];
+   const backgroundPalette = createPalette(backgroundColors);
+
+   const borderColors = [level1.dark, level2.dark, level3.dark, level4.dark];
+   const borderPalette = createPalette(borderColors);
+
+   const createChartColors = (dataset) => {
+      const backgroundList = {};
+      const borderList = {};
+
+      for (let i = 0; i < dataset.length; i++) {
+         const value = dataset[i];
+         const background = backgroundPalette(value).alpha(0.8).hex();
+         const border = borderPalette(value).alpha(0.92).hex();
+
+         backgroundList[i] = background;
+         borderList[i] = border;
+      }
+
       return {
-         data: segment.array,
-         normalized: true,
-         fill: true,
-         borderColor: segment.darkColor,
-         backgroundColor: segment.lightColor,
-         pointBackgroundColor: "rgba(255, 255, 255, 0.6)",
+         background: backgroundList,
+         border: borderList,
       };
-   });
+   };
 
-   // const getGradient = (ctx, chartArea, scales) => {
-   //    const gradientBg = ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0);
-
-   //    const xPointWidth = chartArea.width / scales.x._valueRange;
-
-   //    gradientBg.addColorStop(0, "red");
-   //    gradientBg.addColorStop(1, "black");
-
-   //    return gradientBg;
-   // };
+   const values = history.map((data) => data.y);
 
    return (
       <Chart
@@ -104,19 +69,19 @@ export const HistoryChart = (props) => {
                {
                   data: history,
                   normalized: true,
-                  // backgroundColor: (context) => {
-                  //    const chart = context.chart;
-                  //    const { ctx, chartArea, scales } = chart;
-                  //    console.log(chart.tooltip);
-                  //    if (!chartArea) {
-                  //       return null;
-                  //    }
-                  //    return getGradient(ctx, chartArea, scales);
-                  // },
-                  pointBackgroundColor: "rgba(255, 255, 255, 0.6)",
+                  fill: true,
+                  gradient: {
+                     backgroundColor: {
+                        axis: "x",
+                        colors: createChartColors(values).background,
+                     },
+                     borderColor: {
+                        axis: "x",
+                        colors: createChartColors(values).border,
+                     },
+                  },
+                  pointBackgroundColor: "#fff",
                },
-
-               ...segments,
             ],
          }}
          options={{
