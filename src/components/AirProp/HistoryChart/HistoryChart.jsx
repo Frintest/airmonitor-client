@@ -47,7 +47,7 @@ export const HistoryChart = (props) => {
       for (let i = 0; i < dataset.length; i++) {
          const value = dataset[i];
          const background = backgroundPalette(value).alpha(0.75).hex();
-         const border = borderPalette(value).alpha(0.92).hex();
+         const border = borderPalette(value).hex();
 
          backgroundList[i] = background;
          borderList[i] = border;
@@ -102,81 +102,78 @@ export const HistoryChart = (props) => {
       },
    };
 
-   return (
-      <Chart
-         type="line"
-         plugins={[hoverLine]}
-         data={{
-            datasets: [
-               {
-                  data: history,
-                  normalized: true,
-                  fill: true,
-                  gradient: {
-                     backgroundColor: {
-                        axis: "x",
-                        colors: createChartColors(values).background,
-                     },
-                     borderColor: {
-                        axis: "x",
-                        colors: createChartColors(values).border,
-                     },
-                  },
-                  pointBackgroundColor: "#fff",
+   const data = {
+      datasets: [
+         {
+            data: history,
+            normalized: true,
+            fill: true,
+            gradient: {
+               backgroundColor: {
+                  axis: "x",
+                  colors: createChartColors(values).background,
                },
-            ],
-         }}
-         options={{
-            animation: false,
-            interaction: {
-               mode: "index",
-               intersect: false,
-            },
-            plugins: {
-               legend: {
-                  display: false,
-               },
-               tooltip: {
-                  backgroundColor: "rgba(15, 23, 42, 0.8)",
-                  padding: 12,
-                  titleFont: {
-                     size: 13,
-                     family: "Roboto",
-                     weight: 700,
-                  },
-                  bodyFont: {
-                     size: 13,
-                     family: "Roboto",
-                     weight: 400,
-                  },
-                  callbacks: {
-                     label: (context) => `${props.sensor_name}: ${context.parsed.y}`,
-                  },
+               borderColor: {
+                  axis: "x",
+                  colors: createChartColors(values).border,
                },
             },
-            scales: {
-               y: {
-                  ticks: {
-                     font: {
-                        size: 12,
-                        family: "Roboto",
-                        weight: 700,
-                     },
-                     color: "#545a67",
-                  },
-               },
-               x: {
-                  ticks: {
-                     font: {
-                        size: 12,
-                        family: "Roboto",
-                        weight: 700,
-                     },
-                     color: "#545a67",
-                  },
-               },
+            pointBackgroundColor: "#fff",
+         },
+      ],
+   };
+
+   const options = {
+      animation: false,
+      interaction: {
+         mode: "index",
+         intersect: false,
+      },
+      plugins: {
+         legend: {
+            display: false,
+         },
+         tooltip: {
+            backgroundColor: "rgba(15, 23, 42, 0.8)",
+            padding: 12,
+            titleFont: {
+               size: 13,
+               family: "Roboto",
+               weight: 700,
             },
-         }}
-      />
-   );
+            bodyFont: {
+               size: 13,
+               family: "Roboto",
+               weight: 400,
+            },
+            callbacks: {
+               label: (context) => `${props.sensor_name}: ${context.parsed.y}`,
+            },
+         },
+      },
+      scales: {
+         y: {
+            ticks: {
+               font: {
+                  size: 12,
+                  family: "Roboto",
+                  weight: 700,
+               },
+               color: "#545a67",
+            },
+         },
+         x: {
+            ticks: {
+               font: {
+                  size: 12,
+                  family: "Roboto",
+                  weight: 700,
+               },
+               color: "#545a67",
+            },
+         },
+      },
+   };
+
+   return <Chart type="line" data={data} options={options} plugins={[hoverLine]} />;
 };
