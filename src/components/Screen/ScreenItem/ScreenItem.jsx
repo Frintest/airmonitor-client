@@ -4,9 +4,11 @@ import s from "./ScreenItem.module.scss";
 import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 
 export const ScreenItem = (props) => {
+   const itemName = props.item.sensor_name;
+
    return (
       <Link
-         to={`/${props.item.sensor_name}`}
+         to={`/${itemName}`}
          className={s.element}
       >
          <div>

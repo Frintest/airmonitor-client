@@ -5,12 +5,18 @@ import s from "./Screen.module.scss";
 export const Screen = (props) => {
    React.useEffect(() => {
       props.updateAirStateThunk(props.activeScreen);
-		props.updateAirHistoryThunk("pm2");
    });
 
    const screen = props.screens[props.activeScreen];
    const elements = Object.values(screen.elements).map((item) => {
-      return <ScreenItem item={item} key={item.sensor_name} />;
+      return (
+         <ScreenItem
+            item={item}
+            key={item.sensor_name}
+            sendHistoryItemNameThunk={props.sendHistoryItemNameThunk}
+            updateAirHistoryThunk={props.updateAirHistoryThunk}
+         />
+      );
    });
 
    return <div className={s.wrap}>{elements}</div>;

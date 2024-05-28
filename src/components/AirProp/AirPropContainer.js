@@ -1,6 +1,6 @@
 import { AirProp } from "./AirProp.jsx";
 import { connect } from "react-redux";
-import { updateAirStateThunk } from "../../redux/screens-reducer.js";
+import { updateAirHistoryThunk } from "../../redux/screens-reducer.js";
 import { withRouter } from "./../../hoc/withRouter.jsx";
 
 const mapStateToProps = (state) => ({
@@ -10,4 +10,4 @@ const mapStateToProps = (state) => ({
 	levelColors: state.ScreensReducer.levelColors,
 });
 
-export default connect(mapStateToProps, { updateAirStateThunk })(withRouter(AirProp));
+export default connect(mapStateToProps, { updateAirHistoryThunk })(withRouter(AirProp));

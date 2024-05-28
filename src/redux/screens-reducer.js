@@ -72,6 +72,7 @@ const standards = {
 		],
 		source: "China Standard GB/T 18883—2002",
 	},
+	eCO2: {},
 };
 
 const initialState = {
@@ -92,26 +93,22 @@ const initialState = {
 const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
-			// tod разделение data и screens update
-			const screens = state.screens.slice();
-			let screen = screens[action.id];
-			let elements = screen.elements;
-			screen.elements = Object.values(elements).map((item) => {
+			const screens = [...state.screens];
+			const screen = { ...screens[action.id] };
+			const elementsCopy = {};
+
+			Object.values(screen.elements).forEach((item) => {
 				if (item != {}) {
-					elements[item.sensor_name] = action.data[item.sensor_name];
+					elementsCopy[item.sensor_name] = action.data[item.sensor_name];
 				}
 			});
-			screen.elements = elements;
+			screen.elements = elementsCopy;
 
 			if (action.id === 0) {
 				screens[0].elements = action.data;
 			};
 
-			return {
-				...state,
-				screens,
-				data: action.data,
-			};
+			return { ...state, data: action.data, screens };
 		}
 
 		case SET_ACTIVE_SCREEN: {
@@ -161,8 +158,8 @@ const ScreensReducer = (state = initialState, action) => {
 			return {
 				...state,
 				history: {
-					[action.name]: action.data,
 					...state.history,
+					[action.name]: action.data,
 				},
 			};
 		}
@@ -181,11 +178,11 @@ export const updateAirStateThunk = (id) => (dispatch) => {
 
 export const setActiveScreen = (id) => ({ type: SET_ACTIVE_SCREEN, id });
 const getActiveScreen = (screens, active) => {
-	let activeScreens = screens.map((el) => {
-		if (el.isActive) {
-			el.isActive = false;
+	let activeScreens = screens.map((screen) => {
+		if (screen.isActive) {
+			screen.isActive = false;
 		}
-		return el;
+		return screen;
 	});
 	activeScreens[active].isActive = true;
 	return activeScreens;
@@ -195,9 +192,11 @@ export const clearScreen = () => ({ type: CLEAR_SCREEN });
 export const addScreenItem = (name) => ({ type: ADD_SCREEN_ITEM, name });
 export const removeScreenItem = (name) => ({ type: REMOVE_SCREEN_ITEM, name });
 
-export const updateAirHistory = (data, name) => ({ type: UPDATE_AIR_HISTORY, data, name });
+const updateAirHistory = (data, name) => ({ type: UPDATE_AIR_HISTORY, data, name });
 export const updateAirHistoryThunk = (name) => (dispatch) => {
-	API.getAirPropHistory((data) => {
+	API.sendHistoryItemName(name);
+
+	API.updateAirHistory((data) => {
 		dispatch(updateAirHistory(data, name));
 	});
 };

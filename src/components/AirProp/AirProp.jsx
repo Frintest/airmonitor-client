@@ -6,15 +6,15 @@ import { Standards } from "./Standards/Standards.jsx";
 import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
 
 export const AirProp = (props) => {
-   React.useEffect(() => {
-      props.updateAirStateThunk(0);
-   });
-
    const path = props.router.location.pathname.slice(1);
    const item = props.data[path];
-   const history = props.history["pm2"];
+   const history = props.history[item.sensor_name];
 
-   return (
+   React.useEffect(() => {
+      props.updateAirHistoryThunk(item.sensor_name);
+   }, []);
+
+   return history !== undefined ? (
       <section className={s.airprop}>
          <div className={s.header}>
             <Link to="/" className={s.header__exit}>
@@ -51,5 +51,7 @@ export const AirProp = (props) => {
             </div>
          </div>
       </section>
+   ) : (
+      <div>Loading...</div>
    );
 };
