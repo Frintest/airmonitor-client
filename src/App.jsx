@@ -1,13 +1,12 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Layout } from "./components/Layout/Layout.jsx";
 import ScreenContainer from "./components/Screen/ScreenContainer.js";
 import AirPropContainer from "./components/AirProp/AirPropContainer.js";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
 
 export const App = (props) => {
-	
-   let elements = Object.values(props.state.data).map((item) => {
+   const elements = Object.values(props.state.data).map((item) => {
       return (
          <Route
             path={`${item.sensor_name}`}
@@ -18,15 +17,14 @@ export const App = (props) => {
    });
 
    return (
-      <>
+      <BrowserRouter>
          <Routes>
             <Route path="/" element={<Layout />}>
                <Route index element={<ScreenContainer />} />
                <Route path="*" element={<NotFound />} />
-               {/* TODO NotFound load */}
                {elements}
             </Route>
          </Routes>
-      </>
+      </BrowserRouter>
    );
 };

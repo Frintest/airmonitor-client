@@ -11,8 +11,10 @@ const mapStateToProps = (state) => {
 	const screens = state.ScreensReducer.screens;
 	const activeScreen = state.ScreensReducer.activeScreen;
 	const screen = screens[activeScreen];
+	const data = state.ScreensReducer.data;
+
 	return {
-		data: state.ScreensReducer.data,
+		data: data,
 		screens: screens,
 		activeScreen: screen,
 	};

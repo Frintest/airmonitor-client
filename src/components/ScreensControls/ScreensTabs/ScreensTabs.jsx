@@ -2,7 +2,7 @@ import React from "react";
 import s from "./ScreensTabs.module.scss";
 
 export const ScreensTabs = (props) => {
-   const tabs = props.screens.map((screen) => {
+   const tabs = Object.values(props.screens).map((screen) => {
       const TabClick = () => {
          if (!screen.isActive) {
             props.setActiveScreen(screen.id);
@@ -10,7 +10,7 @@ export const ScreensTabs = (props) => {
       };
 
       return (
-         <li className={s.itemWrap} key={screen.id} onClick={TabClick}>
+         <li className={s.itemWrap} onClick={TabClick} key={screen.id}>
             <button
                className={
                   s.item +

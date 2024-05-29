@@ -6,17 +6,19 @@ const CLEAR_SCREEN = "CLEAR_SCREEN";
 const ADD_SCREEN_ITEM = "ADD_SCREEN_ITEM";
 const REMOVE_SCREEN_ITEM = "REMOVE_SCREEN_ITEM";
 const UPDATE_AIR_HISTORY = "UPDATE_AIR_HISTORY";
+const UPDATE_SCREEN = "UPDATE_SCREEN";
+const UPDATE_MAIN_SCREEN = "UPDATE_MAIN_SCREEN";
 
 const generateScreens = (count) => {
-	const screens = [
-		{
+	const screens = {
+		0: {
 			id: 0,
 			value: "Главная",
 			isActive: true,
 			elements: {},
 			isChange: false,
 		}
-	];
+	};
 	for (let i = 1; i < count; i++) {
 		screens[i] = {
 			id: i,
@@ -93,22 +95,32 @@ const initialState = {
 const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
-			const screens = [...state.screens];
+			return { ...state, data: action.data };
+		}
+
+		case UPDATE_SCREEN: {
+			const screens = state.screens;
 			const screen = { ...screens[action.id] };
 			const elementsCopy = {};
+			const data = state.data;
 
 			Object.values(screen.elements).forEach((item) => {
 				if (item != {}) {
-					elementsCopy[item.sensor_name] = action.data[item.sensor_name];
+					elementsCopy[item.sensor_name] = data[item.sensor_name];
 				}
 			});
 			screen.elements = elementsCopy;
 
-			if (action.id === 0) {
-				screens[0].elements = action.data;
-			};
+			return { ...state, screens: { ...state.screens, [action.id]: screen } };
+		}
 
-			return { ...state, data: action.data, screens };
+		case UPDATE_MAIN_SCREEN: {
+			const screens = state.screens;
+			const screen = { ...screens[0] };
+			const data = state.data;
+			screen.elements = data;
+
+			return { ...state, screens: { ...state.screens, 0: screen } };
 		}
 
 		case SET_ACTIVE_SCREEN: {
@@ -124,33 +136,36 @@ const ScreensReducer = (state = initialState, action) => {
 		case CLEAR_SCREEN: {
 			const screens = getActiveScreen(state.screens, state.activeScreen);
 			const id = state.activeScreen;
-			screens[id].elements = {};
+			const screen = screens[id];
+			screen.elements = {};
 
 			return {
 				...state,
-				screens,
+				screens: { ...state.screens, [id]: screen },
 			};
 		}
 
 		case ADD_SCREEN_ITEM: {
-			const screens = state.screens.slice();
+			const screens = { ...state.screens };
 			const id = state.activeScreen;
-			screens[id].elements[action.name] = state.data[action.name];
+			const screen = screens[id];
+			screen.elements[action.name] = state.data[action.name];
 
 			return {
 				...state,
-				screens,
+				screens: { ...state.screens, [id]: screen },
 			};
 		}
 
 		case REMOVE_SCREEN_ITEM: {
-			const screens = state.screens.slice();
+			const screens = { ...state.screens };
 			const id = state.activeScreen;
-			delete screens[id].elements[action.name];
+			const screen = screens[id];
+			screen.elements[action.name] = {};
 
 			return {
 				...state,
-				screens,
+				screens: { ...state.screens, [id]: screen },
 			};
 		}
 
@@ -169,16 +184,19 @@ const ScreensReducer = (state = initialState, action) => {
 	}
 };
 
-const updateAirState = (data, id) => ({ type: UPDATE_AIR_STATE, data, id });
-export const updateAirStateThunk = (id) => (dispatch) => {
+const updateAirState = (data) => ({ type: UPDATE_AIR_STATE, data });
+export const updateAirStateThunk = () => (dispatch) => {
 	API.getAirState((data) => {
-		dispatch(updateAirState(data, id));
+		dispatch(updateAirState(data));
 	});
 };
 
+export const updateScreen = (id) => ({ type: UPDATE_SCREEN, id });
+export const updateMainScreen = () => ({ type: UPDATE_MAIN_SCREEN });
+
 export const setActiveScreen = (id) => ({ type: SET_ACTIVE_SCREEN, id });
 const getActiveScreen = (screens, active) => {
-	let activeScreens = screens.map((screen) => {
+	let activeScreens = Object.values(screens).map((screen) => {
 		if (screen.isActive) {
 			screen.isActive = false;
 		}
