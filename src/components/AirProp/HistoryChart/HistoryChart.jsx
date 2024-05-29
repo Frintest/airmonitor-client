@@ -152,21 +152,21 @@ export const HistoryChart = (props) => {
                label: (context) => `${props.sensor_name}: ${context.parsed.y}`,
             },
          },
-         zoom: {
-            pan: {
-               // pan options and/or events
-               // enabled: true,
-            },
-            limits: {
-               // axis limits
-            },
-            zoom: {
-               // zoom options and/or events
-               wheel: {
-                  enabled: true,
-               },
-            },
-         },
+         // zoom: {
+         //    pan: {
+         //       // pan options and/or events
+         //       // enabled: true,
+         //    },
+         //    limits: {
+         //       // axis limits
+         //    },
+         //    zoom: {
+         //       // zoom options and/or events
+         //       wheel: {
+         //          enabled: true,
+         //       },
+         //    },
+         // },
       },
       scales: {
          y: {

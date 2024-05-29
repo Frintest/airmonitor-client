@@ -3,22 +3,24 @@ import s from "./ScreenSettingsElement.module.scss";
 import { formatText } from "../../../../utilities/helpers/format-text-airprop.js";
 
 export const ScreenSettingsElement = (props) => {
+	const airItem = props.airItem;
+
    const onClick = () => {
       if (!props.isChecked) {
-         props.addScreenItem(props.sensor_name);
+         props.addScreenItem(airItem);
       } else {
-         props.removeScreenItem(props.sensor_name);
+         props.removeScreenItem(airItem.sensor_name);
       }
    };
 
    return (
       <div className={s.wrap}>
-         <label className={s.label} htmlFor={props.ui_name}>
-            <span className={s.name}>{formatText(props.ui_name)}</span>
+         <label className={s.label} htmlFor={airItem.ui_name}>
+            <span className={s.name}>{formatText(airItem.ui_name)}</span>
             <input
                className={s.checkbox}
                type="checkbox"
-               id={props.sensor_name}
+               id={airItem.sensor_name}
                checked={props.isChecked}
                onChange={onClick}
             />

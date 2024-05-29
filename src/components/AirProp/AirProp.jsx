@@ -7,11 +7,11 @@ import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
 
 export const AirProp = (props) => {
    const path = props.router.location.pathname.slice(1);
-   const item = props.data[path];
-   const history = props.history[item.sensor_name];
+   const airItem = props.airState[path];
+   const history = props.history[airItem.sensor_name];
 
    React.useEffect(() => {
-      props.updateAirHistoryThunk(item.sensor_name);
+      props.updateAirHistoryThunk(airItem.sensor_name);
    }, []);
 
    return history !== undefined ? (
@@ -25,26 +25,26 @@ export const AirProp = (props) => {
                   />
                </svg>
             </Link>
-            <p className={s.header__title}>{formatText(item.ui_name)}</p>
+            <p className={s.header__title}>{formatText(airItem.ui_name)}</p>
          </div>
 
          <div className={s.info}>
             <div className={s.maininfo}>
                <div className={s.maininfo__valueWrap}>
-                  <p className={s.maininfo__value}>{item.value}</p>
-                  <span className={s.maininfo__unit}>{formatText(item.unit)}</span>
+                  <p className={s.maininfo__value}>{airItem.value}</p>
+                  <span className={s.maininfo__unit}>{formatText(airItem.unit)}</span>
                </div>
                <Standards
                   levelColors={props.levelColors}
-                  standards={props.standards[item.sensor_name]}
+                  standards={props.standards[airItem.sensor_name]}
                />
             </div>
 
             <div className={s.chart}>
                <HistoryChart
                   history={history}
-                  sensor_name={item.sensor_name}
-                  ui_name={item.ui_name}
+                  sensor_name={airItem.sensor_name}
+                  ui_name={airItem.ui_name}
                   updateAirHistoryThunk={props.updateAirHistoryThunk}
                   levelColors={props.levelColors}
                />

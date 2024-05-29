@@ -6,7 +6,7 @@ import AirPropContainer from "./components/AirProp/AirPropContainer.js";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
 
 export const App = (props) => {
-   const elements = Object.values(props.state.data).map((item) => {
+   const elements = Object.values(props.data).map((item) => {
       return (
          <Route
             path={`${item.sensor_name}`}

@@ -4,21 +4,18 @@ import s from "./ScreenItem.module.scss";
 import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 
 export const ScreenItem = (props) => {
-   const itemName = props.item.sensor_name;
+   const airItem = props.airItem;
 
    return (
-      <Link
-         to={`/${itemName}`}
-         className={s.element}
-      >
+      <Link to={`/${airItem.sensor_name}`} className={s.element}>
          <div>
-            <span className={s.name}>{formatText(props.item.ui_name)}</span>
+            <span className={s.name}>{formatText(airItem.ui_name)}</span>
             <span className={s.status}>Normal</span>
          </div>
 
          <p className={s.value}>
-            {props.item.value}
-            <span className={s.unit}>{formatText(props.item.unit)}</span>
+            {airItem.value}
+            <span className={s.unit}>{formatText(airItem.unit)}</span>
          </p>
       </Link>
    );

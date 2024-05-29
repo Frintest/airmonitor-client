@@ -8,13 +8,13 @@ export const Screen = (props) => {
    }, []);
 
    React.useEffect(() => {
-      props.updateMainScreen();
-      props.updateScreen(props.activeScreen);
-   }, [props.data]);
+      props.updateMainScreen(props.airState);
+      props.updateScreen(props.activeScreen, props.airState);
+   }, [props.airState]);
 
    const screen = props.screens[props.activeScreen];
-   const elements = Object.values(screen.elements).map((item) => {
-      return <ScreenItem item={item} key={item.sensor_name} />;
+   const elements = Object.values(screen.elements).map((airItem) => {
+      return <ScreenItem airItem={airItem} key={airItem.sensor_name} />;
    });
 
    return <div className={s.wrap}>{elements}</div>;
