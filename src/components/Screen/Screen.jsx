@@ -9,11 +9,10 @@ export const Screen = (props) => {
 
    React.useEffect(() => {
       props.updateMainScreen(props.airState);
-      props.updateScreen(props.activeScreen, props.airState);
+      props.updateScreen(props.screen.id, props.airState);
    }, [props.airState]);
 
-   const screen = props.screens[props.activeScreen];
-   const elements = Object.values(screen.elements).map((airItem) => {
+   const elements = Object.values(props.screen.elements).map((airItem) => {
       return <ScreenItem airItem={airItem} key={airItem.sensor_name} />;
    });
 

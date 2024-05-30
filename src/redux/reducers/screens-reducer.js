@@ -88,7 +88,7 @@ const initialState = {
 	},
 };
 
-const ScreensReducer = (state = initialState, action) => {
+export const ScreensReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_SCREEN: {
 			const screens = state.screens;
@@ -126,7 +126,7 @@ const ScreensReducer = (state = initialState, action) => {
 		case CLEAR_SCREEN: {
 			const screens = getActiveScreen(state.screens, state.activeScreen);
 			const screenId = state.activeScreen;
-			const screen = screens[screenId];
+			const screen = { ...screens[screenId] };
 			screen.elements = {};
 
 			return {
@@ -138,7 +138,7 @@ const ScreensReducer = (state = initialState, action) => {
 		case ADD_ITEM: {
 			const screens = { ...state.screens };
 			const screenId = state.activeScreen;
-			const screen = screens[screenId];
+			const screen = { ...screens[screenId] };
 			const airItem = action.item;
 			screen.elements[airItem.sensor_name] = airItem;
 
@@ -151,7 +151,7 @@ const ScreensReducer = (state = initialState, action) => {
 		case REMOVE_ITEM: {
 			const screens = { ...state.screens };
 			const screenId = state.activeScreen;
-			const screen = screens[screenId];
+			const screen = { ...screens[screenId] };
 			const airItem = action.item;
 			screen.elements[airItem.sensor_name] = {};
 
@@ -186,5 +186,3 @@ const getActiveScreen = (screens, active) => {
 export const clearScreen = () => ({ type: CLEAR_SCREEN });
 export const addScreenItem = (item) => ({ type: ADD_ITEM, item });
 export const removeScreenItem = (name) => ({ type: REMOVE_ITEM, name });
-
-export default ScreensReducer;

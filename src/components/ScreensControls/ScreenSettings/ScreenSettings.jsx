@@ -5,8 +5,7 @@ import { ScreenSettingsElement } from "./ScreenSettingsElement/ScreenSettingsEle
 export const ScreenSettings = (props) => {
    const elements = Object.values(props.airState).map((item) => {
       const airItem = props.airState[item.sensor_name];
-      const isChecked = props.activeScreen.elements[item.sensor_name] != undefined;
-
+      const isChecked = props.screen.elements[item.sensor_name] !== undefined;
       return (
          <ScreenSettingsElement
             airItem={airItem}

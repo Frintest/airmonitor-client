@@ -9,12 +9,8 @@ export const ScreensControls = (props) => {
    return (
       <>
          <div className={s.wrap}>
-            <ScreensTabs
-               screens={props.screens}
-               setActiveScreen={props.setActiveScreen}
-               setInactiveScreen={props.setInactiveScreen}
-            />
-            {props.activeScreen.isChange && (
+            <ScreensTabs screens={props.screens} setActiveScreen={props.setActiveScreen} />
+            {props.screen.isChange && (
                <button
                   className={s.changeScreenBtn + " " + s.item + " " + s.itemActive}
                   onClick={() => setVisible(true)}
@@ -27,10 +23,10 @@ export const ScreensControls = (props) => {
             isVisible={isVisible}
             setVisible={() => setVisible(false)}
             airState={props.airState}
+            screen={props.screen}
             clearScreen={props.clearScreen}
             addScreenItem={props.addScreenItem}
             removeScreenItem={props.removeScreenItem}
-            activeScreen={props.activeScreen}
          />
       </>
    );

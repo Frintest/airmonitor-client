@@ -1,4 +1,4 @@
-import { API } from "../api/api.js";
+import { API } from "../../api/api.js";
 
 const UPDATE = "history/UPDATE";
 
@@ -6,7 +6,7 @@ const initialState = {
 	history: {},
 };
 
-const AirHistoryReducer = (state = initialState, action) => {
+export const AirHistoryReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE: {
 			return {
@@ -32,5 +32,3 @@ export const updateAirHistoryThunk = (name) => (dispatch) => {
 		dispatch(updateAirHistory(data, name));
 	});
 };
-
-export default AirHistoryReducer;

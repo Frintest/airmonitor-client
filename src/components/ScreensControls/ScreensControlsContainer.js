@@ -4,21 +4,16 @@ import {
 	clearScreen,
 	addScreenItem,
 	removeScreenItem
-} from "../../redux/screens-reducer.js";
+} from "../../redux/reducers/screens-reducer.js";
 import { connect } from "react-redux";
+import { airStateSelector } from "../../redux/selectors/air-state-selectors.js";
+import { screenSelector, screensSelector } from "../../redux/selectors/screens-selectors.js";
 
-const mapStateToProps = (state) => {
-	const screens = state.ScreensReducer.screens;
-	const activeScreen = state.ScreensReducer.activeScreen;
-	const screen = screens[activeScreen];
-	const airState = state.AirStateReducer.data;
-
-	return {
-		airState,
-		screens,
-		activeScreen: screen,
-	};
-};
+const mapStateToProps = (state) => ({
+	airState: airStateSelector(state),
+	screens: screensSelector(state),
+	screen: screenSelector(state),
+});
 
 export default connect(mapStateToProps, {
 	setActiveScreen,

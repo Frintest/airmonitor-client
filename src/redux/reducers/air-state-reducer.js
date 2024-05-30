@@ -1,4 +1,4 @@
-import { API } from "../api/api.js";
+import { API } from "../../api/api.js";
 
 const UPDATE = "air-state/UPDATE";
 
@@ -6,7 +6,7 @@ const initialState = {
 	data: {},
 };
 
-const AirStateReducer = (state = initialState, action) => {
+export const AirStateReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE: {
 			return { ...state, data: action.data };
@@ -24,5 +24,3 @@ export const updateAirStateThunk = () => (dispatch) => {
 		dispatch(updateAirState(data));
 	});
 };
-
-export default AirStateReducer;
