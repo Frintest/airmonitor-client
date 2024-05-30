@@ -12,7 +12,7 @@ export const AirProp = (props) => {
 
    React.useEffect(() => {
       props.updateAirHistoryThunk(airItem.sensor_name);
-   }, []);
+   }, [props.airState]);
 
    return history !== undefined ? (
       <section className={s.airprop}>
