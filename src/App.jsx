@@ -6,10 +6,14 @@ import AirPropContainer from "./components/AirProp/AirPropContainer.js";
 import { NotFound } from "./components/NotFound/NotFound.jsx";
 
 export const App = (props) => {
+   React.useEffect(() => {
+      props.updateAirStateThunk();
+   });
+
    const elements = Object.values(props.data).map((item) => {
       return (
          <Route
-            path={`${item.sensor_name}`}
+            path={`/${item.sensor_name}`}
             element={<AirPropContainer />}
             key={item.sensor_name}
          />
