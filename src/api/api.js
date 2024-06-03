@@ -16,6 +16,11 @@ export const API = {
 		});
 	},
 
+	sendHistoryItemName(itemName) {
+		socket.emit("history-item:get", itemName);
+		console.log("history-item:get");
+	},
+
 	updateAirHistory(callback) {
 		socket.once("air-history:update", data => {
 			callback(data);
@@ -23,8 +28,10 @@ export const API = {
 		});
 	},
 
-	sendHistoryItemName(itemName) {
-		socket.emit("history-item:get", itemName);
-		console.log("history-item:get");
-	},
+	getStandards(callback) {
+		socket.once("standards:get", data => {
+			callback(data);
+			console.log("standards:get");
+		});
+	}
 };

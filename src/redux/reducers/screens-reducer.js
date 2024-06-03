@@ -29,56 +29,9 @@ const generateScreens = (count) => {
 	return screens;
 };
 
-const standards = {
-	pm1: {},
-	temp: {},
-	humidity: {},
-	pm2: {
-		content: [
-			{ value: "75", text: "Хорошо", level: 1 },
-			{ value: "115", text: "Лёгкое загрязнение", level: 2 },
-			{ value: "150", text: "Умеренное  загрязнение", level: 3 },
-			{ value: "250", text: "Сильное загрязнение", level: 4 },
-			{ value: "500", text: "Опасно", level: 5 },
-		],
-		source: "China Standard GB 3095—2012",
-	},
-	pm10: {
-		content: [
-			{ value: "150", text: "Хорошо", level: 1 },
-			{ value: "250", text: "Лёгкое загрязнение", level: 2 },
-			{ value: "350", text: "Умеренное  загрязнение", level: 3 },
-			{ value: "420", text: "Сильное загрязнение", level: 4 },
-			{ value: "600", text: "Опасно", level: 5 },
-		],
-		source: "China Standard GB 3095—2012",
-	},
-	TVOC: {
-		content: [
-			{ value: "0.3", text: "Хорошо", level: 1 },
-			{ value: "1", text: "Лёгкое загрязнение", level: 2 },
-			{ value: "3", text: "Умеренное  загрязнение", level: 3 },
-			{ value: "10", text: "Сильное загрязнение", level: 4 },
-			{ value: "10+", text: "Опасно", level: 5 },
-		],
-		source: "German Indoor Air Guidance Values",
-	},
-	CO2: {
-		content: [
-			{ value: "1000", text: "Хорошо", level: 1 },
-			{ value: "2000", text: "Умеренное содержание", level: 2 },
-			{ value: "3000", text: "Высокое содержание", level: 3 },
-			{ value: "3000+", text: "Опасно", level: 4 },
-		],
-		source: "China Standard GB/T 18883—2002",
-	},
-	eCO2: {},
-};
-
 const initialState = {
 	screens: generateScreens(6), // include main screen
 	activeScreen: 0,
-	standards,
 	levelColors: {
 		1: { light: "#22d3ee", dark: "#06b6d4" },
 		2: { light: "#34d399", dark: "#10b981" },

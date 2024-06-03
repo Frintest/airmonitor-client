@@ -8,6 +8,7 @@ import { NotFound } from "./components/NotFound/NotFound.jsx";
 export const App = (props) => {
    React.useEffect(() => {
       props.updateAirStateThunk();
+		props.getStandardsThunk();
    });
 
    const elements = Object.values(props.data).map((item) => {

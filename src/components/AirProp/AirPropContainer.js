@@ -7,7 +7,7 @@ import { airStateSelector } from "../../redux/selectors/air-state-selectors.js";
 const mapStateToProps = (state) => ({
 	airState: airStateSelector(state),
 	history: state.AirHistoryReducer.history,
-	standards: state.ScreensReducer.standards,
+	standards: state.AirStateReducer.standards,
 	levelColors: state.ScreensReducer.levelColors,
 });
 
