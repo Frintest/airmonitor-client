@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 
 const PORT = 3001;
-const WEBSOCKET_URL = `http://airmonitor.servermc.ru:${PORT}`;
+const WEBSOCKET_URL = `https://airmonitor.servermc.ru:${PORT}`;
 const socket = io(WEBSOCKET_URL);
 
 socket.on("connect", () => {
