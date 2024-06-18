@@ -8,7 +8,7 @@ import { NotFound } from "./components/NotFound/NotFound.jsx";
 export const App = (props) => {
    React.useEffect(() => {
       props.updateAirStateThunk();
-		props.getStandardsThunk();
+      props.getStandardsThunk();
    });
 
    const elements = Object.values(props.data).map((item) => {
@@ -25,6 +25,13 @@ export const App = (props) => {
       <BrowserRouter>
          <Routes>
             <Route path="/" element={<Layout />}>
+               <Route index element={<ScreenContainer />} />
+               <Route path="*" element={<NotFound />} />
+               {elements}
+            </Route>
+
+            {/* github */}
+            <Route path="/airmonitor-client/" element={<Layout />}>
                <Route index element={<ScreenContainer />} />
                <Route path="*" element={<NotFound />} />
                {elements}
