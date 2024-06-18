@@ -29,13 +29,6 @@ export const App = (props) => {
                <Route path="*" element={<NotFound />} />
                {elements}
             </Route>
-
-            {/* github */}
-            <Route path="/airmonitor-client/" element={<Layout />}>
-               <Route index element={<ScreenContainer />} />
-               <Route path="*" element={<NotFound />} />
-               {elements}
-            </Route>
          </Routes>
       </BrowserRouter>
    );
