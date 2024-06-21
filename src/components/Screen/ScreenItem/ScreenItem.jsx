@@ -8,15 +8,19 @@ export const ScreenItem = (props) => {
 
    return (
       <Link to={`/${airItem.sensor_name}`} className={s.element}>
-         <div>
-            <span className={s.name}>{formatText(airItem.ui_name)}</span>
-            <span className={s.status}>Normal</span>
-         </div>
+         <span className={s.name}>{formatText(airItem.ui_name)}</span>
 
          <p className={s.value}>
             {airItem.value}
             <span className={s.unit}>{formatText(airItem.unit)}</span>
          </p>
+
+         <div className={s.status}>Норма</div>
+
+         <div className={s.elementHover}>
+            <p className={s.elementHover__more}>Подробнее</p>
+            <div className={s.elementHover__status}></div>
+         </div>
       </Link>
    );
 };

@@ -1,0 +1,10 @@
+@import "../../scss/utilities/variables.scss";
+
+.container {
+   width: $container-width;
+   margin: 0 auto;
+   overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

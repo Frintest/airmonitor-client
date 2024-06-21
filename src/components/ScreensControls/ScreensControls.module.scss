@@ -1,9 +1,6 @@
 @import "./../../scss/utilities/variables.scss";
 
 .wrap {
-   width: $container-width;
-   margin: 0 auto;
-   overflow: hidden;
    display: flex;
    align-items: center;
    margin-bottom: 30px;

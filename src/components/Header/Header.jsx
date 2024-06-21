@@ -11,11 +11,10 @@ export const Header = () => {
    ];
 
    const menuItems = menuContent.map((item, index) => (
-      <li className={s.header__item}>
+      <li className={s.header__item} key={index} onClick={() => setActive(index)}>
          <Link
             className={s.header__link + (isActive === index ? " " + s.header__linkActive : "")}
             to={item.link}
-            onClick={() => setActive(index)}
          >
             {item.name}
          </Link>
