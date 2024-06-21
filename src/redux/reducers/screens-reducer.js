@@ -106,11 +106,11 @@ export const ScreensReducer = (state = initialState, action) => {
 			const screenId = state.activeScreen;
 			const screen = { ...screens[screenId] };
 			const airItem = action.item;
-			screen.elements[airItem.sensor_name] = {};
+			delete screen.elements[airItem.sensor_name];
 
 			return {
 				...state,
-				screens: { ...state.screens, [id]: screen },
+				screens: { ...state.screens, [screenId]: screen },
 			};
 		}
 
@@ -138,4 +138,4 @@ const getActiveScreen = (screens, active) => {
 
 export const clearScreen = () => ({ type: CLEAR_SCREEN });
 export const addScreenItem = (item) => ({ type: ADD_ITEM, item });
-export const removeScreenItem = (name) => ({ type: REMOVE_ITEM, name });
+export const removeScreenItem = (item) => ({ type: REMOVE_ITEM, item });

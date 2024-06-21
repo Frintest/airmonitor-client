@@ -3,13 +3,13 @@ import s from "./ScreenSettingsElement.module.scss";
 import { formatText } from "../../../../utilities/helpers/format-text-airprop.js";
 
 export const ScreenSettingsElement = (props) => {
-	const airItem = props.airItem;
+   const airItem = props.airItem;
 
    const onClick = () => {
       if (!props.isChecked) {
          props.addScreenItem(airItem);
       } else {
-         props.removeScreenItem(airItem.sensor_name);
+         props.removeScreenItem(airItem);
       }
    };
 
