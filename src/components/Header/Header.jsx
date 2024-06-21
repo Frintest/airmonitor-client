@@ -2,18 +2,18 @@ import React from "react";
 import s from "./Header.module.scss";
 import { Link } from "react-router-dom";
 
-export const Header = () => {
-   const [isActive, setActive] = React.useState(0);
+export const Header = (props) => {
+   const path = props.router.location.pathname;
 
    const menuContent = [
       { name: "Экраны", link: "/" },
       { name: "Помощь", link: "/help" },
    ];
 
-   const menuItems = menuContent.map((item, index) => (
-      <li className={s.header__item} key={index} onClick={() => setActive(index)}>
+   const menuItems = menuContent.map((item) => (
+      <li className={s.header__item} key={item.name}>
          <Link
-            className={s.header__link + (isActive === index ? " " + s.header__linkActive : "")}
+            className={s.header__link + (item.link === path ? " " + s.header__linkActive : "")}
             to={item.link}
          >
             {item.name}
