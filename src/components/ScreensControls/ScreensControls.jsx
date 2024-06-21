@@ -19,6 +19,7 @@ export const ScreensControls = (props) => {
                </button>
             )}
          </div>
+
          <ScreenSettings
             isVisible={isVisible}
             setVisible={() => setVisible(false)}

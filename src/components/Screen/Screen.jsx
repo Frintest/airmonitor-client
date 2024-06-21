@@ -16,5 +16,9 @@ export const Screen = (props) => {
       return <ScreenItem airItem={airItem} key={airItem.sensor_name} />;
    });
 
-   return <div className={s.wrap}>{elements}</div>;
+   return (
+      <div className={s.container}>
+         <div className={s.wrap}>{elements}</div>
+      </div>
+   );
 };

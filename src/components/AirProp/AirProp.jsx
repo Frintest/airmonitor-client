@@ -52,6 +52,10 @@ export const AirProp = (props) => {
          </div>
       </section>
    ) : (
-      <div>Loading...</div>
+      <div className={s.loading}>
+         <div className={s.loading__container}>
+            <p>Loading...</p>
+         </div>
+      </div>
    );
 };

@@ -10,10 +10,13 @@
    }
 }
 
+html {
+   scroll-behavior: smooth;
+}
+
 body {
    height: 100vh;
-   padding-top: 120px;
-   background: url(../assets/images/screens-bg.jpg) center center no-repeat;
+   background: url(../assets/images/screens-bg.jpg) bottom center no-repeat;
    background-size: cover;
 }
 

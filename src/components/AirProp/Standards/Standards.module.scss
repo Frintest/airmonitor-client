@@ -1,63 +1,60 @@
 @import "./../../../scss/utilities/variables.scss";
 
-.maininfo {
-   &__standards {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      position: relative;
-   }
+.standards {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   position: relative;
 
-   &__standardsList {
+   &__list {
       display: flex;
    }
 
-   &__standardsSource {
+   &__source {
       font-size: 12px;
-      color: #545a67;
+      color: $slate-600;
       right: 0;
       top: -35px;
       position: absolute;
    }
+}
 
-   &__standardsItem {
-      position: relative;
-   }
+.item {
+   position: relative;
 
-   &__standardsItemWrap:first-child &__standardsValue {
+   &:first-child .blockValue {
       border-top-left-radius: 40px;
       border-bottom-left-radius: 40px;
    }
 
-   &__standardsItemWrap:last-child &__standardsValue {
+   &:last-child .blockValue {
       border-top-right-radius: 40px;
       border-bottom-right-radius: 40px;
    }
 
-   &__standardsItemWrap + &__standardsItemWrap {
+   & + & {
       margin-left: 2px;
    }
+}
 
-   &__standardsDesc {
-      position: absolute;
-      left: 50%;
-      transform: translate(-50%, 0);
-      display: block;
-      max-width: 120px;
-      margin-top: 10px;
-      text-align: center;
-      font-size: 14px;
-      color: #545a67;
-   }
+.blockValue {
+   width: 130px;
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #fff;
+   font-weight: 700;
+}
 
-   &__standardsValue {
-      width: 130px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-      font-weight: 700;
-      background: #444;
-   }
+.desc {
+   position: absolute;
+   left: 50%;
+   transform: translate(-50%, 0);
+   display: block;
+   max-width: 120px;
+   margin-top: 10px;
+   text-align: center;
+   font-size: 14px;
+   color: $slate-600;
 }

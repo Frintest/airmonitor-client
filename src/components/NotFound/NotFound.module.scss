@@ -1,3 +1,11 @@
+@import "../../scss/utilities/variables.scss";
+
+.container {
+   width: $container-width;
+   margin: 0 auto;
+   overflow: hidden;
+}
+
 .link {
    color: #fff;
    padding-left: 10px;

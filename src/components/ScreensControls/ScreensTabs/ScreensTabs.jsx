@@ -10,16 +10,16 @@ export const ScreensTabs = (props) => {
       };
 
       return (
-         <li className={s.itemWrap} onClick={TabClick} key={screen.id}>
-            <button
-               className={
-                  s.item +
-                  (screen.id === 0 ? " " + s.itemMain : "") +
-                  (screen.isActive ? " " + s.itemActive : "")
-               }
-            >
-               {screen.value}
-            </button>
+         <li
+            className={
+               s.item +
+               (screen.id === 0 ? " " + s.itemMain : "") +
+               (screen.isActive ? " " + s.itemActive : "")
+            }
+            onClick={TabClick}
+            key={screen.id}
+         >
+            {screen.value}
          </li>
       );
    });

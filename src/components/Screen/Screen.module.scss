@@ -1,6 +1,14 @@
+@import "../../scss/utilities/variables.scss";
+
+.container {
+   width: $container-width;
+   margin: 0 auto;
+   overflow: hidden;
+}
+
 .wrap {
    display: grid;
    grid-template-columns: repeat(3, 1fr);
    grid-template-rows: repeat(3, auto);
-   grid-gap: 15px;
+   grid-gap: 16px;
 }
