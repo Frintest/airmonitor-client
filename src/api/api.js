@@ -10,7 +10,8 @@ socket.on("connect", () => {
 
 export const API = {
 	getAirState(callback) {
-		socket.once("air-state:update", data => {
+		socket.once("air-state:update", (data, eventConfirm) => {
+			eventConfirm();
 			callback(data);
 			console.log("air-state:update");
 		});

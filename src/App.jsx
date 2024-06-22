@@ -5,7 +5,12 @@ import DevicesContainer from "./pages/Devices/DevicesContainer.js";
 import { Help } from "./pages/Help/Help.jsx";
 import { NotFound } from "./pages/NotFound/NotFound.jsx";
 
-export const App = () => {
+export const App = (props) => {
+   React.useEffect(() => {
+      props.updateAirStateThunk();
+      props.getStandardsThunk();
+   });
+
    return (
       <BrowserRouter>
          <Routes>

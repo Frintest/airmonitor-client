@@ -4,10 +4,6 @@ import s from "./Screen.module.scss";
 
 export const Screen = (props) => {
    React.useEffect(() => {
-      props.updateAirStateThunk();
-   }, []);
-
-   React.useEffect(() => {
       props.updateMainScreen(props.airState);
       props.updateScreen(props.screen.id, props.airState);
    }, [props.airState]);

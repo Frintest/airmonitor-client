@@ -11,4 +11,4 @@ const mapStateToProps = (state) => ({
 	activeScreen: state.ScreensReducer.activeScreen,
 });
 
-export default connect(mapStateToProps, { updateAirStateThunk, updateScreen, updateMainScreen })(Screen);
+export default connect(mapStateToProps, { updateScreen, updateMainScreen })(Screen);
