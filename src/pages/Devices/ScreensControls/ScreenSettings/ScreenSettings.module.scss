@@ -16,12 +16,12 @@
 }
 
 .block {
+   width: 460px;
+   padding: 28px;
    position: absolute;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 460px;
-   padding: 28px;
    background: #fff;
    border-radius: 16px;
 }
@@ -52,11 +52,11 @@
       position: absolute;
       width: 16px;
       height: 1px;
-      border-radius: 2px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       background: $slate-900;
+      border-radius: 2px;
    }
 
    &::before {
