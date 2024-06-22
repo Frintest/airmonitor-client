@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 import { Standard } from "./Standard/Standard.jsx";
 import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
+import { useLocation } from "react-router-dom";
 
 export const AirProp = (props) => {
-   let path = props.router.location.pathname;
-   path = path.split("/");
+   const location = useLocation();
+   let path = location.pathname.split("/");
    path = path[path.length - 1];
    const airItem = props.airState[path];
 

@@ -1,9 +1,10 @@
 import React from "react";
 import s from "./Header.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-export const Header = (props) => {
-   const path = props.router.location.pathname;
+export const Header = () => {
+	const location = useLocation();
+   const path = location.pathname;
 
    const menuContent = [
       { name: "Устройства", link: "/devices" },
