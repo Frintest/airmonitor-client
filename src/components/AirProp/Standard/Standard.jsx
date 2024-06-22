@@ -1,16 +1,20 @@
 import React from "react";
-import s from "./Standards.module.scss";
+import s from "./Standard.module.scss";
 
-export const Standards = (props) => {
+export const Standard = (props) => {
    const getLevelColors = (level) => {
       const fromColor = props.levelColors[level].dark;
       const toColor = props.levelColors[level].light;
       return [fromColor, toColor];
    };
 
+   const standard = props.standards.content;
+
    const elements = () => {
-      return props.standards.content.map((item) => {
+      return standard.map((item) => {
          const [fromColor, toColor] = getLevelColors(item.level);
+         const value = item.level == standard.length ? `${item.value}+` : `${item.value}`;
+
          return (
             <li className={s.item} key={item.level}>
                <div
@@ -19,7 +23,7 @@ export const Standards = (props) => {
                      background: `linear-gradient(0deg, ${fromColor} 0%, ${toColor} 100%)`,
                   }}
                >
-                  {item.value}
+                  {value}
                </div>
                <p className={s.desc}>{item.text}</p>
             </li>
@@ -28,7 +32,7 @@ export const Standards = (props) => {
    };
 
    return (
-      props.standards.content && (
+      standard && (
          <div className={s.standards}>
             <p className={s.standards__source}>*{props.standards.source}</p>
             <ul className={s.standards__list}>{elements()}</ul>

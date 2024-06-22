@@ -2,7 +2,7 @@ import React from "react";
 import s from "./AirProp.module.scss";
 import { Link } from "react-router-dom";
 import { formatText } from "../../utilities/helpers/format-text-airprop.js";
-import { Standards } from "./Standards/Standards.jsx";
+import { Standard } from "./Standard/Standard.jsx";
 import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
 
 export const AirProp = (props) => {
@@ -34,7 +34,7 @@ export const AirProp = (props) => {
                   <p className={s.maininfo__value}>{airItem.value}</p>
                   <span className={s.maininfo__unit}>{formatText(airItem.unit)}</span>
                </div>
-               <Standards
+               <Standard
                   levelColors={props.levelColors}
                   standards={props.standards[airItem.sensor_name]}
                />
