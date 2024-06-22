@@ -1,0 +1,60 @@
+@import "../../../../scss/utilities/variables.scss";
+
+.standards {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-end;
+   position: relative;
+
+   &__list {
+      display: flex;
+   }
+
+   &__source {
+      font-size: 12px;
+      color: $slate-600;
+      right: 0;
+      top: -35px;
+      position: absolute;
+   }
+}
+
+.item {
+   position: relative;
+
+   &:first-child .blockValue {
+      border-top-left-radius: 40px;
+      border-bottom-left-radius: 40px;
+   }
+
+   &:last-child .blockValue {
+      border-top-right-radius: 40px;
+      border-bottom-right-radius: 40px;
+   }
+
+   & + & {
+      margin-left: 2px;
+   }
+}
+
+.blockValue {
+   width: 130px;
+   height: 40px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: #fff;
+   font-weight: 700;
+}
+
+.desc {
+   position: absolute;
+   left: 50%;
+   transform: translate(-50%, 0);
+   display: block;
+   max-width: 120px;
+   margin-top: 10px;
+   text-align: center;
+   font-size: 14px;
+   color: $slate-600;
+}

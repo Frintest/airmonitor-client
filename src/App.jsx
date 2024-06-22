@@ -1,33 +1,18 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Layout } from "./components/Layout/Layout.jsx";
-import ScreenContainer from "./components/Screen/ScreenContainer.js";
-import AirPropContainer from "./components/AirProp/AirPropContainer.js";
-import { NotFound } from "./components/NotFound/NotFound.jsx";
+import { Layout } from "./Layout/Layout.jsx";
+import DevicesContainer from "./pages/Devices/DevicesContainer.js";
+import { Help } from "./pages/Help/Help.jsx";
+import { NotFound } from "./pages/NotFound/NotFound.jsx";
 
-export const App = (props) => {
-   React.useEffect(() => {
-      props.updateAirStateThunk();
-      props.getStandardsThunk();
-   });
-
-   const elements = Object.values(props.data).map((item) => {
-      return (
-         <Route
-            path={`/${item.sensor_name}`}
-            element={<AirPropContainer />}
-            key={item.sensor_name}
-         />
-      );
-   });
-
+export const App = () => {
    return (
       <BrowserRouter>
          <Routes>
             <Route path="/" element={<Layout />}>
-               <Route index element={<ScreenContainer />} />
+               <Route path="devices/*" element={<DevicesContainer />} />
+               <Route path="help" element={<Help />} />
                <Route path="*" element={<NotFound />} />
-               {elements}
             </Route>
          </Routes>
       </BrowserRouter>

@@ -33,6 +33,7 @@ export const updateAirStateThunk = () => (dispatch) => {
 
 const getStandards = (standards) => ({ type: GET_STANDARDS, standards });
 export const getStandardsThunk = () => (dispatch) => {
+	
 	API.getStandards((standards) => {
 		dispatch(getStandards(standards));
 	});

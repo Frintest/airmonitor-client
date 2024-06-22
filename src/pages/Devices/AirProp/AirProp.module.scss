@@ -1,0 +1,72 @@
+@import "../../../scss/utilities/variables.scss";
+
+.airprop {
+   border-radius: 16px;
+   background: $slate-50;
+   width: 1200px;
+   margin: 0 auto;
+   overflow: hidden;
+}
+
+.header {
+   background: #e3ebf0;
+   border-top-left-radius: 15px;
+   border-top-right-radius: 15px;
+   padding: 16px 24px;
+   display: flex;
+   align-items: center;
+
+   &__exit {
+      background: $slate-200;
+      padding: 5px;
+      border: none;
+      cursor: pointer;
+   }
+
+   &__title {
+      margin-left: 14px;
+      font-size: 18px;
+      font-weight: 500;
+      color: $slate-900;
+   }
+}
+
+.maininfo {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+
+   &__valueWrap {
+      display: flex;
+      align-items: flex-end;
+   }
+
+   &__value {
+      font-size: 54px;
+      color: $slate-900;
+      font-weight: 500;
+      letter-spacing: -0.0625rem;
+   }
+
+   &__unit {
+      margin-left: 12px;
+      margin-bottom: 11px;
+      color: $slate-900;
+   }
+}
+
+.info {
+   padding: 60px 52px;
+}
+
+.chart {
+   margin-top: 80px;
+}
+
+.loading {
+   &__container {
+      width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+   }
+}
