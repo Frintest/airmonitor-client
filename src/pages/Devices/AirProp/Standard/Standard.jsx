@@ -32,11 +32,9 @@ export const Standard = (props) => {
    };
 
    return (
-      standards && (
-         <div className={s.standards}>
-            <p className={s.standards__source}>*{props.standards.source}</p>
-            <ul className={s.standards__list}>{elements()}</ul>
-         </div>
-      )
+      <div className={s.standards}>
+         <p className={s.standards__source}>*{props.standards.source}</p>
+         <ul className={s.standards__list}>{elements()}</ul>
+      </div>
    );
 };

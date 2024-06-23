@@ -46,7 +46,11 @@ export const AirProp = (props) => {
                   <span className={s.maininfo__unit}>{formatText(airItem.unit)}</span>
                </div>
 
-               <Standard levelColors={props.levelColors} standards={standards} />
+               {standards.isExist ? (
+                  <Standard levelColors={props.levelColors} standards={standards} />
+               ) : (
+                  <p className={s.maininfo__standardsNotFount}>Стандарты не предусмотрены</p>
+               )}
             </div>
 
             <div className={s.chart}>

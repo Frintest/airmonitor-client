@@ -2,12 +2,12 @@ import React from "react";
 import s from "./HistoryChart.module.scss";
 import { Chart } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
-import gradient from "chartjs-plugin-gradient";
+import gradientPlugin from "chartjs-plugin-gradient";
 import zoomPlugin from "chartjs-plugin-zoom";
 import chroma from "chroma-js";
 
 ChartJS.register(...registerables);
-ChartJS.register(gradient);
+ChartJS.register(gradientPlugin);
 ChartJS.register(zoomPlugin);
 
 export const HistoryChart = (props) => {
@@ -152,21 +152,23 @@ export const HistoryChart = (props) => {
                label: (context) => `${props.sensor_name}: ${context.parsed.y}`,
             },
          },
-         // zoom: {
-         //    pan: {
-         //       // pan options and/or events
-         //       // enabled: true,
-         //    },
-         //    limits: {
-         //       // axis limits
-         //    },
-         //    zoom: {
-         //       // zoom options and/or events
-         //       wheel: {
-         //          enabled: true,
-         //       },
-         //    },
-         // },
+         zoom: {
+            // pan: {
+            //    // pan options and/or events
+            //    // enabled: true,
+            // },
+            // limits: {
+            //    // axis limits
+            // },
+            zoom: {
+               // zoom options and/or events
+               wheel: {
+                  speed: 0.1,
+                  enabled: true,
+               },
+               mode: "y",
+            },
+         },
       },
       scales: {
          y: {
