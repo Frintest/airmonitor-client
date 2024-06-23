@@ -23,14 +23,16 @@ export const API = {
 	},
 
 	updateAirHistory(callback) {
-		socket.once("air-history:update", data => {
+		socket.once("air-history:update", (data, eventConfirm) => {
+			eventConfirm();
 			callback(data);
 			console.log("air-history:update");
 		});
 	},
 
-	getStandards(callback) {
-		socket.once("standards:get", data => {
+	getStandards(callback,) {
+		socket.once("standards:get", (data, eventConfirm) => {
+			eventConfirm();
 			callback(data);
 			console.log("standards:get");
 		});

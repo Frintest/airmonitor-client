@@ -1,18 +1,20 @@
 @import "../../../../../scss/utilities/variables.scss";
 
-.wrap {
+.label {
    width: fit-content;
-   border-radius: 100vh;
-   background: #f1f5f9;
+	display: flex;
+   align-items: center;
    padding: 10px 14px;
    margin-top: 14px;
    margin-left: 14px;
-}
-
-.label {
-   display: flex;
-   align-items: center;
+   border-radius: 100vh;
+   background: $slate-100;
+   transition: background 0.3s;
    cursor: pointer;
+
+   &:hover {
+      background: $slate-200;
+   }
 }
 
 .name {

@@ -20,15 +20,17 @@ export const ScreensControls = (props) => {
             )}
          </div>
 
-         <ScreenSettings
-            isVisible={isVisible}
-            setVisible={() => setVisible(false)}
-            airState={props.airState}
-            screen={props.screen}
-            clearScreen={props.clearScreen}
-            addScreenItem={props.addScreenItem}
-            removeScreenItem={props.removeScreenItem}
-         />
+         {isVisible && (
+            <ScreenSettings
+               isVisible={isVisible}
+               setVisible={() => setVisible(false)}
+               airState={props.airState}
+               screen={props.screen}
+               clearScreen={props.clearScreen}
+               addScreenItem={props.addScreenItem}
+               removeScreenItem={props.removeScreenItem}
+            />
+         )}
       </>
    );
 };

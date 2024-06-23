@@ -8,7 +8,6 @@ import { Routes, Route } from "react-router-dom";
 export const Devices = (props) => {
    React.useEffect(() => {
       props.updateAirStateThunk();
-      props.getStandardsThunk();
    });
 
    const airPropRoutes = Object.values(props.data).map((item) => {
