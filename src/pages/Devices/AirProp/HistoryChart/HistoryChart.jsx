@@ -81,7 +81,7 @@ export const HistoryChart = (props) => {
             ctx.save();
             ctx.beginPath(); // делает линию независимой (=> вычитает точку)
             ctx.lineWidth = 1;
-            ctx.strokeStyle = "rgba(15, 23, 42, 0.6)";
+            ctx.strokeStyle = "rgba(15, 23, 42, 0.6)"; // 0f172a
             ctx.setLineDash([6, 6]); // [черта, пустота]
             ctx.moveTo(xCoor, top);
             ctx.lineTo(xCoor, bottom);
@@ -93,7 +93,7 @@ export const HistoryChart = (props) => {
             ctx.save();
             ctx.beginPath();
             ctx.lineWidth = 1;
-            ctx.strokeStyle = "rgba(15, 23, 42, 0.6)";
+            ctx.strokeStyle = "rgba(15, 23, 42, 0.6)"; // 0f172a
             ctx.setLineDash([6, 6]);
             ctx.moveTo(left, yCoor);
             ctx.lineTo(right, yCoor);
@@ -136,7 +136,7 @@ export const HistoryChart = (props) => {
             display: false,
          },
          tooltip: {
-            backgroundColor: "rgba(15, 23, 42, 0.8)",
+            backgroundColor: "rgba(15, 23, 42, 0.8)", // 0f172a
             padding: 12,
             titleFont: {
                size: 13,
@@ -176,7 +176,7 @@ export const HistoryChart = (props) => {
                   family: "Roboto",
                   weight: 700,
                },
-               color: "#545a67",
+               color: "#475569",
             },
          },
          x: {
@@ -186,7 +186,7 @@ export const HistoryChart = (props) => {
                   family: "Roboto",
                   weight: 700,
                },
-               color: "#545a67",
+               color: "#475569",
             },
          },
       },
