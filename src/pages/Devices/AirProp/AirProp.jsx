@@ -1,13 +1,14 @@
 import React from "react";
 import s from "./AirProp.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 import { Standard } from "./Standard/Standard.jsx";
 import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
-import { useLocation } from "react-router-dom";
-import { UpdateData } from "../UpdateData/UpdateData.jsx";
+import { Settings } from "./Settings/Settings.jsx";
 
 export const AirProp = (props) => {
+   const ref = React.useRef();
+
    const location = useLocation();
    let path = location.pathname.split("/");
    path = path[path.length - 1];
@@ -35,8 +36,6 @@ export const AirProp = (props) => {
 
                <p className={s.header__title}>{formatText(airItem.ui_name)}</p>
             </div>
-
-            <UpdateData textColor="#020617" timeColor="#475569" />
          </div>
 
          <div className={s.info}>
@@ -46,12 +45,10 @@ export const AirProp = (props) => {
                   <span className={s.maininfo__unit}>{formatText(airItem.unit)}</span>
                </div>
 
-               {standards.isExist ? (
-                  <Standard levelColors={props.levelColors} standards={standards} />
-               ) : (
-                  <p className={s.maininfo__standardsNotFount}>Стандарты не предусмотрены</p>
-               )}
+               <Standard standards={standards} levelColors={props.levelColors} />
             </div>
+
+            <Settings ref={ref} />
 
             <div className={s.chart}>
                <HistoryChart
@@ -60,6 +57,7 @@ export const AirProp = (props) => {
                   ui_name={airItem.ui_name}
                   updateAirHistoryThunk={props.updateAirHistoryThunk}
                   levelColors={props.levelColors}
+                  ref={ref}
                />
             </div>
          </div>

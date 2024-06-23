@@ -10,7 +10,7 @@ ChartJS.register(...registerables);
 ChartJS.register(gradientPlugin);
 ChartJS.register(zoomPlugin);
 
-export const HistoryChart = (props) => {
+export const HistoryChart = React.forwardRef((props, ref) => {
    const getAirPropHistory = () => {
       const data = Object.values(props.history).map((item) => {
          return {
@@ -194,5 +194,9 @@ export const HistoryChart = (props) => {
       },
    };
 
-   return <Chart type="line" data={data} options={options} plugins={[hoverLine]} />;
-};
+   return (
+      <>
+         <Chart type="line" data={data} options={options} plugins={[hoverLine]} ref={ref} />
+      </>
+   );
+});

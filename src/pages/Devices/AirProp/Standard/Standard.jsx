@@ -31,10 +31,12 @@ export const Standard = (props) => {
       });
    };
 
-   return (
+   return props.standards.isExist ? (
       <div className={s.standards}>
          <p className={s.standards__source}>*{props.standards.source}</p>
          <ul className={s.standards__list}>{elements()}</ul>
       </div>
+   ) : (
+      <p className={s.notFount}>Стандарты не предусмотрены</p>
    );
 };
