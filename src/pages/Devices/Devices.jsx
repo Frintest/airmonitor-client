@@ -4,6 +4,7 @@ import ScreensControlsContainer from "./ScreensControls/ScreensControlsContainer
 import ScreenContainer from "./Screen/ScreenContainer.js";
 import AirPropContainer from "./AirProp/AirPropContainer.js";
 import { Routes, Route } from "react-router-dom";
+import { UpdateData } from "./UpdateData/UpdateData.jsx";
 
 export const Devices = (props) => {
    React.useEffect(() => {
@@ -27,7 +28,11 @@ export const Devices = (props) => {
                index
                element={
                   <div>
-                     <ScreensControlsContainer />
+                     <div className={s.screensControls}>
+                        <ScreensControlsContainer />
+                        <UpdateData textColor="#fff" timeColor="#cbd5e1" />
+                     </div>
+
                      <ScreenContainer />
                   </div>
                }

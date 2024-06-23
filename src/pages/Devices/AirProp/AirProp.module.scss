@@ -15,6 +15,12 @@
    padding: 16px 24px;
    display: flex;
    align-items: center;
+   justify-content: space-between;
+
+   &__info {
+      display: flex;
+      align-items: center;
+   }
 
    &__exit {
       background: $slate-200;
