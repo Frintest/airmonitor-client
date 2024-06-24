@@ -27,7 +27,7 @@ export const ScreenSettings = (props) => {
          </div>
 
          <Button
-            content={"Очистить экран"}
+            content="Очистить экран"
             onClick={() => {
                props.onClose();
                props.clearScreen();
