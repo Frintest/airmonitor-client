@@ -21,11 +21,7 @@ export const ScreenSettings = (props) => {
    });
 
    return (
-      <Popup
-         title={"Компоненты"}
-         isVisible={props.isVisible}
-         onClose={() => props.setVisible(false)}
-      >
+      <Popup title={"Компоненты"} isVisible={props.isVisible} onClose={props.onClose}>
          <div>
             <div className={s.elements}>{elements}</div>
          </div>
@@ -33,7 +29,7 @@ export const ScreenSettings = (props) => {
          <Button
             content={"Очистить экран"}
             onClick={() => {
-               props.setVisible(false);
+               props.onClose();
                props.clearScreen();
             }}
          />

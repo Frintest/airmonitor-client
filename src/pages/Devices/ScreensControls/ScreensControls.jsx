@@ -23,7 +23,7 @@ export const ScreensControls = (props) => {
          {isVisible && (
             <ScreenSettings
                isVisible={isVisible}
-               setVisible={() => setVisible(false)}
+               onClose={() => setVisible(false)}
                airState={props.airState}
                screen={props.screen}
                clearScreen={props.clearScreen}
