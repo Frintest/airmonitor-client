@@ -1,12 +1,14 @@
 import React from "react";
 import s from "./ScreenSettings.module.scss";
+import { Popup } from "../../../../components/Popup/Popup.jsx";
 import { ScreenSettingsElement } from "./ScreenSettingsElement/ScreenSettingsElement.jsx";
+import { Button } from "../../../../components/Button/Button.jsx";
 
 export const ScreenSettings = (props) => {
    const elements = Object.values(props.airState).map((item) => {
       const airItem = props.airState[item.sensor_name];
       const isChecked = props.screen.elements[item.sensor_name] !== undefined;
-		
+
       return (
          <ScreenSettingsElement
             airItem={airItem}
@@ -19,25 +21,22 @@ export const ScreenSettings = (props) => {
    });
 
    return (
-      <div className={s.wrap}>
-         <div className={s.block}>
-            <div className={s.header}>
-               <p className={s.heading}>Компоненты</p>
-               <button className={s.closeBtn} onClick={() => props.setVisible(false)}></button>
-            </div>
-
+      <Popup
+         title={"Компоненты"}
+         isVisible={props.isVisible}
+         onClose={() => props.setVisible(false)}
+      >
+         <div>
             <div className={s.elements}>{elements}</div>
-
-            <button
-               className={s.removeBtn}
-               onClick={() => {
-                  props.setVisible(false);
-                  props.clearScreen();
-               }}
-            >
-               Очистить экран
-            </button>
          </div>
-      </div>
+
+         <Button
+            content={"Очистить экран"}
+            onClick={() => {
+               props.setVisible(false);
+               props.clearScreen();
+            }}
+         />
+      </Popup>
    );
 };
