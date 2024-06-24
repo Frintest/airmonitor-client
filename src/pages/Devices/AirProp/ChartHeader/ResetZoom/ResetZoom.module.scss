@@ -3,9 +3,14 @@
 .ResetZoom {
    padding: 10px 18px;
    border-radius: 100vh;
-   background: $btn-bg;
+   background: $slate-200;
    font-size: 16px;
-   color: #fff;
+   color: $slate-900;
    cursor: pointer;
    border: none;
+   transition: 0.3s;
+
+   &:hover {
+      background: $slate-300;
+   }
 }

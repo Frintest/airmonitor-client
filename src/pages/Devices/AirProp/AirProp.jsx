@@ -2,9 +2,9 @@ import React from "react";
 import s from "./AirProp.module.scss";
 import { Link, useLocation } from "react-router-dom";
 import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
-import { Standard } from "./Standard/Standard.jsx";
+import { Standards } from "./Standards/Standards.jsx";
 import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
-import { Settings } from "./Settings/Settings.jsx";
+import { ChartHeader } from "./ChartHeader/ChartHeader.jsx";
 
 export const AirProp = (props) => {
    const ref = React.useRef();
@@ -45,10 +45,10 @@ export const AirProp = (props) => {
                   <span className={s.maininfo__unit}>{formatText(airItem.unit)}</span>
                </div>
 
-               <Standard standards={standards} levelColors={props.levelColors} />
+               <Standards standards={standards} levelColors={props.levelColors} />
             </div>
 
-            <Settings ref={ref} />
+            <ChartHeader ref={ref} />
 
             <div className={s.chart}>
                <HistoryChart

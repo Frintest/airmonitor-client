@@ -1,0 +1,32 @@
+@import "./../../../../../scss/utilities/variables.scss";
+
+.rangeDate {
+   display: flex;
+   align-items: center;
+   margin-right: 30px;
+   padding: 10px 24px 10px 14px;
+   border: 1px solid $slate-200;
+   border-radius: 100vh;
+
+   &__icon {
+      cursor: pointer;
+
+      & > path {
+         fill: $slate-600;
+         transition: 0.3s;
+      }
+
+      &:hover {
+         & > path {
+            fill: $slate-700;
+         }
+      }
+   }
+
+   &__date {
+      display: block;
+      margin-left: 8px;
+      font-size: 15px;
+      color: $slate-900;
+   }
+}

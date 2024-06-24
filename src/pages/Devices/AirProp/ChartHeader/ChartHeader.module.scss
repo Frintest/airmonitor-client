@@ -1,6 +1,11 @@
-.settings {
+.chartHeader {
    display: flex;
    justify-content: space-between;
    align-items: center;
    margin-top: 40px;
+
+	&__settings {
+		display: flex;
+		align-items: center;
+	}
 }

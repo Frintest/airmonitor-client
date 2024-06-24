@@ -1,7 +1,7 @@
 import React from "react";
-import s from "./Standard.module.scss";
+import s from "./Standards.module.scss";
 
-export const Standard = (props) => {
+export const Standards = (props) => {
    const getLevelColors = (level) => {
       const fromColor = props.levelColors[level].dark;
       const toColor = props.levelColors[level].light;

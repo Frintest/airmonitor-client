@@ -13,9 +13,6 @@
    border-top-left-radius: 15px;
    border-top-right-radius: 15px;
    padding: 14px 22px;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
 
    &__info {
       display: flex;
@@ -66,7 +63,7 @@
 }
 
 .chart {
-   margin-top: 20px;
+   margin-top: 24px;
 }
 
 .loading {
