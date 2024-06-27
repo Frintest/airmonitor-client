@@ -8,7 +8,7 @@ export const Header = () => {
 
    const menuContent = [
       { name: "Устройства", link: "/devices" },
-      { name: "Помощь", link: "/help" },
+      { name: "Руководство", link: "/help" },
    ];
 
    const menuItems = menuContent.map((item) => (

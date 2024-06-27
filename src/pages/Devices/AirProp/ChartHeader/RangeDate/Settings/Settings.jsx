@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Settings.module.scss";
 import { Popup } from "../../../../../../components/Popup/Popup.jsx";
 import { QuickRange } from "./QuickRange/QuickRange.jsx";
+import { DatePicker } from "./DatePicker/DatePicker.jsx";
 import { Button } from "../../../../../../components/Button/Button.jsx";
 
 export const Settings = (props) => {
@@ -12,7 +13,10 @@ export const Settings = (props) => {
                setActiveQuickRange={props.setActiveQuickRange}
                quickRange={props.quickRange}
             />
-            <div className={s.settings__calendars}>Calendars</div>
+            <div className={s.settings__calendars}>
+               <DatePicker />
+               <DatePicker />
+            </div>
          </div>
 
          <div className={s.settings__buttons}>
