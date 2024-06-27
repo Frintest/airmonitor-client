@@ -26,12 +26,12 @@
 
       &:enabled:hover,
       &:enabled:focus {
-         background-color: #e2e8f0;
+         background-color: $slate-200;
       }
 
       &:disabled {
-         background-color: #f1f5f9;
-         color: #cbd5e1;
+         background-color: $slate-100;
+         color: $slate-300;
       }
    }
 
@@ -46,7 +46,7 @@
       font-weight: 500;
 
       &:enabled {
-         color: #0f172a;
+         color: $slate-900;
       }
    }
 }
@@ -59,38 +59,38 @@
    background: none;
    text-align: center;
    font-size: 17px;
-   color: #0f172a;
+   color: $slate-900;
 
    &:enabled:hover,
    &:enabled:focus {
-      background-color: #e2e8f0;
+      background-color: $slate-200;
    }
 
    &--active {
-      background: #22d3ee;
+      background: $ligth-main-color;
       color: #fff;
       transition: background 0.3s;
 
       &:enabled:hover,
       &:enabled:focus {
-         background: #22d3ee;
+         background: $ligth-main-color;
          color: #fff;
       }
    }
 
    &--hasActive {
-      background: #22d3ee;
+      background: $ligth-main-color;
       color: #fff;
 
       &:enabled:hover,
       &:enabled:focus {
-         background: #22d3ee;
+         background: $ligth-main-color;
          color: #fff;
       }
    }
 
    &--now {
-      border: 1.5px solid #06b6d4;
+      border: 1.5px solid $main-color;
 
       &:enabled:hover,
       &:enabled:focus {
@@ -98,7 +98,7 @@
       }
 
       &:enabled.react-calendar__tile--active {
-         background: #22d3ee;
+         background: $ligth-main-color;
       }
    }
 }
@@ -108,7 +108,7 @@
       text-align: center;
       text-transform: capitalize;
       font-size: 17px;
-      color: #475569;
+      color: $slate-600;
       margin-bottom: 10px;
 
       &__weekday > abbr {
@@ -118,7 +118,7 @@
 
    &__days__day {
       &--neighboringMonth {
-         color: #94a3b8;
+         color: $slate-400;
       }
 
       &--weekend {
