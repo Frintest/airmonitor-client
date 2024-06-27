@@ -55,7 +55,10 @@ export const ScreensReducer = (state = initialState, action) => {
 			});
 			screen.elements = elementsCopy;
 
-			return { ...state, screens: { ...state.screens, [action.id]: screen } };
+			return {
+				...state,
+				screens: { ...state.screens, [action.id]: screen }
+			};
 		}
 
 		case UPDATE_MAIN_SCREEN: {
@@ -63,7 +66,10 @@ export const ScreensReducer = (state = initialState, action) => {
 			const screen = { ...screens[0] };
 			screen.elements = action.data;
 
-			return { ...state, screens: { ...state.screens, 0: screen } };
+			return {
+				...state,
+				screens: { ...state.screens, 0: screen }
+			};
 		}
 
 		case SET_ACTIVE_SCREEN: {

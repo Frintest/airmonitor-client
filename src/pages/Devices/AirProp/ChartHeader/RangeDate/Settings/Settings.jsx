@@ -8,7 +8,10 @@ export const Settings = (props) => {
    return (
       <Popup title={"Диапазон дат/времени"} isVisible={props.isVisible} onClose={props.onClose}>
          <div className={s.settings__body}>
-            <QuickRange />
+            <QuickRange
+               setActiveQuickRange={props.setActiveQuickRange}
+               quickRange={props.quickRange}
+            />
             <div className={s.settings__calendars}>Calendars</div>
          </div>
 

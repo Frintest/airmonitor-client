@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./RangeDate.module.scss";
-import { Settings } from "./Settings/Settings.jsx";
+import SettingsContainer from "./Settings/SettingsContainer.js";
 
 export const RangeDate = (props) => {
    return (
@@ -22,7 +22,7 @@ export const RangeDate = (props) => {
             </span>
          </div>
 
-         <Settings isVisible={props.isVisible} onClose={props.onClose} />
+         <SettingsContainer isVisible={props.isVisible} onClose={props.onClose} />
       </>
    );
 };

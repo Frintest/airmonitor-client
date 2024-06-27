@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 import { Standards } from "./Standards/Standards.jsx";
 import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
-import { ChartHeader } from "./ChartHeader/ChartHeader.jsx";
+import ChartHeaderContainer from "./ChartHeader/ChartHeaderContainer.js";
 
 export const AirProp = (props) => {
    const ref = React.useRef();
@@ -48,7 +48,7 @@ export const AirProp = (props) => {
                <Standards standards={standards} levelColors={props.levelColors} />
             </div>
 
-            <ChartHeader ref={ref} />
+            <ChartHeaderContainer ref={ref} />
 
             <div className={s.chart}>
                <HistoryChart
