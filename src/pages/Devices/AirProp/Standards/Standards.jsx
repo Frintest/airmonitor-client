@@ -33,7 +33,9 @@ export const Standards = (props) => {
 
    return props.standards.isExist ? (
       <div className={s.standards}>
-         <p className={s.standards__source}>*{props.standards.source}</p>
+         <p className={s.standards__source}>
+            Стандарт: {props.standards.source}
+         </p>
          <ul className={s.standards__list}>{elements()}</ul>
       </div>
    ) : (

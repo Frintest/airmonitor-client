@@ -15,8 +15,7 @@
 
 .react-calendar__navigation {
    display: flex;
-   height: 44px;
-   margin-bottom: 12px;
+   height: 48px;
 
    & button {
       min-width: 44px;
@@ -41,12 +40,15 @@
       align-items: center;
    }
 
-   &__label__labelText {
-      font-size: 18px;
-      font-weight: 500;
-
+   &__label {
       &:enabled {
          color: $slate-900;
+      }
+
+      &__labelText {
+         font-size: 18px;
+         font-weight: 500;
+         text-transform: capitalize;
       }
    }
 }
@@ -109,7 +111,13 @@
       text-transform: capitalize;
       font-size: 17px;
       color: $slate-600;
-      margin-bottom: 10px;
+
+      &__weekday {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         height: 48px;
+      }
 
       &__weekday > abbr {
          text-decoration: none;
@@ -132,8 +140,12 @@
 }
 
 .react-calendar__year-view {
+   &__months {
+      margin-top: 24px;
+   }
+
    &__months__month {
-      height: fit-content;
+      height: 44px;
    }
 
    & .react-calendar__tile {

@@ -2,6 +2,7 @@ import React from "react";
 import Calendar from "react-calendar";
 import s from "./DatePicker.module.scss";
 import "./Calendar.scss";
+import moment from "moment";
 
 const PreviousIcon = () => {
    return (
@@ -49,6 +50,11 @@ export const DatePicker = (props) => {
    return (
       <div className={s.datePicker}>
          <Calendar
+            locale="ru"
+            formatMonthYear={(locale, date) => {
+               moment.locale(locale);
+               return moment(date).format("MMMM YYYY");
+            }}
             minDetail="year"
             prev2Label={null}
             next2Label={null}
