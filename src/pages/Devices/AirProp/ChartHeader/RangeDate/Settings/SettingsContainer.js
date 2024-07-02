@@ -5,6 +5,8 @@ import { setActiveQuickRange } from "../../../../../../redux/reducers/range-date
 const mapStateToProps = (state) => ({
 	quickRange: state.RangeDateReducer.quickRange,
 	isCustomRange: state.RangeDateReducer.quickRangeActive === 0,
+	firstDate: "1",
+	lastDate: "2",
 });
 
 export default connect(mapStateToProps, { setActiveQuickRange })(Settings);

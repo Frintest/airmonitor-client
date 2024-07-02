@@ -58,7 +58,7 @@ export const AirProp = (props) => {
 
             <div className={s.chart}>
                <HistoryChart
-                  history={history}
+                  history={history.history}
                   sensor_name={airItem.sensor_name}
                   ui_name={airItem.ui_name}
                   updateAirHistoryThunk={props.updateAirHistoryThunk}

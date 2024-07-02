@@ -1,6 +1,7 @@
 import { API } from "../../api/api.js";
 
-const UPDATE = "history/UPDATE";
+const UPDATE_HISTORY = "history/UPDATE_HISTORY";
+const UPDATE_INFO = "history/UPDATE_INFO";
 
 const initialState = {
 	history: {},
@@ -8,14 +9,30 @@ const initialState = {
 
 export const AirHistoryReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case UPDATE: {
+		case UPDATE_HISTORY: {
 			return {
 				...state,
 				history: {
 					...state.history,
-					[action.name]: action.data,
-				},
+					[action.name]: {
+						...state.history[action.name],
+						history: [...action.history]
+					}
+				}
 			};
+		}
+
+		case UPDATE_INFO: {
+			return {
+				...state,
+				history: {
+					...state.history,
+					[action.name]: {
+						...state.history[action.name],
+						info: { ...action.info }
+					}
+				}
+			}
 		}
 
 		default:
@@ -23,12 +40,14 @@ export const AirHistoryReducer = (state = initialState, action) => {
 	}
 };
 
-const updateAirHistory = (data, name) => ({ type: UPDATE, data, name });
+const updateHistory = (history, name) => ({ type: UPDATE_HISTORY, name, history });
+const updateInfo = (info, name) => ({ type: UPDATE_INFO, name, info });
 
 export const updateAirHistoryThunk = (name) => (dispatch) => {
 	API.sendHistoryItemName(name);
 
 	API.updateAirHistory((data) => {
-		dispatch(updateAirHistory(data, name));
+		dispatch(updateHistory(data.history, name));
+		dispatch(updateInfo(data.info, name));
 	});
 };

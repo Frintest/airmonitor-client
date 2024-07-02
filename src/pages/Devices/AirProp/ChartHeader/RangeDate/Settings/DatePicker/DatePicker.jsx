@@ -55,6 +55,7 @@ export const DatePicker = (props) => {
                moment.locale(locale);
                return moment(date).format("MMMM YYYY");
             }}
+            maxDate={new Date(2024, 6, 2)}
             minDetail="year"
             prev2Label={null}
             next2Label={null}
@@ -64,7 +65,7 @@ export const DatePicker = (props) => {
 
          <label className={s.textPicker}>
             <span className={s.textPicker__subtitle}>{props.textPicker}</span>
-            <input type="text" className={s.textPicker__input} placeholder="10/21/2024" />
+            <input type="text" className={s.textPicker__input} placeholder={props.date} />
          </label>
       </div>
    );
