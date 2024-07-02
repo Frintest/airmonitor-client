@@ -24,11 +24,12 @@ export const RangeDate = (props) => {
             </svg>
 
             <span className={s.rangeDate__date}>
-               {props.airStateInfo.firstDate} - {props.airStateInfo.lastDate}
+               {info.firstDate} - {info.lastDate}
             </span>
          </div>
 
          <Settings
+            airInfo={props.airInfo}
             info={info}
             quickRange={props.quickRange}
             isCustomRange={props.isCustomRange}

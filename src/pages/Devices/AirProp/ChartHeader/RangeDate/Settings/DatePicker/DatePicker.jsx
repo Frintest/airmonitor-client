@@ -55,7 +55,8 @@ export const DatePicker = (props) => {
                moment.locale(locale);
                return moment(date).format("MMMM YYYY");
             }}
-            maxDate={new Date(2024, 6, 2)}
+            minDate={new Date(props.airInfo.firstDate)}
+            maxDate={new Date(props.airInfo.lastDate)}
             minDetail="year"
             prev2Label={null}
             next2Label={null}

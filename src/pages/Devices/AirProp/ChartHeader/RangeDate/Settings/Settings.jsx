@@ -15,8 +15,8 @@ export const Settings = (props) => {
             />
             {props.isCustomRange && (
                <div className={s.settings__calendars}>
-                  <DatePicker textPicker="С" date={props.info.firstDate} />
-                  <DatePicker textPicker="До" date={props.info.lastDate} />
+                  <DatePicker textPicker="С" date={props.info.firstDate} airInfo={props.airInfo} />
+                  <DatePicker textPicker="До" date={props.info.lastDate} airInfo={props.airInfo} />
                </div>
             )}
          </div>
