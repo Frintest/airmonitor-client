@@ -1,5 +1,7 @@
 @import "../../../../../../../scss/utilities/variables.scss";
 
+$size: 48px;
+
 .react-calendar {
    width: 336px;
    max-width: 100%;
@@ -15,7 +17,7 @@
 
 .react-calendar__navigation {
    display: flex;
-   height: 48px;
+   height: $size;
 
    & button {
       min-width: 44px;
@@ -35,6 +37,7 @@
    }
 
    &__arrow {
+		width: $size;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -54,8 +57,8 @@
 }
 
 .react-calendar__tile {
-   width: 48px;
-   height: 48px;
+   width: $size;
+   height: $size;
    border: 0;
    border-radius: 100vh;
    background: none;
@@ -116,7 +119,7 @@
          display: flex;
          justify-content: center;
          align-items: center;
-         height: 48px;
+         height: $size;
       }
 
       &__weekday > abbr {
