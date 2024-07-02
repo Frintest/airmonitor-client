@@ -7,7 +7,14 @@ import { Button } from "../../../../../../components/Button/Button.jsx";
 
 export const Settings = (props) => {
    return (
-      <Popup title={"Диапазон дат/времени"} isVisible={props.isVisible} onClose={props.onClose}>
+      <Popup
+         title={"Диапазон дат/времени"}
+         isVisible={props.isVisible}
+         onClose={() => {
+            props.onClose();
+            props.setActiveQuickRange(0);
+         }}
+      >
          <div className={s.settings__body}>
             <QuickRange
                setActiveQuickRange={props.setActiveQuickRange}
@@ -22,7 +29,13 @@ export const Settings = (props) => {
          </div>
 
          <div className={s.settings__buttons}>
-            <button className={s.settings__closeBtn} onClick={props.onClose}>
+            <button
+               className={s.settings__closeBtn}
+               onClick={() => {
+                  props.onClose();
+                  props.setActiveQuickRange(0);
+               }}
+            >
                Отмена
             </button>
             <Button content="Сохранить" onClick={props.onClose} />
