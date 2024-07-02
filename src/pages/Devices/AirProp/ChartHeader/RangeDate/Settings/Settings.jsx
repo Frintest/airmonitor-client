@@ -13,10 +13,12 @@ export const Settings = (props) => {
                setActiveQuickRange={props.setActiveQuickRange}
                quickRange={props.quickRange}
             />
-            <div className={s.settings__calendars}>
-               <DatePicker />
-               <DatePicker />
-            </div>
+            {props.isCustomRange && (
+               <div className={s.settings__calendars}>
+                  <DatePicker textPicker="С" />
+                  <DatePicker textPicker="До" />
+               </div>
+            )}
          </div>
 
          <div className={s.settings__buttons}>

@@ -17,7 +17,7 @@
    left: 50%;
    transform: translate(-50%, -50%);
    background: #fff;
-   border-radius: 16px;
+   border-radius: $border-radius;
 
    & > *:not(:first-child) {
       margin-top: 40px;
