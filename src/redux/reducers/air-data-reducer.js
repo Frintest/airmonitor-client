@@ -4,14 +4,19 @@ const UPDATE_AIR_STATE = "air-state/UPDATE_AIR_STATE";
 const GET_STANDARDS = "air-state/GET_STANDARDS";
 
 const initialState = {
-	data: {},
+	info: {},
+	state: {},
 	standards: {},
 };
 
 export const AirStateReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
-			return { ...state, data: action.airState };
+			return {
+				...state,
+				info: action.airState.info,
+				state: action.airState.state
+			};
 		}
 
 		case GET_STANDARDS: {

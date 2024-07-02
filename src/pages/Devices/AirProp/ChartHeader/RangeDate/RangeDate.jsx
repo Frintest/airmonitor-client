@@ -1,8 +1,10 @@
 import React from "react";
 import s from "./RangeDate.module.scss";
-import SettingsContainer from "./Settings/SettingsContainer.js";
+import { Settings } from "./Settings/Settings.jsx";
 
 export const RangeDate = (props) => {
+   const info = props.history[props.sensor_name].info;
+
    return (
       <>
          <div className={s.rangeDate}>
@@ -22,11 +24,18 @@ export const RangeDate = (props) => {
             </svg>
 
             <span className={s.rangeDate__date}>
-               {"10/21/2024"} - {"11/21/2024"}
+               {props.airStateInfo.firstDate} - {props.airStateInfo.lastDate}
             </span>
          </div>
 
-         <SettingsContainer isVisible={props.isVisible} onClose={props.onClose} />
+         <Settings
+            info={info}
+            quickRange={props.quickRange}
+            isCustomRange={props.isCustomRange}
+            isVisible={props.isVisible}
+            onClose={props.onClose}
+            setActiveQuickRange={props.setActiveQuickRange}
+         />
       </>
    );
 };

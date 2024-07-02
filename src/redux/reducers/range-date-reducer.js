@@ -1,14 +1,6 @@
-import moment from "moment";
 import { API } from "../../api/api.js";
 
 const SET_ACTIVE_QUICK_RANGE = "range/SET_ACTIVE_QUICK_RANGE";
-// const SET_INPUT_FROM_DATE = "range/SET_INPUT_FROM_DATE";
-
-const formatNowDate = (date) => {
-	moment.locale("ru");
-	const formatDate = moment(date).format("MM/DD/YYYY");
-	return formatDate;
-};
 
 const initialState = {
 	quickRange: {
@@ -80,4 +72,3 @@ export const RangeDateReducer = (state = initialState, action) => {
 };
 
 export const setActiveQuickRange = (id) => ({ type: SET_ACTIVE_QUICK_RANGE, id });
-// export const get = () => ({type: SET_INPUT_FROM_DATE});

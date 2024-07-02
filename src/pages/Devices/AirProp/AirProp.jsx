@@ -54,7 +54,7 @@ export const AirProp = (props) => {
                <Standards standards={standards} levelColors={props.levelColors} />
             </div>
 
-            <ChartHeaderContainer ref={ref} />
+            <ChartHeaderContainer ref={ref} sensor_name={airItem.sensor_name} />
 
             <div className={s.chart}>
                <HistoryChart

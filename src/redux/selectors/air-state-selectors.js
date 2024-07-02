@@ -1,3 +1,3 @@
 export const airStateSelector = (state) => {
-	return state.AirStateReducer.data;
+	return state.AirStateReducer.state;
 };
