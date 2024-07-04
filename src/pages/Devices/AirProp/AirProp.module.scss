@@ -3,9 +3,12 @@
 .airprop {
    border-radius: 16px;
    background: $slate-50;
-   width: 1200px;
-   margin: 0 auto;
-   overflow: hidden;
+
+   &__container {
+      width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+   }
 }
 
 .header {

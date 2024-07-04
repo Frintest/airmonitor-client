@@ -45,31 +45,33 @@ export const AirProp = (props) => {
          </div>
 
          <div className={s.info}>
-            <div className={s.maininfo}>
-               <div className={s.maininfo__valueWrap}>
-                  <p className={s.maininfo__value}>{airItem.value}</p>
-                  <span className={s.maininfo__unit}>{formatText(airItem.unit)}</span>
+            <div className={s.airprop__container}>
+               <div className={s.maininfo}>
+                  <div className={s.maininfo__valueWrap}>
+                     <p className={s.maininfo__value}>{airItem.value}</p>
+                     <span className={s.maininfo__unit}>{formatText(airItem.unit)}</span>
+                  </div>
+
+                  <Standards standards={standards} levelColors={props.levelColors} />
                </div>
 
-               <Standards standards={standards} levelColors={props.levelColors} />
+               <ChartHeaderContainer ref={ref} sensor_name={airItem.sensor_name} />
+
+               {history !== undefined ? (
+                  <div className={s.chart}>
+                     <HistoryChart
+                        history={history.history}
+                        sensor_name={airItem.sensor_name}
+                        ui_name={airItem.ui_name}
+                        updateAirHistoryThunk={props.updateAirHistoryThunk}
+                        levelColors={props.levelColors}
+                        ref={ref}
+                     />
+                  </div>
+               ) : (
+                  "Выберите временной интервал, для отображения графика."
+               )}
             </div>
-
-            <ChartHeaderContainer ref={ref} sensor_name={airItem.sensor_name} />
-
-            {history !== undefined ? (
-               <div className={s.chart}>
-                  <HistoryChart
-                     history={history.history}
-                     sensor_name={airItem.sensor_name}
-                     ui_name={airItem.ui_name}
-                     updateAirHistoryThunk={props.updateAirHistoryThunk}
-                     levelColors={props.levelColors}
-                     ref={ref}
-                  />
-               </div>
-            ) : (
-               "Выберите временной интервал, для отображения графика."
-            )}
          </div>
       </section>
    );

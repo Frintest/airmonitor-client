@@ -22,11 +22,11 @@ export const Devices = (props) => {
    });
 
    return (
-      <div className={s.container}>
-         <Routes>
-            <Route
-               index
-               element={
+      <Routes>
+         <Route
+            index
+            element={
+               <div className={s.container}>
                   <div>
                      <div className={s.screensControls}>
                         <ScreensControlsContainer />
@@ -35,10 +35,11 @@ export const Devices = (props) => {
 
                      <ScreenContainer />
                   </div>
-               }
-            />
-            {airPropRoutes}
-         </Routes>
-      </div>
+               </div>
+            }
+         />
+
+         {airPropRoutes}
+      </Routes>
    );
 };
