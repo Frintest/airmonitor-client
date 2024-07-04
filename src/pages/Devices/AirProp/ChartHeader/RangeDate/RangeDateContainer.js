@@ -1,12 +1,8 @@
 import { RangeDate } from "./RangeDate.jsx";
 import { connect } from "react-redux";
-import { setActiveQuickRange } from "../../../../../redux/reducers/range-date-reducer.js";
 
 const mapStateToProps = (state) => ({
-	airInfo: state.AirStateReducer.info,
-	quickRange: state.RangeDateReducer.quickRange,
-	isCustomRange: state.RangeDateReducer.quickRangeActive === 0,
-	history: state.AirHistoryReducer.history,
+	date: state.RangeDateReducer.date,
 });
 
-export default connect(mapStateToProps, { setActiveQuickRange })(RangeDate);
+export default connect(mapStateToProps)(RangeDate);

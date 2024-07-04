@@ -6,7 +6,9 @@ export const QuickRange = (props) => {
       return (
          <li
             className={s.quickRange__item + (range.isActive ? " " + s.quickRange__itemActive : "")}
-            onClick={() => props.setActiveQuickRange(range.id)}
+            onClick={() => {
+               props.setActiveQuickRange(range.id);
+            }}
             key={range.id}
          >
             {range.name}

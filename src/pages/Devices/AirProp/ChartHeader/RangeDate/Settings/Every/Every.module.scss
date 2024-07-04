@@ -1,0 +1,49 @@
+@import "../../../../../../../scss/utilities/variables.scss";
+
+.every {
+   margin-top: 40px;
+
+   &__title {
+      font-weight: 500;
+      color: $slate-900;
+   }
+
+   &__list {
+      max-width: 520px;
+      margin-top: -4px;
+      margin-left: -32px;
+      display: flex;
+      flex-wrap: wrap;
+   }
+}
+
+.item {
+   display: flex;
+   align-items: center;
+   margin-top: 32px;
+   margin-left: 32px;
+
+   &__title {
+      color: $slate-900;
+   }
+
+   &__input {
+		width: 80px;
+      margin-left: 16px;
+      padding: 10px 12px 10px 10px;
+      border-radius: 100vh;
+      border: 1.5px solid $slate-200;
+      font-size: 16px;
+      color: $slate-900;
+      outline: none;
+
+      &:focus {
+         border-color: $main-color;
+      }
+
+      &::placeholder {
+         font-size: 16px;
+         color: $slate-400;
+      }
+   }
+}

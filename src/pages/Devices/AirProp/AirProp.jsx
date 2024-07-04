@@ -21,7 +21,7 @@ export const AirProp = (props) => {
    const history = props.history[airItem.sensor_name];
    const standards = props.standards[airItem.sensor_name];
 
-   return history !== undefined ? (
+   return (
       <section className={s.airprop}>
          <div className={s.header}>
             <div className={s.header__info}>
@@ -56,23 +56,21 @@ export const AirProp = (props) => {
 
             <ChartHeaderContainer ref={ref} sensor_name={airItem.sensor_name} />
 
-            <div className={s.chart}>
-               <HistoryChart
-                  history={history.history}
-                  sensor_name={airItem.sensor_name}
-                  ui_name={airItem.ui_name}
-                  updateAirHistoryThunk={props.updateAirHistoryThunk}
-                  levelColors={props.levelColors}
-                  ref={ref}
-               />
-            </div>
+            {history !== undefined ? (
+               <div className={s.chart}>
+                  <HistoryChart
+                     history={history.history}
+                     sensor_name={airItem.sensor_name}
+                     ui_name={airItem.ui_name}
+                     updateAirHistoryThunk={props.updateAirHistoryThunk}
+                     levelColors={props.levelColors}
+                     ref={ref}
+                  />
+               </div>
+            ) : (
+               "Выберите временной интервал, для отображения графика."
+            )}
          </div>
       </section>
-   ) : (
-      <div className={s.loading}>
-         <div className={s.loading__container}>
-            <p>Loading...</p>
-         </div>
-      </div>
    );
 };

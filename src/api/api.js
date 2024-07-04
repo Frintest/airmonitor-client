@@ -30,11 +30,16 @@ export const API = {
 		});
 	},
 
-	getStandards(callback,) {
+	getStandards(callback) {
 		socket.once("standards:get", (data, eventConfirm) => {
 			eventConfirm();
 			callback(data);
 			console.log("standards:get");
 		});
-	}
+	},
+
+	sendRangeInfo(info) {
+		socket.emit("range-info:send", info);
+		console.log("range-info:send");
+	},
 };
