@@ -1,7 +1,13 @@
 @import "../../../../../../scss/utilities/variables.scss";
 
 .settings {
-   &__body {
+	&__body {
+		&_notCustom {
+			display: flex;
+		}
+   }
+
+   &__range {
       display: flex;
    }
 

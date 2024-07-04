@@ -3,6 +3,11 @@
 .every {
    margin-top: 40px;
 
+   &_notCustom {
+      margin-top: 0px;
+		margin-left: 100px;
+   }
+
    &__title {
       font-weight: 500;
       color: $slate-900;
@@ -10,27 +15,37 @@
 
    &__list {
       max-width: 520px;
-      margin-top: -4px;
-      margin-left: -32px;
+      margin-top: 4px;
+      margin-left: -28px;
       display: flex;
       flex-wrap: wrap;
+
+      &_notCustom {
+         flex-direction: column;
+         max-width: auto;
+         margin-left: 0px;
+      }
+
+      &_notCustom > .item {
+         margin-left: 0px;
+      }
    }
 }
 
 .item {
    display: flex;
    align-items: center;
-   margin-top: 32px;
-   margin-left: 32px;
+   margin-top: 28px;
+   margin-left: 28px;
 
    &__title {
       color: $slate-900;
    }
 
    &__input {
-		width: 80px;
+      width: 80px;
       margin-left: 16px;
-      padding: 10px 12px 10px 10px;
+      padding: 8px 12px 8px 10px;
       border-radius: 100vh;
       border: 1.5px solid $slate-200;
       font-size: 16px;

@@ -16,8 +16,12 @@ export const Settings = (props) => {
             props.setActiveQuickRange(0);
          }}
       >
-         <div>
-            <div className={s.settings__body}>
+         <div
+            className={
+               s.settings__body + (!props.isCustomRange ? " " + s.settings__body_notCustom : "")
+            }
+         >
+            <div className={s.settings__range}>
                <QuickRange
                   quickRange={props.quickRange}
                   setActiveQuickRange={props.setActiveQuickRange}
@@ -31,7 +35,12 @@ export const Settings = (props) => {
                )}
             </div>
 
-            <Every every={props.every} />
+            <Every
+               every={props.every}
+               isCustomRange={props.isCustomRange}
+               updateEveryValue={props.updateEveryValue}
+               updateEveryExist={props.updateEveryExist}
+            />
          </div>
 
          <div className={s.settings__buttons}>

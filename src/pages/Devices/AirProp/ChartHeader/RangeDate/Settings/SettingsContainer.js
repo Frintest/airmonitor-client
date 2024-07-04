@@ -4,7 +4,9 @@ import {
 	setActiveQuickRange,
 	getDateInterval,
 	getInfoEvery,
-	sendRangeInfoThunk
+	sendRangeInfoThunk,
+	updateEveryValue,
+	updateEveryExist,
 } from "../../../../../../redux/reducers/range-date-reducer.js";
 
 const mapStateToProps = (state) => {
@@ -25,6 +27,8 @@ const mapStateToDispatch = {
 	getDateInterval,
 	getInfoEvery,
 	sendRangeInfoThunk,
+	updateEveryValue,
+	updateEveryExist,
 };
 
 export default connect(mapStateToProps, mapStateToDispatch)(Settings);

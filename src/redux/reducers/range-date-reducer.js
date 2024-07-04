@@ -1,6 +1,8 @@
 import { API } from "../../api/api.js";
 
 const SET_ACTIVE_QUICK_RANGE = "range/SET_ACTIVE_QUICK_RANGE";
+const UPDATE_EVERY_VALUE = "range/UPDATE_EVERY_VALUE";
+const UPDATE_EVERY_EXIST = "range/UPDATE_EVERY_EXIST";
 const GET_DATE_INTERVAL = "range/GET_DATE_INTERVAL";
 const GET_INFO_EVERY = "range/GET_INFO_EVERY";
 
@@ -104,12 +106,40 @@ export const RangeDateReducer = (state = initialState, action) => {
 			}
 		}
 
+		case UPDATE_EVERY_VALUE: {
+			return {
+				...state,
+				every: {
+					...state.every,
+					[action.name]: {
+						...state.every[action.name],
+						value: action.value,
+					}
+				}
+			}
+		}
+
+		case UPDATE_EVERY_EXIST: {
+			return {
+				...state,
+				every: {
+					...state.every,
+					[action.name]: {
+						...state.every[action.name],
+						isExist: action.value === 0 ? false : true,
+					}
+				}
+			}
+		}
+
 		default:
 			return state;
 	}
 };
 
 export const setActiveQuickRange = (id) => ({ type: SET_ACTIVE_QUICK_RANGE, id });
+export const updateEveryValue = (name, value) => ({ type: UPDATE_EVERY_VALUE, name, value });
+export const updateEveryExist = (name, value) => ({ type: UPDATE_EVERY_EXIST, name, value });
 export const getDateInterval = (from, to) => ({ type: GET_DATE_INTERVAL, from, to });
 export const getInfoEvery = (every) => ({ type: GET_INFO_EVERY, every });
 
