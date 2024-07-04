@@ -17,11 +17,6 @@ export const API = {
 		});
 	},
 
-	sendHistoryItemName(itemName) {
-		socket.emit("history-item:get", itemName);
-		console.log("history-item:get");
-	},
-
 	updateAirHistory(callback) {
 		socket.once("air-history:update", (data, eventConfirm) => {
 			eventConfirm();

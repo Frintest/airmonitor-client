@@ -9,24 +9,36 @@ export const Every = (props) => {
          max = 20;
       }
       if (name === "month") {
-         max = 12;
+         max = 11;
       }
       if (name === "days") {
-         max = 366;
+         max = 365; // todo
       }
       if (name === "hours") {
-         max = 24;
+         max = 23;
       }
       if (name === "minutes") {
-         max = 60;
+         max = 59;
       }
 
       return max;
    };
 
+   const calcMin = (name) => {
+      let min = 0;
+
+      if (name === "minutes") {
+         min = 2;
+      } else {
+         min = 0;
+      }
+
+      return min;
+   };
+
    const elements = Object.values(props.every).map((item) => {
       return (
-         item.isExist && (
+         item.isExistUI && (
             <li className={s.item} key={item.ui_name}>
                <label className={s.item__label}>
                   <span className={s.item__title}>{item.ui_name}</span>
@@ -34,10 +46,10 @@ export const Every = (props) => {
                      type="number"
                      value={item.value}
                      onChange={(evt) => {
-                        props.updateEveryValue(item.name, evt.target.value);
-                        props.updateEveryExist(item.name, evt.target.value);
+                        props.updateEveryValue(item.name, Number(evt.target.value));
+                        props.updateEveryExist(item.name, Number(evt.target.value));
                      }}
-                     min="0"
+                     min={calcMin(item.name)}
                      max={calcMax(item.name)}
                      className={s.item__input}
                   />

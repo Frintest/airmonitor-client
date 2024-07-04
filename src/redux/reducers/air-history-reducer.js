@@ -34,8 +34,6 @@ export const AirHistoryReducer = (state = initialState, action) => {
 const updateHistory = (data, name) => ({ type: UPDATE_HISTORY, name, data });
 
 export const updateAirHistoryThunk = (name) => (dispatch) => {
-	API.sendHistoryItemName(name);
-
 	API.updateAirHistory((data) => {
 		dispatch(updateHistory(data, name));
 	});

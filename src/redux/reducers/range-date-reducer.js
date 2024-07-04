@@ -5,6 +5,7 @@ const UPDATE_EVERY_VALUE = "range/UPDATE_EVERY_VALUE";
 const UPDATE_EVERY_EXIST = "range/UPDATE_EVERY_EXIST";
 const GET_DATE_INTERVAL = "range/GET_DATE_INTERVAL";
 const GET_INFO_EVERY = "range/GET_INFO_EVERY";
+const SEND_RANGE_INFO = "range/SEND_RANGE_INFO";
 
 const initialState = {
 	quickRange: {
@@ -52,35 +53,41 @@ const initialState = {
 	every: {
 		years: {
 			isExist: false,
+			isExistUI: false,
 			value: 1,
 			ui_name: "Года",
 			name: "years",
 		},
 		month: {
 			isExist: false,
+			isExistUI: false,
 			value: 1,
 			ui_name: "Месяца",
 			name: "month",
 		},
 		days: {
 			isExist: true,
+			isExistUI: true,
 			value: 1,
 			ui_name: "Дни",
 			name: "days",
 		},
 		hours: {
 			isExist: true,
+			isExistUI: true,
 			value: 1,
 			ui_name: "Часы",
 			name: "hours",
 		},
 		minutes: {
 			isExist: true,
+			isExistUI: true,
 			value: 30,
 			ui_name: "Минуты",
 			name: "minutes",
 		},
 	},
+	sendRangeInfoTrigger: true,
 };
 
 export const RangeDateReducer = (state = initialState, action) => {
@@ -132,6 +139,13 @@ export const RangeDateReducer = (state = initialState, action) => {
 			}
 		}
 
+		case SEND_RANGE_INFO: {
+			return {
+				...state,
+				sendRangeInfoTrigger: !state.sendRangeInfoTrigger,
+			}
+		}
+
 		default:
 			return state;
 	}
@@ -143,7 +157,10 @@ export const updateEveryExist = (name, value) => ({ type: UPDATE_EVERY_EXIST, na
 export const getDateInterval = (from, to) => ({ type: GET_DATE_INTERVAL, from, to });
 export const getInfoEvery = (every) => ({ type: GET_INFO_EVERY, every });
 
+const sendRangeInfo = () => ({ type: SEND_RANGE_INFO });
 export const sendRangeInfoThunk = (name, range, date, every) => (dispatch) => {
+	dispatch(sendRangeInfo());
+
 	const info = { name, range, date, every }
 	API.sendRangeInfo(info);
 };

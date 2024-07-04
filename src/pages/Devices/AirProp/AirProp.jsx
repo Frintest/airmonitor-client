@@ -13,10 +13,10 @@ export const AirProp = (props) => {
    let path = location.pathname.split("/");
    path = path[path.length - 1];
    const airItem = props.airState[path];
-
+	console.log(props.sendRangeInfoTrigger);
    React.useEffect(() => {
       props.updateAirHistoryThunk(airItem.sensor_name);
-   }, [props.airState]);
+   }, [props.airState, props.sendRangeInfoTrigger]);
 
    const history = props.history[airItem.sensor_name];
    const standards = props.standards[airItem.sensor_name];
