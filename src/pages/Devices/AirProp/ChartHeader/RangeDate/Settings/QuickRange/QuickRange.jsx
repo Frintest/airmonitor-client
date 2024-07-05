@@ -11,7 +11,7 @@ export const QuickRange = (props) => {
             }}
             key={range.id}
          >
-            {range.name}
+            {range.ui_name}
          </li>
       );
    });

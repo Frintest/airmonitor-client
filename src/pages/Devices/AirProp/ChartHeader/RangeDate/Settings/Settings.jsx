@@ -62,6 +62,7 @@ export const Settings = (props) => {
                   const date = props.date;
                   const every = props.every;
                   props.sendRangeInfoThunk(name, range, date, every);
+                  props.updateAirHistoryThunk(name);
                }}
             />
          </div>

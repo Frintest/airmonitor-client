@@ -65,13 +65,18 @@
 }
 
 .chart {
-   margin-top: 24px;
-}
-
-.loading {
    &__container {
-      width: 1200px;
-      margin: 0 auto;
-      overflow: hidden;
+      margin-top: 28px;
+   }
+
+   &__placeholder {
+		border-radius: $border-radius;
+      background: $slate-200;
+      padding: 32px 40px;
+   }
+
+   &__placeholderTitle {
+      font-size: 18px;
+      color: $slate-900;
    }
 }

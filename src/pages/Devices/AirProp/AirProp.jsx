@@ -13,10 +13,10 @@ export const AirProp = (props) => {
    let path = location.pathname.split("/");
    path = path[path.length - 1];
    const airItem = props.airState[path];
-	console.log(props.sendRangeInfoTrigger);
+
    React.useEffect(() => {
       props.updateAirHistoryThunk(airItem.sensor_name);
-   }, [props.airState, props.sendRangeInfoTrigger]);
+   }, [props.airState]);
 
    const history = props.history[airItem.sensor_name];
    const standards = props.standards[airItem.sensor_name];
@@ -57,8 +57,8 @@ export const AirProp = (props) => {
 
                <ChartHeaderContainer ref={ref} sensor_name={airItem.sensor_name} />
 
-               {history !== undefined ? (
-                  <div className={s.chart}>
+               <div className={s.chart__container}>
+                  {history !== undefined ? (
                      <HistoryChart
                         history={history.history}
                         sensor_name={airItem.sensor_name}
@@ -67,10 +67,14 @@ export const AirProp = (props) => {
                         levelColors={props.levelColors}
                         ref={ref}
                      />
-                  </div>
-               ) : (
-                  "Выберите временной интервал, для отображения графика."
-               )}
+                  ) : (
+                     <div className={s.chart__placeholder}>
+                        <p className={s.chart__placeholderTitle}>
+                           Выберите временной интервал, для отображения графика.
+                        </p>
+                     </div>
+                  )}
+               </div>
             </div>
          </div>
       </section>

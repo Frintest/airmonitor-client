@@ -8,6 +8,9 @@ import {
 	updateEveryValue,
 	updateEveryExist,
 } from "../../../../../../redux/reducers/range-date-reducer.js";
+import {
+	updateAirHistoryThunk,
+} from "../../../../../../redux/reducers/air-history-reducer.js";
 
 const mapStateToProps = (state) => {
 	const quickRange = state.RangeDateReducer.quickRange;
@@ -29,6 +32,7 @@ const mapStateToDispatch = {
 	sendRangeInfoThunk,
 	updateEveryValue,
 	updateEveryExist,
+	updateAirHistoryThunk,
 };
 
 export default connect(mapStateToProps, mapStateToDispatch)(Settings);
