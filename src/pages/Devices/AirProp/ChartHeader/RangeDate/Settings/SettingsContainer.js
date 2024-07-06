@@ -7,6 +7,7 @@ import {
 	sendRangeInfoThunk,
 	updateEveryValue,
 	updateEveryExist,
+	filterIntervalLabels,
 } from "../../../../../../redux/reducers/range-date-reducer.js";
 import {
 	updateAirHistoryThunk,
@@ -18,7 +19,7 @@ const mapStateToProps = (state) => {
 
 	return {
 		quickRange,
-		isCustomRange: active === 0,
+		isCustomRange: active === "custom",
 		activeRange: quickRange[active],
 		every: state.RangeDateReducer.every,
 		airInfo: state.AirStateReducer.info,
@@ -32,6 +33,7 @@ const mapStateToDispatch = {
 	sendRangeInfoThunk,
 	updateEveryValue,
 	updateEveryExist,
+	filterIntervalLabels,
 	updateAirHistoryThunk,
 };
 

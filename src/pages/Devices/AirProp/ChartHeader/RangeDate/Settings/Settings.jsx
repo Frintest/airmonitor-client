@@ -13,7 +13,7 @@ export const Settings = (props) => {
          isVisible={props.isVisible}
          onClose={() => {
             props.onClose();
-            props.setActiveQuickRange(0);
+            props.setActiveQuickRange("custom");
          }}
       >
          <div
@@ -24,7 +24,9 @@ export const Settings = (props) => {
             <div className={s.settings__range}>
                <QuickRange
                   quickRange={props.quickRange}
+                  activeRange={props.activeRange}
                   setActiveQuickRange={props.setActiveQuickRange}
+                  filterIntervalLabels={props.filterIntervalLabels}
                />
 
                {props.isCustomRange && (

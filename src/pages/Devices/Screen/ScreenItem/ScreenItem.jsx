@@ -4,10 +4,6 @@ import s from "./ScreenItem.module.scss";
 import { formatText } from "../../../../utilities/helpers/format-text-airprop.js";
 
 export const ScreenItem = (props) => {
-   React.useEffect(() => {
-      props.setActiveQuickRange(0);
-   }, []);
-
    const airItem = props.airItem;
 
    return (

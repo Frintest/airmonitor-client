@@ -7,9 +7,10 @@ export const QuickRange = (props) => {
          <li
             className={s.quickRange__item + (range.isActive ? " " + s.quickRange__itemActive : "")}
             onClick={() => {
-               props.setActiveQuickRange(range.id);
+               props.setActiveQuickRange(range.name);
+               props.filterIntervalLabels(range.name);
             }}
-            key={range.id}
+            key={range.name}
          >
             {range.ui_name}
          </li>

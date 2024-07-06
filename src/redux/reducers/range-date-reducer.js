@@ -5,92 +5,91 @@ const UPDATE_EVERY_VALUE = "range/UPDATE_EVERY_VALUE";
 const UPDATE_EVERY_EXIST = "range/UPDATE_EVERY_EXIST";
 const GET_DATE_INTERVAL = "range/GET_DATE_INTERVAL";
 const GET_INFO_EVERY = "range/GET_INFO_EVERY";
+const FILTER_INTERVAL_LABELS = "range/FILTER_INTERVAL_LABELS";
 
 const initialState = {
 	quickRange: {
-		0: {
-			id: 0,
-			ui_name: "Пользовательский",
+		"custom": {
 			name: "custom",
+			ui_name: "Пользовательский",
 			isActive: true,
 		},
-		1: {
-			id: 1,
-			ui_name: "Последний час",
+		"last-hour": {
 			name: "last-hour",
+			ui_name: "Последний час",
 			isActive: false,
 		},
-		2: {
-			id: 2,
-			ui_name: "Последние 24 часа",
+		"last-day": {
 			name: "last-day",
+			ui_name: "Последние 24 часа",
 			isActive: false,
 		},
-		3: {
-			id: 3,
-			ui_name: "Последняя неделя",
+		"last-week": {
 			name: "last-week",
+			ui_name: "Последняя неделя",
 			isActive: false,
 		},
-		4: {
-			id: 4,
-			ui_name: "Последний месяц",
+		"last-month": {
 			name: "last-month",
+			ui_name: "Последний месяц",
 			isActive: false,
 		},
-		5: {
-			id: 5,
-			ui_name: "Последний год",
+		"last-year": {
 			name: "last-year",
-			isActive: false,
-		},
-		6: {
-			id: 6,
-			ui_name: "Всё время",
-			name: "all-time",
+			ui_name: "Последний год",
 			isActive: false,
 		},
 	},
-	quickRangeActive: 0,
+	quickRangeActive: "custom",
 	date: {
 		from: "2024-07-03 08:00:56",
 		to: "2024-07-03 23:20:56",
 	},
 	every: {
 		years: {
+			name: "years",
+			ui_name: "Года",
+			value: 0,
+			min: 0,
+			max: 20,
 			isExist: false,
 			isExistUI: false,
-			value: 1,
-			ui_name: "Года",
-			name: "years",
 		},
 		month: {
+			name: "month",
+			ui_name: "Месяца",
+			value: 0,
+			min: 0,
+			max: 11,
 			isExist: false,
 			isExistUI: false,
-			value: 1,
-			ui_name: "Месяца",
-			name: "month",
 		},
 		days: {
+			name: "days",
+			ui_name: "Дни",
+			value: 0,
+			min: 0,
+			max: 365,
 			isExist: false,
 			isExistUI: false,
-			value: 1,
-			ui_name: "Дни",
-			name: "days",
 		},
 		hours: {
-			isExist: true,
-			isExistUI: true,
-			value: 1,
-			ui_name: "Часы",
 			name: "hours",
+			ui_name: "Часы",
+			value: 0,
+			min: 0,
+			max: 23,
+			isExist: false,
+			isExistUI: false,
 		},
 		minutes: {
-			isExist: true,
-			isExistUI: true,
-			value: 30,
-			ui_name: "Минуты",
 			name: "minutes",
+			ui_name: "Минуты",
+			value: 0,
+			min: 0,
+			max: 59,
+			isExist: false,
+			isExistUI: false,
 		},
 	},
 };
@@ -104,7 +103,7 @@ export const RangeDateReducer = (state = initialState, action) => {
 			const prevRange = { ...quickRange[active] };
 			prevRange.isActive = false;
 
-			const newRange = quickRange[action.id];
+			const newRange = quickRange[action.name];
 			newRange.isActive = true;
 
 			return {
@@ -112,9 +111,9 @@ export const RangeDateReducer = (state = initialState, action) => {
 				quickRange: {
 					...state.quickRange,
 					[active]: prevRange,
-					[action.id]: newRange,
+					[action.name]: newRange,
 				},
-				quickRangeActive: action.id,
+				quickRangeActive: action.name,
 			}
 		}
 
@@ -144,16 +143,160 @@ export const RangeDateReducer = (state = initialState, action) => {
 			}
 		}
 
+		case FILTER_INTERVAL_LABELS: {
+			const everyCopy = { ...state.every };
+			const resetEvery = {};
+			for (let name in everyCopy) {
+				const item = everyCopy[name];
+				resetEvery[name] = {
+					...item,
+					value: 0,
+					isExist: false,
+					isExistUI: false,
+				};
+			}
+
+			let every = {};
+
+			switch (action.activeRangeName) {
+				case "custom": {
+					every = {
+						...resetEvery,
+					};
+					break;
+				}
+
+				case "last-hour": {
+					every = {
+						...resetEvery,
+						minutes: {
+							...state.every.minutes,
+							value: 2,
+							isExist: true,
+							isExistUI: true,
+						},
+					};
+					break;
+				}
+
+				case "last-day": {
+					every = {
+						...resetEvery,
+						hours: {
+							...state.every.hours,
+							value: 1,
+							isExist: true,
+							isExistUI: true,
+						},
+						minutes: {
+							...state.every.minutes,
+							value: 0,
+							isExist: false,
+							isExistUI: true,
+						},
+					};
+					break;
+				}
+
+				case "last-week": {
+					every = {
+						...resetEvery,
+						days: {
+							...state.every.days,
+							value: 1,
+							isExist: true,
+							isExistUI: true,
+						},
+						hours: {
+							...state.every.hours,
+							value: 0,
+							isExist: false,
+							isExistUI: true,
+						},
+						minutes: {
+							...state.every.minutes,
+							value: 0,
+							isExist: false,
+							isExistUI: true,
+						},
+					};
+					break;
+				}
+
+				case "last-month": {
+					every = {
+						...resetEvery,
+						days: {
+							...state.every.days,
+							value: 1,
+							isExist: true,
+							isExistUI: true,
+						},
+						hours: {
+							...state.every.hours,
+							value: 0,
+							isExist: false,
+							isExistUI: true,
+						},
+						minutes: {
+							...state.every.minutes,
+							value: 0,
+							isExist: false,
+							isExistUI: true,
+						},
+					};
+					break;
+				}
+
+				case "last-year": {
+					every = {
+						...resetEvery,
+						month: {
+							...state.every.month,
+							value: 1,
+							isExist: true,
+							isExistUI: true,
+						},
+						days: {
+							...state.every.days,
+							value: 0,
+							isExist: false,
+							isExistUI: true,
+						},
+						hours: {
+							...state.every.hours,
+							value: 0,
+							isExist: false,
+							isExistUI: true,
+						},
+						minutes: {
+							...state.every.minutes,
+							value: 0,
+							isExist: false,
+							isExistUI: true,
+						},
+					};
+					break;
+				}
+			}
+
+			return {
+				...state,
+				every,
+			}
+		}
+
 		default:
 			return state;
 	}
 };
 
-export const setActiveQuickRange = (id) => ({ type: SET_ACTIVE_QUICK_RANGE, id });
+export const setActiveQuickRange = (name) => ({ type: SET_ACTIVE_QUICK_RANGE, name });
 export const updateEveryValue = (name, value) => ({ type: UPDATE_EVERY_VALUE, name, value });
 export const updateEveryExist = (name, value) => ({ type: UPDATE_EVERY_EXIST, name, value });
 export const getDateInterval = (from, to) => ({ type: GET_DATE_INTERVAL, from, to });
 export const getInfoEvery = (every) => ({ type: GET_INFO_EVERY, every });
+export const filterIntervalLabels = (activeRangeName) => ({ type: FILTER_INTERVAL_LABELS, activeRangeName });
 
 export const sendRangeInfoThunk = (name, range, date, every) => (dispatch) => {
 	const info = { name, range, date, every }

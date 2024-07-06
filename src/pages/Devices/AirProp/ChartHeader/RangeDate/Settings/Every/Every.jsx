@@ -2,44 +2,10 @@ import React from "react";
 import s from "./Every.module.scss";
 
 export const Every = (props) => {
-   const calcMax = (name) => {
-      let max = 0;
-
-      if (name === "years") {
-         max = 20;
-      }
-      if (name === "month") {
-         max = 11;
-      }
-      if (name === "days") {
-         max = 365; // todo
-      }
-      if (name === "hours") {
-         max = 23;
-      }
-      if (name === "minutes") {
-         max = 59;
-      }
-
-      return max;
-   };
-
-   const calcMin = (name) => {
-      let min = 0;
-
-      if (name === "minutes") {
-         min = 2;
-      } else {
-         min = 0;
-      }
-
-      return min;
-   };
-
    const elements = Object.values(props.every).map((item) => {
       return (
          item.isExistUI && (
-            <li className={s.item} key={item.ui_name}>
+            <li className={s.item} key={item.name}>
                <label className={s.item__label}>
                   <span className={s.item__title}>{item.ui_name}</span>
                   <input
@@ -49,8 +15,8 @@ export const Every = (props) => {
                         props.updateEveryValue(item.name, Number(evt.target.value));
                         props.updateEveryExist(item.name, Number(evt.target.value));
                      }}
-                     min={calcMin(item.name)}
-                     max={calcMax(item.name)}
+                     min={item.min}
+                     max={item.max}
                      className={s.item__input}
                   />
                </label>

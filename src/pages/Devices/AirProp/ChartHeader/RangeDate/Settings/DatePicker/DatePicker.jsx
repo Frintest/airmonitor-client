@@ -64,10 +64,10 @@ export const DatePicker = (props) => {
             nextLabel={<NextIcon />}
          />
 
-         <label className={s.textPicker}>
+         {/* <label className={s.textPicker}>
             <span className={s.textPicker__subtitle}>{props.textPicker}</span>
             <input type="text" className={s.textPicker__input} placeholder={props.date} />
-         </label>
+         </label> */}
       </div>
    );
 };
