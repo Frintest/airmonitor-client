@@ -8,7 +8,6 @@ const mapStateToProps = (state) => ({
 	history: state.AirHistoryReducer.history,
 	standards: state.AirStateReducer.standards,
 	levelColors: state.ScreensReducer.levelColors,
-	sendRangeInfoTrigger: state.RangeDateReducer.sendRangeInfoTrigger,
 });
 
 export default connect(mapStateToProps, { updateAirHistoryThunk })(AirProp);

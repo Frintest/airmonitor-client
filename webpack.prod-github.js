@@ -86,7 +86,7 @@ module.exports = {
 		}),
 		,
 		new webpack.DefinePlugin({
-			'process.env.PUBLIC_URL': JSON.stringify(""),
+			'process.env.PUBLIC_URL': JSON.stringify("airmonitor-client"),
 		}),
 		// new BundleAnalyzerPlugin()
 	]

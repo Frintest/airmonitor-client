@@ -6,7 +6,6 @@ import {
 	getInfoEvery,
 	sendRangeInfoThunk,
 	updateEveryValue,
-	updateEveryExist,
 	filterIntervalLabels,
 } from "../../../../../../redux/reducers/range-date-reducer.js";
 import {
@@ -32,7 +31,6 @@ const mapStateToDispatch = {
 	getInfoEvery,
 	sendRangeInfoThunk,
 	updateEveryValue,
-	updateEveryExist,
 	filterIntervalLabels,
 	updateAirHistoryThunk,
 };

@@ -4,7 +4,7 @@ import s from "./Every.module.scss";
 export const Every = (props) => {
    const elements = Object.values(props.every).map((item) => {
       return (
-         item.isExistUI && (
+         item.isExist && (
             <li className={s.item} key={item.name}>
                <label className={s.item__label}>
                   <span className={s.item__title}>{item.ui_name}</span>
@@ -13,7 +13,6 @@ export const Every = (props) => {
                      value={item.value}
                      onChange={(evt) => {
                         props.updateEveryValue(item.name, Number(evt.target.value));
-                        props.updateEveryExist(item.name, Number(evt.target.value));
                      }}
                      min={item.min}
                      max={item.max}

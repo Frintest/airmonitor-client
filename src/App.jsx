@@ -13,7 +13,7 @@ export const App = (props) => {
    });
 
    return (
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
          <Routes>
             <Route path="/" element={<Layout />}>
                <Route path="devices/*" element={<DevicesContainer />} />

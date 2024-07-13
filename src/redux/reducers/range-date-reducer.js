@@ -2,7 +2,6 @@ import { API } from "../../api/api.js";
 
 const SET_ACTIVE_QUICK_RANGE = "range/SET_ACTIVE_QUICK_RANGE";
 const UPDATE_EVERY_VALUE = "range/UPDATE_EVERY_VALUE";
-const UPDATE_EVERY_EXIST = "range/UPDATE_EVERY_EXIST";
 const GET_DATE_INTERVAL = "range/GET_DATE_INTERVAL";
 const GET_INFO_EVERY = "range/GET_INFO_EVERY";
 const FILTER_INTERVAL_LABELS = "range/FILTER_INTERVAL_LABELS";
@@ -46,15 +45,14 @@ const initialState = {
 		to: "2024-07-03 23:20:56",
 	},
 	every: {
-		years: {
-			name: "years",
-			ui_name: "Года",
-			value: 0,
-			min: 0,
-			max: 20,
-			isExist: false,
-			isExistUI: false,
-		},
+		// years: {
+		// 	name: "years",
+		// 	ui_name: "Года",
+		// 	value: 0,
+		// 	min: 0,
+		// 	max: 20,
+		// 	isExist: false,
+		// },
 		month: {
 			name: "month",
 			ui_name: "Месяца",
@@ -62,7 +60,6 @@ const initialState = {
 			min: 0,
 			max: 11,
 			isExist: false,
-			isExistUI: false,
 		},
 		days: {
 			name: "days",
@@ -71,7 +68,6 @@ const initialState = {
 			min: 0,
 			max: 365,
 			isExist: false,
-			isExistUI: false,
 		},
 		hours: {
 			name: "hours",
@@ -80,7 +76,6 @@ const initialState = {
 			min: 0,
 			max: 23,
 			isExist: false,
-			isExistUI: false,
 		},
 		minutes: {
 			name: "minutes",
@@ -89,7 +84,6 @@ const initialState = {
 			min: 0,
 			max: 59,
 			isExist: false,
-			isExistUI: false,
 		},
 	},
 };
@@ -130,19 +124,6 @@ export const RangeDateReducer = (state = initialState, action) => {
 			}
 		}
 
-		case UPDATE_EVERY_EXIST: {
-			return {
-				...state,
-				every: {
-					...state.every,
-					[action.name]: {
-						...state.every[action.name],
-						isExist: action.value === 0 ? false : true,
-					}
-				}
-			}
-		}
-
 		case FILTER_INTERVAL_LABELS: {
 			const everyCopy = { ...state.every };
 			const resetEvery = {};
@@ -152,7 +133,6 @@ export const RangeDateReducer = (state = initialState, action) => {
 					...item,
 					value: 0,
 					isExist: false,
-					isExistUI: false,
 				};
 			}
 
@@ -160,20 +140,13 @@ export const RangeDateReducer = (state = initialState, action) => {
 
 			switch (action.activeRangeName) {
 				case "custom": {
-					every = {
-						...resetEvery,
-					};
 					break;
 				}
 
 				case "last-hour": {
 					every = {
-						...resetEvery,
 						minutes: {
-							...state.every.minutes,
 							value: 2,
-							isExist: true,
-							isExistUI: true,
 						},
 					};
 					break;
@@ -181,18 +154,11 @@ export const RangeDateReducer = (state = initialState, action) => {
 
 				case "last-day": {
 					every = {
-						...resetEvery,
 						hours: {
-							...state.every.hours,
 							value: 1,
-							isExist: true,
-							isExistUI: true,
 						},
 						minutes: {
-							...state.every.minutes,
 							value: 0,
-							isExist: false,
-							isExistUI: true,
 						},
 					};
 					break;
@@ -200,24 +166,14 @@ export const RangeDateReducer = (state = initialState, action) => {
 
 				case "last-week": {
 					every = {
-						...resetEvery,
 						days: {
-							...state.every.days,
 							value: 1,
-							isExist: true,
-							isExistUI: true,
 						},
 						hours: {
-							...state.every.hours,
 							value: 0,
-							isExist: false,
-							isExistUI: true,
 						},
 						minutes: {
-							...state.every.minutes,
 							value: 0,
-							isExist: false,
-							isExistUI: true,
 						},
 					};
 					break;
@@ -225,24 +181,14 @@ export const RangeDateReducer = (state = initialState, action) => {
 
 				case "last-month": {
 					every = {
-						...resetEvery,
 						days: {
-							...state.every.days,
 							value: 1,
-							isExist: true,
-							isExistUI: true,
 						},
 						hours: {
-							...state.every.hours,
 							value: 0,
-							isExist: false,
-							isExistUI: true,
 						},
 						minutes: {
-							...state.every.minutes,
 							value: 0,
-							isExist: false,
-							isExistUI: true,
 						},
 					};
 					break;
@@ -250,39 +196,38 @@ export const RangeDateReducer = (state = initialState, action) => {
 
 				case "last-year": {
 					every = {
-						...resetEvery,
 						month: {
-							...state.every.month,
 							value: 1,
-							isExist: true,
-							isExistUI: true,
 						},
 						days: {
-							...state.every.days,
 							value: 0,
-							isExist: false,
-							isExistUI: true,
 						},
 						hours: {
-							...state.every.hours,
 							value: 0,
-							isExist: false,
-							isExistUI: true,
 						},
 						minutes: {
-							...state.every.minutes,
 							value: 0,
-							isExist: false,
-							isExistUI: true,
 						},
 					};
 					break;
 				}
 			}
 
+			for (let name in every) {
+				const item = every[name];
+				every[name] = {
+					...state.every[name],
+					value: item.value,
+					isExist: true,
+				}
+			}
+
 			return {
 				...state,
-				every,
+				every: {
+					...resetEvery,
+					...every,
+				},
 			}
 		}
 
@@ -293,7 +238,6 @@ export const RangeDateReducer = (state = initialState, action) => {
 
 export const setActiveQuickRange = (name) => ({ type: SET_ACTIVE_QUICK_RANGE, name });
 export const updateEveryValue = (name, value) => ({ type: UPDATE_EVERY_VALUE, name, value });
-export const updateEveryExist = (name, value) => ({ type: UPDATE_EVERY_EXIST, name, value });
 export const getDateInterval = (from, to) => ({ type: GET_DATE_INTERVAL, from, to });
 export const getInfoEvery = (every) => ({ type: GET_INFO_EVERY, every });
 export const filterIntervalLabels = (activeRangeName) => ({ type: FILTER_INTERVAL_LABELS, activeRangeName });
