@@ -26,7 +26,8 @@
    "scripts": {
       "start": "webpack serve --config webpack.dev.js",
       "dev": "webpack --config webpack.dev.js",
-      "build": "webpack --config webpack.prod.js"
+      "build": "webpack --config webpack.prod.js",
+      "build github": "webpack --config webpack.prod-github.js"
    },
    "browserslist": {
       "production": [

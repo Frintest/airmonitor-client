@@ -17,7 +17,7 @@ export const Header = () => {
             className={
                s.header__link + (path.includes(item.link) ? " " + s.header__linkActive : "")
             }
-            to={process.env.PUBLIC_URL + item.link}
+            to={item.link}
          >
             {item.name}
          </Link>
@@ -27,7 +27,7 @@ export const Header = () => {
    return (
       <header className={s.header}>
          <div className={s.header__container}>
-            <Link className={s.header__logo} to={`${process.env.PUBLIC_URL}/devices`}>
+            <Link className={s.header__logo} to="/devices">
                <svg
                   width="85"
                   height="14"
