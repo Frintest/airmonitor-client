@@ -9,6 +9,6 @@ import "focus-visible";
 const root = ReactDOM.createRoot(document.getElementById("wrapper"));
 root.render(
 	<Provider store={store}>
-						<AppContainer />
+		<AppContainer />
 	</Provider>,
 );
