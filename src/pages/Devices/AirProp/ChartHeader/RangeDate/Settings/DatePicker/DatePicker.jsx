@@ -6,7 +6,13 @@ import moment from "moment";
 
 const PreviousIcon = () => {
 	return (
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
 			<path
 				d="M7.44185 11.6292C7.68593 11.3851 8.08165 11.3851 8.32573 11.6292L14.5129 17.8164C14.757 18.0605 14.757 18.4562 14.5129 18.7003V18.7003C14.2688 18.9443 13.8731 18.9443 13.629 18.7003L7.44185 12.5131C7.19777 12.269 7.19777 11.8733 7.44185 11.6292V11.6292Z"
 				fill="#475569"
@@ -21,7 +27,13 @@ const PreviousIcon = () => {
 
 const NextIcon = () => {
 	return (
-		<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<svg
+			width="24"
+			height="24"
+			viewBox="0 0 24 24"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
 			<path
 				d="M16.5582 12.3708C16.3141 12.6149 15.9183 12.6149 15.6743 12.3708L9.48709 6.18362C9.24301 5.93954 9.24301 5.54381 9.48709 5.29974V5.29974C9.73116 5.05566 10.1269 5.05566 10.371 5.29974L16.5582 11.4869C16.8022 11.731 16.8022 12.1267 16.5582 12.3708V12.3708Z"
 				fill="#475569"

@@ -16,7 +16,12 @@ export const Settings = (props) => {
 				props.setActiveQuickRange("custom");
 			}}
 		>
-			<div className={s.settings__body + (!props.isCustomRange ? " " + s.settings__body_notCustom : "")}>
+			<div
+				className={
+					s.settings__body +
+					(!props.isCustomRange ? " " + s.settings__body_notCustom : "")
+				}
+			>
 				<div className={s.settings__range}>
 					<QuickRange
 						quickRange={props.quickRange}
@@ -27,8 +32,16 @@ export const Settings = (props) => {
 
 					{props.isCustomRange && (
 						<div className={s.settings__calendars}>
-							<DatePicker textPicker="С" date={props.date.from} airInfo={props.airInfo} />
-							<DatePicker textPicker="До" date={props.date.to} airInfo={props.airInfo} />
+							<DatePicker
+								textPicker="С"
+								date={props.date.from}
+								airInfo={props.airInfo}
+							/>
+							<DatePicker
+								textPicker="До"
+								date={props.date.to}
+								airInfo={props.airInfo}
+							/>
 						</div>
 					)}
 				</div>

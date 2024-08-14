@@ -9,7 +9,13 @@ export const Screen = (props) => {
 	}, [props.airState]);
 
 	const elements = Object.values(props.screen.elements).map((airItem) => {
-		return <ScreenItem airItem={airItem} key={airItem.sensor_name} setActiveQuickRange={props.setActiveQuickRange} />;
+		return (
+			<ScreenItem
+				airItem={airItem}
+				key={airItem.sensor_name}
+				setActiveQuickRange={props.setActiveQuickRange}
+			/>
+		);
 	});
 
 	return <div className={s.wrap}>{elements}</div>;

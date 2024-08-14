@@ -21,7 +21,11 @@ export const ScreenSettings = (props) => {
 	});
 
 	return (
-		<Popup title={"Компоненты"} isVisible={props.isVisible} onClose={props.onClose}>
+		<Popup
+			title={"Компоненты"}
+			isVisible={props.isVisible}
+			onClose={props.onClose}
+		>
 			<div>
 				<div className={s.elements}>{elements}</div>
 			</div>

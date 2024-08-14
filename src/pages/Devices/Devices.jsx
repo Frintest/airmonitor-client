@@ -12,7 +12,13 @@ export const Devices = (props) => {
 	});
 
 	const airPropRoutes = Object.values(props.data).map((item) => {
-		return <Route path={`/${item.sensor_name}`} element={<AirPropContainer />} key={item.sensor_name} />;
+		return (
+			<Route
+				path={`/${item.sensor_name}`}
+				element={<AirPropContainer />}
+				key={item.sensor_name}
+			/>
+		);
 	});
 
 	return (

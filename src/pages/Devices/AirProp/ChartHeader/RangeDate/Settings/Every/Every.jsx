@@ -12,7 +12,10 @@ export const Every = (props) => {
 							type="number"
 							value={item.value}
 							onChange={(evt) => {
-								props.updateEveryValue(item.name, Number(evt.target.value));
+								props.updateEveryValue(
+									item.name,
+									Number(evt.target.value),
+								);
 							}}
 							min={item.min}
 							max={item.max}
@@ -25,9 +28,20 @@ export const Every = (props) => {
 	});
 
 	return (
-		<div className={s.every + (!props.isCustomRange ? " " + s.every_notCustom : "")}>
+		<div
+			className={
+				s.every + (!props.isCustomRange ? " " + s.every_notCustom : "")
+			}
+		>
 			<p className={s.every__title}>Интервал между записями</p>
-			<ul className={s.every__list + (!props.isCustomRange ? " " + s.every__list_notCustom : "")}>{elements}</ul>
+			<ul
+				className={
+					s.every__list +
+					(!props.isCustomRange ? " " + s.every__list_notCustom : "")
+				}
+			>
+				{elements}
+			</ul>
 		</div>
 	);
 };

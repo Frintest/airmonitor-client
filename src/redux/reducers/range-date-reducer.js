@@ -236,11 +236,25 @@ export const RangeDateReducer = (state = initialState, action) => {
 	}
 };
 
-export const setActiveQuickRange = (name) => ({ type: SET_ACTIVE_QUICK_RANGE, name });
-export const updateEveryValue = (name, value) => ({ type: UPDATE_EVERY_VALUE, name, value });
-export const getDateInterval = (from, to) => ({ type: GET_DATE_INTERVAL, from, to });
+export const setActiveQuickRange = (name) => ({
+	type: SET_ACTIVE_QUICK_RANGE,
+	name,
+});
+export const updateEveryValue = (name, value) => ({
+	type: UPDATE_EVERY_VALUE,
+	name,
+	value,
+});
+export const getDateInterval = (from, to) => ({
+	type: GET_DATE_INTERVAL,
+	from,
+	to,
+});
 export const getInfoEvery = (every) => ({ type: GET_INFO_EVERY, every });
-export const filterIntervalLabels = (activeRangeName) => ({ type: FILTER_INTERVAL_LABELS, activeRangeName });
+export const filterIntervalLabels = (activeRangeName) => ({
+	type: FILTER_INTERVAL_LABELS,
+	activeRangeName,
+});
 
 export const sendRangeInfoThunk = (name, range, date, every) => (dispatch) => {
 	const info = { name, range, date, every };

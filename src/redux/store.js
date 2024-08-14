@@ -1,4 +1,8 @@
-import { applyMiddleware, combineReducers, legacy_createStore as createStore } from "redux";
+import {
+	applyMiddleware,
+	combineReducers,
+	legacy_createStore as createStore,
+} from "redux";
 import thunk from "redux-thunk";
 import { ScreensReducer } from "./reducers/screens-reducer.js";
 import { AirStateReducer } from "./reducers/air-data-reducer.js";

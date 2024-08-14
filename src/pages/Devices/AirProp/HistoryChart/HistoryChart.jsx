@@ -36,7 +36,12 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 	const level3 = colors["3"];
 	const level4 = colors["4"];
 
-	const backgroundColors = [level1.light, level2.light, level3.light, level4.light];
+	const backgroundColors = [
+		level1.light,
+		level2.light,
+		level3.light,
+		level4.light,
+	];
 	const backgroundPalette = createPalette(backgroundColors);
 
 	const borderColors = [level1.dark, level2.dark, level3.dark, level4.dark];
@@ -196,7 +201,13 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 
 	return (
 		<>
-			<Chart type="line" data={data} options={options} plugins={[hoverLine]} ref={ref} />
+			<Chart
+				type="line"
+				data={data}
+				options={options}
+				plugins={[hoverLine]}
+				ref={ref}
+			/>
 		</>
 	);
 });

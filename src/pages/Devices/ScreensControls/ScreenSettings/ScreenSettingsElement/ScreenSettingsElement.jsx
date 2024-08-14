@@ -16,7 +16,12 @@ export const ScreenSettingsElement = (props) => {
 	return (
 		<label className={s.label}>
 			<span className={s.name}>{formatText(airItem.ui_name)}</span>
-			<input className={s.checkbox} type="checkbox" checked={props.isChecked} onChange={onClick} />
+			<input
+				className={s.checkbox}
+				type="checkbox"
+				checked={props.isChecked}
+				onChange={onClick}
+			/>
 		</label>
 	);
 };

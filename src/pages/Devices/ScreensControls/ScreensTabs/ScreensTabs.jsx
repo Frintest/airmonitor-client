@@ -6,7 +6,11 @@ export const ScreensTabs = (props) => {
 		return (
 			<button
 				type="button"
-				className={s.item + (screen.id === 0 ? " " + s.itemMain : "") + (screen.isActive ? " " + s.itemActive : "")}
+				className={
+					s.item +
+					(screen.id === 0 ? " " + s.itemMain : "") +
+					(screen.isActive ? " " + s.itemActive : "")
+				}
 				onClick={() => props.setActiveScreen(screen.id)}
 				key={screen.id}
 			>

@@ -1,5 +1,8 @@
 import { Screen } from "./Screen.jsx";
-import { updateScreen, updateMainScreen } from "../../../redux/reducers/screens-reducer.js";
+import {
+	updateScreen,
+	updateMainScreen,
+} from "../../../redux/reducers/screens-reducer.js";
 import { connect } from "react-redux";
 import { airStateSelector } from "../../../redux/selectors/air-state-selectors.js";
 import { screenSelector } from "../../../redux/selectors/screens-selectors.js";

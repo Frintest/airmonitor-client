@@ -8,7 +8,10 @@ export const Popup = (props) => {
 				<div className={s.popup}>
 					<div className={s.popup__header}>
 						<p className={s.popup__title}>{props.title}</p>
-						<button className={s.popup__closeBtn} onClick={props.onClose} />
+						<button
+							className={s.popup__closeBtn}
+							onClick={props.onClose}
+						/>
 					</div>
 					{props.children}
 				</div>

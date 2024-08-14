@@ -7,7 +7,10 @@ import {
 } from "../../../redux/reducers/screens-reducer.js";
 import { connect } from "react-redux";
 import { airStateSelector } from "../../../redux/selectors/air-state-selectors.js";
-import { screenSelector, screensSelector } from "../../../redux/selectors/screens-selectors.js";
+import {
+	screenSelector,
+	screensSelector,
+} from "../../../redux/selectors/screens-selectors.js";
 
 const mapStateToProps = (state) => ({
 	airState: airStateSelector(state),

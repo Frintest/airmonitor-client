@@ -13,7 +13,8 @@ export const Standards = (props) => {
 	const elements = () => {
 		return standards.map((item) => {
 			const [fromColor, toColor] = getLevelColors(item.level);
-			const value = item.level == standards.length ? `${item.value}+` : `${item.value}`;
+			const value =
+				item.level == standards.length ? `${item.value}+` : `${item.value}`;
 
 			return (
 				<li className={s.item} key={item.level}>
@@ -33,7 +34,9 @@ export const Standards = (props) => {
 
 	return props.standards.isExist ? (
 		<div className={s.standards}>
-			<p className={s.standards__source}>Стандарт: {props.standards.source}</p>
+			<p className={s.standards__source}>
+				Стандарт: {props.standards.source}
+			</p>
 			<ul className={s.standards__list}>{elements()}</ul>
 		</div>
 	) : (

@@ -9,10 +9,15 @@ export const ScreensControls = (props) => {
 	return (
 		<>
 			<div className={s.wrap}>
-				<ScreensTabs screens={props.screens} setActiveScreen={props.setActiveScreen} />
+				<ScreensTabs
+					screens={props.screens}
+					setActiveScreen={props.setActiveScreen}
+				/>
 				{props.screen.isChange && (
 					<button
-						className={s.changeScreenBtn + " " + s.item + " " + s.itemActive}
+						className={
+							s.changeScreenBtn + " " + s.item + " " + s.itemActive
+						}
 						onClick={() => setVisible(true)}
 					>
 						Изменить экран
