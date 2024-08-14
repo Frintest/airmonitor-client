@@ -22,20 +22,20 @@
       padding: 11px 20px;
       font-size: 16px;
       color: $slate-900;
-      background: transparent;
+      background-color: transparent;
       border: 1px solid $slate-600;
       border-radius: 100vh;
       cursor: pointer;
       transition: 0.3s;
 
       &:hover {
-         background: $slate-600;
+         background-color: $slate-600;
          color: #fff;
       }
 
       &:active {
          transition: 0s;
-         background: transparent;
+         background-color: transparent;
          color: $slate-900;
       }
    }

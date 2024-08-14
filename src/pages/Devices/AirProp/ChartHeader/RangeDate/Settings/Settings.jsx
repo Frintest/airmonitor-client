@@ -47,10 +47,11 @@ export const Settings = (props) => {
 
          <div className={s.settings__buttons}>
             <button
+               type="button"
                className={s.settings__closeBtn}
                onClick={() => {
                   props.onClose();
-                  props.setActiveQuickRange(0);
+                  props.setActiveQuickRange("custom");
                }}
             >
                Отмена

@@ -38,9 +38,10 @@ $size: 48px;
 
    &__arrow {
       width: $size;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+
+      & > svg {
+         margin: auto;
+      }
    }
 
    &__label {

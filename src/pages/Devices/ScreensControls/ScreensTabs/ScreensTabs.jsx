@@ -4,7 +4,8 @@ import s from "./ScreensTabs.module.scss";
 export const ScreensTabs = (props) => {
    const tabs = Object.values(props.screens).map((screen) => {
       return (
-         <li
+         <button
+            type="button"
             className={
                s.item +
                (screen.id === 0 ? " " + s.itemMain : "") +
@@ -14,9 +15,9 @@ export const ScreensTabs = (props) => {
             key={screen.id}
          >
             {screen.value}
-         </li>
+         </button>
       );
    });
 
-   return <ul className={s.list}>{tabs}</ul>;
+   return <div className={s.list}>{tabs}</div>;
 };
