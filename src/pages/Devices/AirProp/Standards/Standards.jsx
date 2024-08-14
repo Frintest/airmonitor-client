@@ -2,43 +2,41 @@ import React from "react";
 import s from "./Standards.module.scss";
 
 export const Standards = (props) => {
-   const getLevelColors = (level) => {
-      const fromColor = props.levelColors[level].dark;
-      const toColor = props.levelColors[level].light;
-      return [fromColor, toColor];
-   };
+	const getLevelColors = (level) => {
+		const fromColor = props.levelColors[level].dark;
+		const toColor = props.levelColors[level].light;
+		return [fromColor, toColor];
+	};
 
-   const standards = props.standards.content;
+	const standards = props.standards.content;
 
-   const elements = () => {
-      return standards.map((item) => {
-         const [fromColor, toColor] = getLevelColors(item.level);
-         const value = item.level == standards.length ? `${item.value}+` : `${item.value}`;
+	const elements = () => {
+		return standards.map((item) => {
+			const [fromColor, toColor] = getLevelColors(item.level);
+			const value = item.level == standards.length ? `${item.value}+` : `${item.value}`;
 
-         return (
-            <li className={s.item} key={item.level}>
-               <div
-                  className={s.blockValue}
-                  style={{
-                     background: `linear-gradient(0deg, ${fromColor} 0%, ${toColor} 100%)`,
-                  }}
-               >
-                  {value}
-               </div>
-               <p className={s.desc}>{item.text}</p>
-            </li>
-         );
-      });
-   };
+			return (
+				<li className={s.item} key={item.level}>
+					<div
+						className={s.blockValue}
+						style={{
+							background: `linear-gradient(0deg, ${fromColor} 0%, ${toColor} 100%)`,
+						}}
+					>
+						{value}
+					</div>
+					<p className={s.desc}>{item.text}</p>
+				</li>
+			);
+		});
+	};
 
-   return props.standards.isExist ? (
-      <div className={s.standards}>
-         <p className={s.standards__source}>
-            Стандарт: {props.standards.source}
-         </p>
-         <ul className={s.standards__list}>{elements()}</ul>
-      </div>
-   ) : (
-      <p className={s.notFount}>Стандарты не предусмотрены</p>
-   );
+	return props.standards.isExist ? (
+		<div className={s.standards}>
+			<p className={s.standards__source}>Стандарт: {props.standards.source}</p>
+			<ul className={s.standards__list}>{elements()}</ul>
+		</div>
+	) : (
+		<p className={s.notFount}>Стандарты не предусмотрены</p>
+	);
 };

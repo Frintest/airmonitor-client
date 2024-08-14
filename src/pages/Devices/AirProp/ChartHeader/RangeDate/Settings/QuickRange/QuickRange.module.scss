@@ -1,20 +1,20 @@
 @import "../../../../../../../scss/utilities/variables.scss";
 
 .quickRange {
-   &__item {
-      display: block;
-      padding: 10px 16px;
-      color: $slate-900;
-      border-radius: 100vh;
-      cursor: pointer;
-      transition: background 0.3s;
+	&__item {
+		display: block;
+		padding: 10px 16px;
+		color: $slate-900;
+		border-radius: 100vh;
+		cursor: pointer;
+		transition: background 0.3s;
 
-      &Active {
-         background: $slate-200;
-      }
+		&Active {
+			background: $slate-200;
+		}
 
-      & + & {
-         margin-top: 6px;
-      }
-   }
+		& + & {
+			margin-top: 6px;
+		}
+	}
 }

@@ -1,67 +1,67 @@
 @import "../../scss/utilities/variables.scss";
 
 .wrap {
-   position: absolute;
-   top: 0;
-   left: 0;
-   z-index: 24;
-   width: 100vw;
-   height: 100vh;
-   background: rgba($slate-950, 0.65);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 24;
+	width: 100vw;
+	height: 100vh;
+	background: rgba($slate-950, 0.65);
 }
 
 .popup {
-   padding: 32px 40px;
-   position: absolute;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   background: #fff;
-   border-radius: $border-radius;
+	padding: 32px 40px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: #fff;
+	border-radius: $border-radius;
 
-   & > *:not(:first-child) {
-      margin-top: 40px;
-   }
+	& > *:not(:first-child) {
+		margin-top: 40px;
+	}
 
-   &__header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-   }
+	&__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 
-   &__title {
-      font-weight: 500;
-      color: $slate-900;
-   }
+	&__title {
+		font-weight: 500;
+		color: $slate-900;
+	}
 
-   &__closeBtn {
-      width: 24px;
-      height: 24px;
-      position: relative;
-      display: block;
-      background: transparent;
-      border: none;
-      cursor: pointer;
+	&__closeBtn {
+		width: 24px;
+		height: 24px;
+		position: relative;
+		display: block;
+		background: transparent;
+		border: none;
+		cursor: pointer;
 
-      &::before,
-      &::after {
-         content: "";
-         position: absolute;
-         width: 17px;
-         height: 1.5px;
-         top: 50%;
-         left: 50%;
-         transform: translate(-50%, -50%);
-         background: $slate-900;
-         border-radius: 100vh;
-      }
+		&::before,
+		&::after {
+			content: "";
+			position: absolute;
+			width: 17px;
+			height: 1.5px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: $slate-900;
+			border-radius: 100vh;
+		}
 
-      &::before {
-         transform: translate(-50%, -50%) rotate(45deg);
-      }
+		&::before {
+			transform: translate(-50%, -50%) rotate(45deg);
+		}
 
-      &::after {
-         transform: translate(-50%, -50%) rotate(-45deg);
-      }
-   }
+		&::after {
+			transform: translate(-50%, -50%) rotate(-45deg);
+		}
+	}
 }

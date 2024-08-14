@@ -1,16 +1,16 @@
 @import "../../../../../scss/utilities/variables.scss";
 
 .ResetZoom {
-   padding: 10px 20px;
-   border-radius: 100vh;
-   background: $slate-200;
-   font-size: 16px;
-   color: $slate-900;
-   cursor: pointer;
-   border: none;
-   transition: 0.3s;
+	padding: 10px 20px;
+	border-radius: 100vh;
+	background: $slate-200;
+	font-size: 16px;
+	color: $slate-900;
+	cursor: pointer;
+	border: none;
+	transition: 0.3s;
 
-   &:hover {
-      background: $slate-300;
-   }
+	&:hover {
+		background: $slate-300;
+	}
 }

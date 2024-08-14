@@ -13,7 +13,7 @@ const generateScreens = (count) => {
 			isActive: true,
 			elements: {},
 			isChange: false,
-		}
+		},
 	};
 
 	for (let i = 1; i < count; i++) {
@@ -57,7 +57,7 @@ export const ScreensReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				screens: { ...state.screens, [action.id]: screen }
+				screens: { ...state.screens, [action.id]: screen },
 			};
 		}
 
@@ -68,7 +68,7 @@ export const ScreensReducer = (state = initialState, action) => {
 
 			return {
 				...state,
-				screens: { ...state.screens, 0: screen }
+				screens: { ...state.screens, 0: screen },
 			};
 		}
 

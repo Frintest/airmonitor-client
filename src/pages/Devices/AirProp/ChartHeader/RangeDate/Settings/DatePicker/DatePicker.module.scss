@@ -1,35 +1,35 @@
 @import "../../../../../../../scss/utilities/variables.scss";
 
 .datePicker {
-   & + & {
-      margin-left: 32px;
-   }
+	& + & {
+		margin-left: 32px;
+	}
 }
 
 .textPicker {
-   display: flex;
-   align-items: center;
-   margin: 24px 16px 0 16px;
+	display: flex;
+	align-items: center;
+	margin: 24px 16px 0 16px;
 
-   &__subtitle {
-      color: $slate-600;
-   }
-   &__input {
-      width: 100%;
-      padding: 11px 14px;
-      border: 1.5px solid $slate-200;
-      border-radius: 100vh;
-      margin-left: 16px;
-      color: $slate-900;
-      font-size: 16px;
-      outline: none;
+	&__subtitle {
+		color: $slate-600;
+	}
+	&__input {
+		width: 100%;
+		padding: 11px 14px;
+		border: 1.5px solid $slate-200;
+		border-radius: 100vh;
+		margin-left: 16px;
+		color: $slate-900;
+		font-size: 16px;
+		outline: none;
 
-      &::placeholder {
-         color: $slate-400;
-      }
+		&::placeholder {
+			color: $slate-400;
+		}
 
-      &:focus {
-         border-color: $main-color;
-      }
-   }
+		&:focus {
+			border-color: $main-color;
+		}
+	}
 }

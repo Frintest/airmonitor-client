@@ -1,101 +1,101 @@
 @import "../../../../scss/utilities/variables.scss";
 
 .element {
-   width: 352px;
-   height: 172px;
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   position: relative;
-   padding: 0 34px;
-   background-image: url(../../../../assets/images/screen.svg);
-   background-repeat: no-repeat;
-   border-radius: 16px;
-   cursor: pointer;
+	width: 352px;
+	height: 172px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	position: relative;
+	padding: 0 34px;
+	background-image: url(../../../../assets/images/screen.svg);
+	background-repeat: no-repeat;
+	border-radius: 16px;
+	cursor: pointer;
 
-   .elementHover {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: absolute;
-      z-index: 14;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: 0.3s;
+	.elementHover {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		z-index: 14;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		transition: 0.3s;
 
-      &::before {
-         content: "";
-         position: absolute;
-         top: 0;
-         left: 0;
-         width: 100%;
-         height: 100%;
-         background-image: url(../../../../assets/images/screen.svg);
-         opacity: 0.85;
-      }
+		&::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-image: url(../../../../assets/images/screen.svg);
+			opacity: 0.85;
+		}
 
-      &__more {
-         z-index: 17;
-         font-size: 22px;
-         color: $slate-800;
-      }
+		&__more {
+			z-index: 17;
+			font-size: 22px;
+			color: $slate-800;
+		}
 
-      &__status {
-         position: absolute;
-         top: 0;
-         right: 0;
-         width: 104px;
-         height: 30px;
-         background: #fff;
-         border-radius: 10px;
-         opacity: 0.6;
-      }
-   }
+		&__status {
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 104px;
+			height: 30px;
+			background: #fff;
+			border-radius: 10px;
+			opacity: 0.6;
+		}
+	}
 
-   &:hover .elementHover {
-      opacity: 1;
-   }
+	&:hover .elementHover {
+		opacity: 1;
+	}
 
-   .name {
-      font-size: 18px;
-      color: $slate-700;
-   }
+	.name {
+		font-size: 18px;
+		color: $slate-700;
+	}
 
-   .value {
-      display: flex;
-      align-items: flex-end;
-      margin-top: 20px;
-      font-size: 54px;
-      color: $slate-800;
-      letter-spacing: -0.0825rem;
-   }
+	.value {
+		display: flex;
+		align-items: flex-end;
+		margin-top: 20px;
+		font-size: 54px;
+		color: $slate-800;
+		letter-spacing: -0.0825rem;
+	}
 
-   .unit {
-      display: block;
-      padding-bottom: 10px;
-      padding-left: 10px;
-      font-size: 20px;
-      font-weight: 300;
-      color: $slate-800;
-      letter-spacing: 0;
-   }
+	.unit {
+		display: block;
+		padding-bottom: 10px;
+		padding-left: 10px;
+		font-size: 20px;
+		font-weight: 300;
+		color: $slate-800;
+		letter-spacing: 0;
+	}
 
-   .status {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 104px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: $pollution-level-1;
-      border-radius: 10px;
-      font-size: 13px;
-      font-weight: 500;
-      color: #fff;
-   }
+	.status {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 104px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $pollution-level-1;
+		border-radius: 10px;
+		font-size: 13px;
+		font-weight: 500;
+		color: #fff;
+	}
 }

@@ -9,7 +9,7 @@ let reducers = combineReducers({
 	ScreensReducer,
 	AirStateReducer,
 	AirHistoryReducer,
-	RangeDateReducer
+	RangeDateReducer,
 });
 let store = createStore(reducers, applyMiddleware(thunk));
 

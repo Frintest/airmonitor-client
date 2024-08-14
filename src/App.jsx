@@ -7,27 +7,27 @@ const { Help } = lazily(() => import("./pages/Help/Help.jsx"));
 import { NotFound } from "./pages/NotFound/NotFound.jsx";
 
 export const App = (props) => {
-   React.useEffect(() => {
-      props.updateAirStateThunk();
-      props.getStandardsThunk();
-   });
+	React.useEffect(() => {
+		props.updateAirStateThunk();
+		props.getStandardsThunk();
+	});
 
-   return (
-      <BrowserRouter basename={process.env.PUBLIC_URL}>
-         <Routes>
-            <Route path="/" element={<Layout />}>
-               <Route path="devices/*" element={<DevicesContainer />} />
-               <Route
-                  path="help"
-                  element={
-                     <React.Suspense fallback={<div>Loading...</div>}>
-                        <Help />
-                     </React.Suspense>
-                  }
-               />
-               <Route path="*" element={<NotFound />} />
-            </Route>
-         </Routes>
-      </BrowserRouter>
-   );
+	return (
+		<BrowserRouter basename={process.env.PUBLIC_URL}>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route path="devices/*" element={<DevicesContainer />} />
+					<Route
+						path="help"
+						element={
+							<React.Suspense fallback={<div>Loading...</div>}>
+								<Help />
+							</React.Suspense>
+						}
+					/>
+					<Route path="*" element={<NotFound />} />
+				</Route>
+			</Routes>
+		</BrowserRouter>
+	);
 };

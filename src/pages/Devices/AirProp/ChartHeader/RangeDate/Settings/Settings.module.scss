@@ -5,43 +5,43 @@
 		&_notCustom {
 			display: flex;
 		}
-   }
+	}
 
-   &__range {
-      display: flex;
-   }
+	&__range {
+		display: flex;
+	}
 
-   &__buttons {
-      display: flex;
-      align-items: center;
-   }
+	&__buttons {
+		display: flex;
+		align-items: center;
+	}
 
-   &__closeBtn {
-      display: block;
-      margin-right: 16px;
-      padding: 11px 20px;
-      font-size: 16px;
-      color: $slate-900;
-      background-color: transparent;
-      border: 1px solid $slate-600;
-      border-radius: 100vh;
-      cursor: pointer;
-      transition: 0.3s;
+	&__closeBtn {
+		display: block;
+		margin-right: 16px;
+		padding: 11px 20px;
+		font-size: 16px;
+		color: $slate-900;
+		background-color: transparent;
+		border: 1px solid $slate-600;
+		border-radius: 100vh;
+		cursor: pointer;
+		transition: 0.3s;
 
-      &:hover {
-         background-color: $slate-600;
-         color: #fff;
-      }
+		&:hover {
+			background-color: $slate-600;
+			color: #fff;
+		}
 
-      &:active {
-         transition: 0s;
-         background-color: transparent;
-         color: $slate-900;
-      }
-   }
+		&:active {
+			transition: 0s;
+			background-color: transparent;
+			color: $slate-900;
+		}
+	}
 
-   &__calendars {
-      margin-left: 100px;
-      display: flex;
-   }
+	&__calendars {
+		margin-left: 100px;
+		display: flex;
+	}
 }

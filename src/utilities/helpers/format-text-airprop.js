@@ -13,5 +13,10 @@ export const formatText = (text) => {
 		indexTag = <sup>{text.slice(supBeginIndex + 5)}</sup>;
 	}
 
-	return <>{mainText}{indexTag}</>;
+	return (
+		<>
+			{mainText}
+			{indexTag}
+		</>
+	);
 };

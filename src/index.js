@@ -10,5 +10,5 @@ const root = ReactDOM.createRoot(document.getElementById("wrapper"));
 root.render(
 	<Provider store={store}>
 		<AppContainer />
-	</Provider>
+	</Provider>,
 );

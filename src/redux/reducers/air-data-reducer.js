@@ -15,7 +15,7 @@ export const AirStateReducer = (state = initialState, action) => {
 			return {
 				...state,
 				info: action.airState.info,
-				state: action.airState.state
+				state: action.airState.state,
 			};
 		}
 
@@ -38,7 +38,6 @@ export const updateAirStateThunk = () => (dispatch) => {
 
 const getStandards = (standards) => ({ type: GET_STANDARDS, standards });
 export const getStandardsThunk = () => (dispatch) => {
-
 	API.getStandards((standards) => {
 		dispatch(getStandards(standards));
 	});

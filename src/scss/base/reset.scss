@@ -1,37 +1,37 @@
 * {
-   box-sizing: border-box;
-   font-family: "Roboto", sans-serif;
+	box-sizing: border-box;
+	font-family: "Roboto", sans-serif;
 
-   &,
-   &::before,
-   &::after {
-      margin: 0;
-      padding: 0;
-   }
+	&,
+	&::before,
+	&::after {
+		margin: 0;
+		padding: 0;
+	}
 }
 
 html {
-   scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-   height: 100vh;
-   background: url(../assets/images/screens-bg.jpg) bottom center no-repeat;
-   background-size: cover;
+	height: 100vh;
+	background: url(../assets/images/screens-bg.jpg) bottom center no-repeat;
+	background-size: cover;
 }
 
 ul,
 ol {
-   list-style-type: none;
+	list-style-type: none;
 }
 
 a {
-   text-decoration: none;
+	text-decoration: none;
 }
 
 img,
 svg,
 picture,
 video {
-   display: block;
+	display: block;
 }

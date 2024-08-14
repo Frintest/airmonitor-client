@@ -8,7 +8,6 @@ const initialState = {
 
 export const AirHistoryReducer = (state = initialState, action) => {
 	switch (action.type) {
-
 		case UPDATE_HISTORY: {
 			let info = action.data.info;
 			const history = action.data.history;
@@ -20,9 +19,9 @@ export const AirHistoryReducer = (state = initialState, action) => {
 					[action.name]: {
 						...state.history[action.name],
 						info: info,
-						history: history
-					}
-				}
+						history: history,
+					},
+				},
 			};
 		}
 

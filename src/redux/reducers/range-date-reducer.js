@@ -8,7 +8,7 @@ const FILTER_INTERVAL_LABELS = "range/FILTER_INTERVAL_LABELS";
 
 const initialState = {
 	quickRange: {
-		"custom": {
+		custom: {
 			name: "custom",
 			ui_name: "Пользовательский",
 			isActive: true,
@@ -108,7 +108,7 @@ export const RangeDateReducer = (state = initialState, action) => {
 					[action.name]: newRange,
 				},
 				quickRangeActive: action.name,
-			}
+			};
 		}
 
 		case UPDATE_EVERY_VALUE: {
@@ -119,9 +119,9 @@ export const RangeDateReducer = (state = initialState, action) => {
 					[action.name]: {
 						...state.every[action.name],
 						value: action.value,
-					}
-				}
-			}
+					},
+				},
+			};
 		}
 
 		case FILTER_INTERVAL_LABELS: {
@@ -219,7 +219,7 @@ export const RangeDateReducer = (state = initialState, action) => {
 					...state.every[name],
 					value: item.value,
 					isExist: true,
-				}
+				};
 			}
 
 			return {
@@ -228,7 +228,7 @@ export const RangeDateReducer = (state = initialState, action) => {
 					...resetEvery,
 					...every,
 				},
-			}
+			};
 		}
 
 		default:
@@ -243,6 +243,6 @@ export const getInfoEvery = (every) => ({ type: GET_INFO_EVERY, every });
 export const filterIntervalLabels = (activeRangeName) => ({ type: FILTER_INTERVAL_LABELS, activeRangeName });
 
 export const sendRangeInfoThunk = (name, range, date, every) => (dispatch) => {
-	const info = { name, range, date, every }
+	const info = { name, range, date, every };
 	API.sendRangeInfo(info);
 };

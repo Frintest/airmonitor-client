@@ -1,45 +1,45 @@
 @import "../../scss/utilities/variables.scss";
 
 .header {
-   background: rgba($slate-950, 0.04);
-   padding: 20px 0;
-   margin-bottom: 60px;
+	background: rgba($slate-950, 0.04);
+	padding: 20px 0;
+	margin-bottom: 60px;
 
-   &__container {
-      width: 1200px;
-      margin: 0 auto;
-      overflow: hidden;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-   }
+	&__container {
+		width: 1200px;
+		margin: 0 auto;
+		overflow: hidden;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
 
-   &__logo {
-      display: block;
-      width: fit-content;
-   }
+	&__logo {
+		display: block;
+		width: fit-content;
+	}
 
-   &__list {
-      display: flex;
-      align-items: center;
-   }
+	&__list {
+		display: flex;
+		align-items: center;
+	}
 
-   &__item {
-      & + & {
-         margin-left: 24px;
-      }
-   }
+	&__item {
+		& + & {
+			margin-left: 24px;
+		}
+	}
 
-   &__link {
-      color: $slate-300;
-      transition: 0.3s;
+	&__link {
+		color: $slate-300;
+		transition: 0.3s;
 
-      &:hover {
-         color: #fff;
-      }
+		&:hover {
+			color: #fff;
+		}
 
-      &Active {
-         color: #fff;
-      }
-   }
+		&Active {
+			color: #fff;
+		}
+	}
 }

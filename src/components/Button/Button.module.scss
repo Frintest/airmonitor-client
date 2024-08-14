@@ -1,23 +1,23 @@
 @import "../../scss/utilities/variables.scss";
 
 .btn {
-   display: block;
-   padding: 10px 20px;
-   font-size: 16px;
-   font-weight: 500;
-   color: #fff;
-   background: $slate-800;
-   border: none;
-   border-radius: 100vh;
-   cursor: pointer;
-   transition: 0.3s;
+	display: block;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: 500;
+	color: #fff;
+	background: $slate-800;
+	border: none;
+	border-radius: 100vh;
+	cursor: pointer;
+	transition: 0.3s;
 
-   &:hover {
-      background: $slate-700;
-   }
+	&:hover {
+		background: $slate-700;
+	}
 
-   &:active {
-      transition: 0s;
-      background: $slate-800;
-   }
+	&:active {
+		transition: 0s;
+		background: $slate-800;
+	}
 }

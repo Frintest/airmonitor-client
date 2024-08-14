@@ -1,82 +1,82 @@
 @import "../../../scss/utilities/variables.scss";
 
 .airprop {
-   border-radius: 16px;
-   background: $slate-50;
+	border-radius: 16px;
+	background: $slate-50;
 
-   &__container {
-      width: 1200px;
-      margin: 0 auto;
-      overflow: hidden;
-   }
+	&__container {
+		width: 1200px;
+		margin: 0 auto;
+		overflow: hidden;
+	}
 }
 
 .header {
-   background: #e3ebf0;
-   border-top-left-radius: 16px;
-   border-top-right-radius: 16px;
-   padding: 14px 22px;
+	background: #e3ebf0;
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	padding: 14px 22px;
 
-   &__info {
-      display: flex;
-      align-items: center;
-   }
+	&__info {
+		display: flex;
+		align-items: center;
+	}
 
-   &__exit {
-      background: $slate-200;
-      border: none;
-      cursor: pointer;
-   }
+	&__exit {
+		background: $slate-200;
+		border: none;
+		cursor: pointer;
+	}
 
-   &__title {
-      margin-left: 10px;
-      font-size: 18px;
-      font-weight: 500;
-      color: $slate-900;
-   }
+	&__title {
+		margin-left: 10px;
+		font-size: 18px;
+		font-weight: 500;
+		color: $slate-900;
+	}
 }
 
 .maininfo {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 
-   &__valueWrap {
-      display: flex;
-      align-items: flex-end;
-   }
+	&__valueWrap {
+		display: flex;
+		align-items: flex-end;
+	}
 
-   &__value {
-      font-size: 54px;
-      color: $slate-900;
-      font-weight: 500;
-      letter-spacing: -0.0625rem;
-   }
+	&__value {
+		font-size: 54px;
+		color: $slate-900;
+		font-weight: 500;
+		letter-spacing: -0.0625rem;
+	}
 
-   &__unit {
-      margin-left: 12px;
-      margin-bottom: 11px;
-      color: $slate-900;
-   }
+	&__unit {
+		margin-left: 12px;
+		margin-bottom: 11px;
+		color: $slate-900;
+	}
 }
 
 .info {
-   padding: 60px 52px;
+	padding: 60px 52px;
 }
 
 .chart {
-   &__container {
-      margin-top: 28px;
-   }
+	&__container {
+		margin-top: 28px;
+	}
 
-   &__placeholder {
+	&__placeholder {
 		border-radius: $border-radius;
-      background: $slate-200;
-      padding: 32px 40px;
-   }
+		background: $slate-200;
+		padding: 32px 40px;
+	}
 
-   &__placeholderTitle {
-      font-size: 18px;
-      color: $slate-900;
-   }
+	&__placeholderTitle {
+		font-size: 18px;
+		color: $slate-900;
+	}
 }
