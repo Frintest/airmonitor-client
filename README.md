@@ -1,21 +1,35 @@
-# Стандары
+# airmonitor
 
-pm1 - нет стадартов
-pm2.5 2012
-pm10 150 2012
-CO2 -
-TVOC Ausschuss für Innenraumrichtwerte
+Мониторинг качества воздуха в реальном времени. Проект включает в себя устройство, отслеживающее данные о параметрах водуха, и веб-приложение, визуализирующее данные.
 
-Evaluation of the Chinese New Air
-Quality Index (GB3095-2012)
-https://core.ac.uk/download/pdf/38094372.pdf
-// AQI (Air Quality Index)
+## Веб-приложение
 
-Ausschuss für Innenraumrichtwerte
-https://www.umweltbundesamt.de/themen/gesundheit/kommissionen-arbeitsgruppen/ausschuss-fuer-innenraumrichtwerte#ausschuss-fur-innenraumrichtwerte-air
+Ссылка на веб-приложение, размещённое на хостинге GitHub Pages: [https://frintest.github.io/airmonitor-client/](https://frintest.github.io/airmonitor-client/).<br>
+Ссылка на веб-приложение, размещённое на vds сервере. [https://airmonitor.servermc.ru/](https://airmonitor.servermc.ru/)
 
-pm1 близок к UFP
-https://www.researchgate.net/post/Is_there_any_regulation_guideline_standard_for_PM1_concentration_in_mass_or_in_number
+Ссылка на github frontend части приложения: https://github.com/Frintest/airmonitor-client.<br>
+Ссылка на github backend части приложения: https://github.com/Frintest/airmonitor-server.
 
-CO2
-https://journals.sagepub.com/doi/full/10.1177/1420326X19841109
+### Frontend
+
+Клиентская часть приложения является SPA (Single Page Application), поэтому данные на сайте изменяются без перезагрузки страницы. Подготовка проекта к развёртыванию на сервере осуществляется библиотекой webpack. Происходит сборка модулей, в единые файлы (Все .js файлы будут собраны в один .js файл, и т.д.), с их последующей мининизацией.
+
+### Backend
+
+Серверная часть приложения написана на ванильном nodejs. Для работы с базой данных MySQL я использую библиотеку [mysql2](https://www.npmjs.com/package/mysql2).
+
+### База данных
+
+В качестве базы данных я использую MySQL.
+
+### API
+
+Приложение отображает данные в реальном времени. По этой причине я отказался от использования классического способа описания API приложения - REST API, и использовал Websocket API, предоставляемой библиотекой [socket.io](https://www.npmjs.com/package/socket.io).
+
+### Деплой
+
+Развёртывание frontend и backend части приложения на сервере осуществляется сервисом GitHub Actions. Он исполняет .yml конфиг, в котором прописаны правила сборки проекта и его дальнейшего деплоя.
+
+Backend часть попадает на vds сервер и точка входа приложения автоматически перезапускается. Для автономной работы кода я использую инструмент [pm2](https://pm2.keymetrics.io/).
+
+Развёртывание frontend части происходит на том же vds сервере что и backend часть, а также на бесплатном хостинге [GitHub Pages](https://pages.github.com/).
