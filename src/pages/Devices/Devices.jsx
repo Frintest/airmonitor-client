@@ -36,7 +36,6 @@ export const Devices = (props) => {
 					</div>
 				}
 			/>
-
 			{airPropRoutes}
 		</Routes>
 	);
