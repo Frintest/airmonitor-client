@@ -14,7 +14,7 @@ export const ChartHeader = React.forwardRef((props, ref) => {
 				onClose={() => setVisible(false)}
 				onOpen={() => setVisible(true)}
 			/>
-			{isVisibleZoom && <Zoom ref={ref} />}
+			{props.isHistoryExist && <Zoom ref={ref} />}
 		</div>
 	);
 });

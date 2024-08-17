@@ -19,7 +19,7 @@ const mapStateToProps = (state) => {
 		isCustomRange: active === "custom",
 		activeRange: quickRange[active],
 		every: state.RangeDateReducer.every,
-		airInfo: state.AirStateReducer.info,
+		airInfo: state.AirDataReducer.info,
 	};
 };
 

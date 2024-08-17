@@ -9,7 +9,7 @@ const initialState = {
 	standards: {},
 };
 
-export const AirStateReducer = (state = initialState, action) => {
+export const AirDataReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_AIR_STATE: {
 			return {

@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./AirProp.module.scss";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 import { Standards } from "./Standards/Standards.jsx";
 import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
@@ -9,17 +9,9 @@ import ChartHeaderContainer from "./ChartHeader/ChartHeaderContainer.js";
 export const AirProp = (props) => {
 	const ref = React.useRef();
 
-	const location = useLocation();
-	let path = location.pathname.split("/");
-	path = path[path.length - 1];
-	const airItem = props.airState[path];
-
 	React.useEffect(() => {
-		props.updateAirHistoryThunk(airItem.sensor_name);
+		props.updateAirHistoryThunk(props.airItem.sensor_name);
 	}, [props.airState]);
-
-	const history = props.history[airItem.sensor_name];
-	const standards = props.standards[airItem.sensor_name];
 
 	return (
 		<section className={s.airprop}>
@@ -40,7 +32,9 @@ export const AirProp = (props) => {
 						</svg>
 					</Link>
 
-					<p className={s.header__title}>{formatText(airItem.ui_name)}</p>
+					<p className={s.header__title}>
+						{formatText(props.airItem.ui_name)}
+					</p>
 				</div>
 			</div>
 
@@ -48,29 +42,30 @@ export const AirProp = (props) => {
 				<div className={s.airprop__container}>
 					<div className={s.maininfo}>
 						<div className={s.maininfo__valueWrap}>
-							<p className={s.maininfo__value}>{airItem.value}</p>
+							<p className={s.maininfo__value}>{props.airItem.value}</p>
 							<span className={s.maininfo__unit}>
-								{formatText(airItem.unit)}
+								{formatText(props.airItem.unit)}
 							</span>
 						</div>
 
 						<Standards
-							standards={standards}
+							standards={props.standards}
 							levelColors={props.levelColors}
 						/>
 					</div>
 
 					<ChartHeaderContainer
 						ref={ref}
-						sensor_name={airItem.sensor_name}
+						sensor_name={props.airItem.sensor_name}
+						isHistoryExist={props.isHistoryExist}
 					/>
 
 					<div className={s.chart__container}>
-						{history !== undefined ? (
+						{props.isHistoryExist ? (
 							<HistoryChart
-								history={history.history}
-								sensor_name={airItem.sensor_name}
-								ui_name={airItem.ui_name}
+								history={props.history.history}
+								sensor_name={props.airItem.sensor_name}
+								ui_name={props.airItem.ui_name}
 								updateAirHistoryThunk={props.updateAirHistoryThunk}
 								levelColors={props.levelColors}
 								ref={ref}
@@ -78,7 +73,7 @@ export const AirProp = (props) => {
 						) : (
 							<div className={s.chart__placeholder}>
 								<p className={s.chart__placeholderTitle}>
-									Выберите временной интервал, для отображения графика.
+									Выберите временной интервал для отображения графика.
 								</p>
 							</div>
 						)}
