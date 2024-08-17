@@ -1,0 +1,43 @@
+@import "../../../../../scss/utilities/variables.scss";
+
+.zoom {
+	display: flex;
+	align-items: center;
+
+	&__name {
+		margin-right: 16px;
+		font-size: 16px;
+		color: $slate-900;
+	}
+
+	&__btn {
+		height: 40px;
+		padding: 0 20px;
+		font-size: 16px;
+		color: $slate-900;
+		border-radius: 100vh;
+		background: $slate-200;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: none;
+		cursor: pointer;
+		transition: 0.3s;
+
+		&:hover {
+			background: $slate-300;
+		}
+
+		& + & {
+			margin-left: 16px;
+		}
+	}
+
+	&__icon > path {
+		fill: $slate-600;
+	}
+
+	&__diff {
+		margin-left: 4px;
+	}
+}

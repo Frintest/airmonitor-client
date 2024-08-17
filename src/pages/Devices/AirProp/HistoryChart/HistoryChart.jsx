@@ -158,15 +158,7 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 				},
 			},
 			zoom: {
-				// pan: {
-				//    // pan options and/or events
-				//    // enabled: true,
-				// },
-				// limits: {
-				//    // axis limits
-				// },
 				zoom: {
-					// zoom options and/or events
 					wheel: {
 						speed: 0.1,
 						enabled: true,

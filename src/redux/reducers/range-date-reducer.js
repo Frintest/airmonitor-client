@@ -30,7 +30,7 @@ const initialState = {
 		},
 		"last-month": {
 			name: "last-month",
-			ui_name: "Последний месяц",
+			ui_name: "Последние 30 дней",
 			isActive: false,
 		},
 		"last-year": {
