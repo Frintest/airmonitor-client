@@ -11,6 +11,12 @@ ChartJS.register(gradientPlugin);
 ChartJS.register(zoomPlugin);
 
 export const HistoryChart = React.forwardRef((props, ref) => {
+	React.useEffect(() => {
+		if (ref) {
+			ref.current.zoom(props.zoom);
+		}
+	}, [props.zoom]);
+
 	const getAirPropHistory = () => {
 		const data = Object.values(props.history).map((item) => {
 			return {
@@ -141,7 +147,7 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 				display: false,
 			},
 			tooltip: {
-				backgroundColor: "rgba(15, 23, 42, 0.8)", // 0f172a
+				backgroundColor: "rgba(15, 23, 42, 0.8)", // #0f172a 80%
 				padding: 12,
 				titleFont: {
 					size: 13,
@@ -159,10 +165,6 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 			},
 			zoom: {
 				zoom: {
-					wheel: {
-						speed: 0.1,
-						enabled: true,
-					},
 					mode: "y",
 				},
 			},
@@ -192,14 +194,12 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 	};
 
 	return (
-		<>
-			<Chart
-				type="line"
-				data={data}
-				options={options}
-				plugins={[hoverLine]}
-				ref={ref}
-			/>
-		</>
+		<Chart
+			type="line"
+			data={data}
+			options={options}
+			plugins={[hoverLine]}
+			ref={ref}
+		/>
 	);
 });

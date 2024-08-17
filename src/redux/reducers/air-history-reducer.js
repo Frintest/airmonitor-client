@@ -1,27 +1,33 @@
 import { API } from "../../api/api.js";
 
 const UPDATE_HISTORY = "history/UPDATE_HISTORY";
+const UPDATE_ZOOM = "history/UPDATE_ZOOM";
 
 const initialState = {
 	history: {},
+	zoom: 1,
 };
 
 export const AirHistoryReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case UPDATE_HISTORY: {
-			let info = action.data.info;
-			const history = action.data.history;
-
 			return {
 				...state,
 				history: {
 					...state.history,
 					[action.name]: {
 						...state.history[action.name],
-						info: info,
-						history: history,
+						info: action.data.info,
+						history: action.data.history,
 					},
 				},
+			};
+		}
+
+		case UPDATE_ZOOM: {
+			return {
+				...state,
+				zoom: action.zoom,
 			};
 		}
 
@@ -37,3 +43,5 @@ export const updateAirHistoryThunk = (name) => (dispatch) => {
 		dispatch(updateHistory(data, name));
 	});
 };
+
+export const updateZoom = (zoom) => ({ type: UPDATE_ZOOM, zoom });

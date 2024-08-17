@@ -1,7 +1,7 @@
 import { API } from "../../api/api.js";
 
-const UPDATE_AIR_STATE = "air-state/UPDATE_AIR_STATE";
-const GET_STANDARDS = "air-state/GET_STANDARDS";
+const UPDATE_AIR_STATE = "air-data/UPDATE_AIR_STATE";
+const GET_STANDARDS = "air-data/GET_STANDARDS";
 
 const initialState = {
 	info: {},

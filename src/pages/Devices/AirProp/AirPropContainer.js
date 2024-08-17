@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
 	return {
 		airState: airStateSelector(state),
 		history: state.AirHistoryReducer.history,
+		zoom: state.AirHistoryReducer.zoom,
 		standards: state.AirDataReducer.standards,
 		levelColors: state.ScreensReducer.levelColors,
 	};

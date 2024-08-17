@@ -64,6 +64,8 @@ export const AirProp = (props) => {
 						{props.isHistoryExist ? (
 							<HistoryChart
 								history={props.history.history}
+								zoom={props.zoom}
+								updateZoom={props.updateZoom}
 								sensor_name={props.airItem.sensor_name}
 								ui_name={props.airItem.ui_name}
 								updateAirHistoryThunk={props.updateAirHistoryThunk}

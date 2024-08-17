@@ -5,7 +5,7 @@ import { Zoom } from "./Zoom/Zoom.jsx";
 
 export const ChartHeader = React.forwardRef((props, ref) => {
 	const [isVisible, setVisible] = React.useState(false);
-	const isVisibleZoom = true;
+
 	return (
 		<div className={s.chartHeader}>
 			<RangeDateContainer
@@ -14,7 +14,9 @@ export const ChartHeader = React.forwardRef((props, ref) => {
 				onClose={() => setVisible(false)}
 				onOpen={() => setVisible(true)}
 			/>
-			{props.isHistoryExist && <Zoom ref={ref} />}
+			{props.isHistoryExist && (
+				<Zoom ref={ref} zoom={props.zoom} updateZoom={props.updateZoom} />
+			)}
 		</div>
 	);
 });
