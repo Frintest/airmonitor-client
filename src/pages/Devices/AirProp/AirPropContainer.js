@@ -20,7 +20,6 @@ const AirPropLocation = (props) => {
 	let path = location.pathname.split("/");
 	path = path[path.length - 1];
 	const airItem = props.airState[path];
-
 	const history = props.history[airItem.sensor_name];
 	const isHistoryExist = history != undefined;
 	const standards = props.standards[airItem.sensor_name];
