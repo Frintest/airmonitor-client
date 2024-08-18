@@ -7,8 +7,9 @@ const initialState = {
 	history: {},
 	zoom: {
 		value: 1,
+		procentValue: 0,
 		min: 0.1,
-		max: 1.9,
+		max: 2,
 	},
 };
 
@@ -29,13 +30,28 @@ export const AirHistoryReducer = (state = initialState, action) => {
 		}
 
 		case UPDATE_ZOOM: {
-			return {
-				...state,
-				zoom: {
-					...state.zoom,
-					value: action.value,
-				},
-			};
+			if (action.value < state.zoom.max && action.value > state.zoom.min) {
+				let procentValue = (action.value * 100).toFixed(0);
+
+				if (action.value >= 1) {
+					procentValue -= 100;
+				} else {
+					procentValue = (100 - procentValue) * -1;
+				}
+
+				return {
+					...state,
+					zoom: {
+						...state.zoom,
+						value: action.value,
+						procentValue,
+					},
+				};
+			} else {
+				return {
+					...state,
+				};
+			}
 		}
 
 		default:

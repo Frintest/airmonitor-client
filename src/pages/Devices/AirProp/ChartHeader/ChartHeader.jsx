@@ -18,6 +18,7 @@ export const ChartHeader = React.forwardRef((props, ref) => {
 				<Zoom
 					ref={ref}
 					zoom={props.zoomValue}
+					zoomProcentValue={props.zoomProcentValue}
 					updateZoom={props.updateZoom}
 				/>
 			)}

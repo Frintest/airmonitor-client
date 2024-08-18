@@ -26,7 +26,7 @@ export const Zoom = React.forwardRef((props, ref) => {
 
 	return (
 		<div className={s.zoom}>
-			<p className={s.zoom__name}>Зумирование</p>
+			<p className={s.zoom__name}>Зумирование: {props.zoomProcentValue}%</p>
 			<button className={s.zoom__btn} onClick={onClickUpZoom}>
 				<svg
 					className={s.zoom__icon}
