@@ -19,7 +19,7 @@ export const Zoom = (props) => {
 						fill="#475569"
 					/>
 				</svg>
-				<span className={s.zoom__diff}>+10%</span>
+				<span className={s.zoom__diff}>+{props.valueStep}%</span>
 			</button>
 
 			<button className={s.zoom__btn} onClick={props.decreaseZoom}>
@@ -36,7 +36,7 @@ export const Zoom = (props) => {
 						fill="#475569"
 					/>
 				</svg>
-				<span className={s.zoom__diff}>-10%</span>
+				<span className={s.zoom__diff}>-{props.valueStep}%</span>
 			</button>
 
 			<button

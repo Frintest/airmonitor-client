@@ -2,21 +2,15 @@ import React from "react";
 import s from "./HistoryChart.module.scss";
 import { Chart } from "react-chartjs-2";
 import { Chart as ChartJS, registerables } from "chart.js";
-import zoomPlugin from "chartjs-plugin-zoom";
+// import zoomPlugin from "chartjs-plugin-zoom";
 import gradientPlugin from "chartjs-plugin-gradient";
 import chroma from "chroma-js";
 
 ChartJS.register(...registerables);
 ChartJS.register(gradientPlugin);
-ChartJS.register(zoomPlugin);
+// ChartJS.register(zoomPlugin);
 
 export const HistoryChart = React.forwardRef((props, ref) => {
-	// React.useEffect(() => {
-	// 	if (ref) {
-	// 		ref.current.zoom(props.zoomValue);
-	// 	}
-	// }, [props.zoomValue]);
-
 	const getAirPropHistory = () => {
 		const data = Object.values(props.history).map((item) => {
 			return {
@@ -164,11 +158,11 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 					label: (context) => `${props.sensor_name}: ${context.parsed.y}`,
 				},
 			},
-			zoom: {
-				zoom: {
-					mode: "y",
-				},
-			},
+			// zoom: {
+			// 	zoom: {
+			// 		mode: "y",
+			// 	},
+			// },
 		},
 		scales: {
 			y: {

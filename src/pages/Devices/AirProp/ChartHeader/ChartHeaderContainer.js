@@ -8,6 +8,7 @@ import {
 
 const mapStateToProps = (state) => ({
 	zoomValue: state.ChartZoomReducer.value,
+	valueStep: state.ChartZoomReducer.valueStep,
 });
 
 const mapStateToDispatch = {

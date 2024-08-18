@@ -3,12 +3,12 @@ const INCREASE_ZOOM = "chart-zoom/INCREASE_ZOOM";
 const DECREASE_ZOOM = "chart-zoom/DECREASE_ZOOM";
 
 const initialState = {
-	chartHeight: 600,
-	heightStep: 60,
+	chartHeight: 500,
+	heightStep: 100, // 20% of chartHeight
 	value: 0,
-	valueStep: 10,
-	min: -90,
-	max: 90,
+	valueStep: 20,
+	min: -80,
+	max: 300,
 };
 
 export const ChartZoomReducer = (state = initialState, action) => {
@@ -17,7 +17,7 @@ export const ChartZoomReducer = (state = initialState, action) => {
 			return {
 				...state,
 				value: 0,
-				chartHeight: 600,
+				chartHeight: 500,
 			};
 		}
 

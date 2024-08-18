@@ -17,6 +17,7 @@ export const ChartHeader = (props) => {
 			{props.isHistoryExist && (
 				<Zoom
 					zoomValue={props.zoomValue}
+					valueStep={props.valueStep}
 					resetZoom={props.resetZoom}
 					increaseZoom={props.increaseZoom}
 					decreaseZoom={props.decreaseZoom}

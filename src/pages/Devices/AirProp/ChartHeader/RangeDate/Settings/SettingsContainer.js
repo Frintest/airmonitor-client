@@ -9,6 +9,7 @@ import {
 	filterIntervalLabels,
 } from "../../../../../../redux/reducers/range-date-reducer.js";
 import { updateAirHistoryThunk } from "../../../../../../redux/reducers/air-history-reducer.js";
+import { resetZoom } from "../../../../../../redux/reducers/chart-zoom-reducer.js";
 
 const mapStateToProps = (state) => {
 	const quickRange = state.RangeDateReducer.quickRange;
@@ -31,6 +32,7 @@ const mapStateToDispatch = {
 	updateEveryValue,
 	filterIntervalLabels,
 	updateAirHistoryThunk,
+	resetZoom,
 };
 
 export default connect(mapStateToProps, mapStateToDispatch)(Settings);
