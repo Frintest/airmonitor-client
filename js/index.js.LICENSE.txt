@@ -13,6 +13,13 @@
  */
 
 /*!
+ * chartjs-plugin-gradient v0.6.1
+ * https://github.com/kurkle/chartjs-plugin-gradient#readme
+ * (c) 2022 Jukka Kurkela
+ * Released under the MIT License
+ */
+
+/*!
 * chartjs-plugin-zoom v2.0.1
 * undefined
  * (c) 2016-2023 chartjs-plugin-zoom Contributors
