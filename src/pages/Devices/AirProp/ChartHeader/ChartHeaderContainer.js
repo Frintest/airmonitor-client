@@ -4,7 +4,7 @@ import { updateZoom } from "../../../../redux/reducers/air-history-reducer.js";
 
 const mapStateToProps = (state) => {
 	return {
-		zoom: state.AirHistoryReducer.zoom,
+		zoomValue: state.AirHistoryReducer.zoom.value,
 	};
 };
 

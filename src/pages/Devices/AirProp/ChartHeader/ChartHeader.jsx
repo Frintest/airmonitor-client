@@ -15,7 +15,11 @@ export const ChartHeader = React.forwardRef((props, ref) => {
 				onOpen={() => setVisible(true)}
 			/>
 			{props.isHistoryExist && (
-				<Zoom ref={ref} zoom={props.zoom} updateZoom={props.updateZoom} />
+				<Zoom
+					ref={ref}
+					zoom={props.zoomValue}
+					updateZoom={props.updateZoom}
+				/>
 			)}
 		</div>
 	);

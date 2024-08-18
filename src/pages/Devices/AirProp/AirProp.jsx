@@ -3,7 +3,7 @@ import s from "./AirProp.module.scss";
 import { Link } from "react-router-dom";
 import { formatText } from "../../../utilities/helpers/format-text-airprop.js";
 import { Standards } from "./Standards/Standards.jsx";
-import { HistoryChart } from "./HistoryChart/HistoryChart.jsx";
+import HistoryChartContainer from "./HistoryChart/HistoryChartContainer.js";
 import ChartHeaderContainer from "./ChartHeader/ChartHeaderContainer.js";
 
 export const AirProp = (props) => {
@@ -55,20 +55,16 @@ export const AirProp = (props) => {
 					</div>
 
 					<ChartHeaderContainer
-						ref={ref}
-						sensor_name={props.airItem.sensor_name}
 						isHistoryExist={props.isHistoryExist}
+						sensor_name={props.airItem.sensor_name}
+						ref={ref}
 					/>
 
 					<div className={s.chart__container}>
 						{props.isHistoryExist ? (
-							<HistoryChart
+							<HistoryChartContainer
 								history={props.history.history}
-								zoom={props.zoom}
-								updateZoom={props.updateZoom}
 								sensor_name={props.airItem.sensor_name}
-								ui_name={props.airItem.ui_name}
-								updateAirHistoryThunk={props.updateAirHistoryThunk}
 								levelColors={props.levelColors}
 								ref={ref}
 							/>

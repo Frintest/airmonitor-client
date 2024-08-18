@@ -5,15 +5,12 @@ import { connect } from "react-redux";
 import { updateAirHistoryThunk } from "../../../redux/reducers/air-history-reducer.js";
 import { airStateSelector } from "../../../redux/selectors/air-state-selectors.js";
 
-const mapStateToProps = (state) => {
-	return {
-		airState: airStateSelector(state),
-		history: state.AirHistoryReducer.history,
-		zoom: state.AirHistoryReducer.zoom,
-		standards: state.AirDataReducer.standards,
-		levelColors: state.ScreensReducer.levelColors,
-	};
-};
+const mapStateToProps = (state) => ({
+	airState: airStateSelector(state),
+	history: state.AirHistoryReducer.history,
+	standards: state.AirDataReducer.standards,
+	levelColors: state.ScreensReducer.levelColors,
+});
 
 const AirPropLocation = (props) => {
 	const location = useLocation();

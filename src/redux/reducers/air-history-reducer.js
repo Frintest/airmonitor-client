@@ -5,7 +5,11 @@ const UPDATE_ZOOM = "history/UPDATE_ZOOM";
 
 const initialState = {
 	history: {},
-	zoom: 1,
+	zoom: {
+		value: 1,
+		min: 0.1,
+		max: 1.9,
+	},
 };
 
 export const AirHistoryReducer = (state = initialState, action) => {
@@ -27,7 +31,10 @@ export const AirHistoryReducer = (state = initialState, action) => {
 		case UPDATE_ZOOM: {
 			return {
 				...state,
-				zoom: action.zoom,
+				zoom: {
+					...state.zoom,
+					value: action.value,
+				},
 			};
 		}
 
@@ -44,4 +51,4 @@ export const updateAirHistoryThunk = (name) => (dispatch) => {
 	});
 };
 
-export const updateZoom = (zoom) => ({ type: UPDATE_ZOOM, zoom });
+export const updateZoom = (value) => ({ type: UPDATE_ZOOM, value });
