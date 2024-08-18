@@ -1,0 +1,9 @@
+@import "../../../../scss/utilities/variables.scss";
+
+.container {
+	width: $container-width;
+	max-width: $container-width;
+	height: 600px;
+	max-height: 600px;
+	overflow-x: scroll;
+}

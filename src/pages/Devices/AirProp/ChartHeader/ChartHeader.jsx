@@ -3,7 +3,7 @@ import s from "./ChartHeader.module.scss";
 import RangeDateContainer from "./RangeDate/RangeDateContainer.js";
 import { Zoom } from "./Zoom/Zoom.jsx";
 
-export const ChartHeader = React.forwardRef((props, ref) => {
+export const ChartHeader = (props) => {
 	const [isVisible, setVisible] = React.useState(false);
 
 	return (
@@ -16,12 +16,12 @@ export const ChartHeader = React.forwardRef((props, ref) => {
 			/>
 			{props.isHistoryExist && (
 				<Zoom
-					ref={ref}
-					zoom={props.zoomValue}
-					zoomProcentValue={props.zoomProcentValue}
-					updateZoom={props.updateZoom}
+					zoomValue={props.zoomValue}
+					resetZoom={props.resetZoom}
+					increaseZoom={props.increaseZoom}
+					decreaseZoom={props.decreaseZoom}
 				/>
 			)}
 		</div>
 	);
-});
+};

@@ -11,11 +11,11 @@ ChartJS.register(gradientPlugin);
 ChartJS.register(zoomPlugin);
 
 export const HistoryChart = React.forwardRef((props, ref) => {
-	React.useEffect(() => {
-		if (ref) {
-			ref.current.zoom(props.zoomValue);
-		}
-	}, [props.zoomValue]);
+	// React.useEffect(() => {
+	// 	if (ref) {
+	// 		ref.current.zoom(props.zoomValue);
+	// 	}
+	// }, [props.zoomValue]);
 
 	const getAirPropHistory = () => {
 		const data = Object.values(props.history).map((item) => {
@@ -137,6 +137,7 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 	};
 
 	const options = {
+		maintainAspectRatio: false,
 		animation: false,
 		interaction: {
 			mode: "index",
@@ -193,13 +194,31 @@ export const HistoryChart = React.forwardRef((props, ref) => {
 		},
 	};
 
+	// const computeContainerWidth = () => {
+	// 	if (ref) {
+	// 		const totalLabels = ref.current.data.labels.length;
+	// 		if (totalLabels > 7) {
+	// 			console.log(1);
+	// 			const newWidth = 800 + (totalLabels - 7) * 30;
+	// 			return newWidth;
+	// 		}
+	// 	}
+	// };
+
 	return (
-		<Chart
-			type="line"
-			data={data}
-			options={options}
-			plugins={[hoverLine]}
-			ref={ref}
-		/>
+		<div className={s.container}>
+			<div
+				className={s.container__body}
+				style={{ height: props.chartHeight }}
+			>
+				<Chart
+					type="line"
+					data={data}
+					options={options}
+					plugins={[hoverLine]}
+					ref={ref}
+				/>
+			</div>
+		</div>
 	);
 });

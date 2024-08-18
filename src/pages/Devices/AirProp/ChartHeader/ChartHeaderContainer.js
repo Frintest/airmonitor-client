@@ -1,14 +1,19 @@
 import { connect } from "react-redux";
 import { ChartHeader } from "./ChartHeader.jsx";
-import { updateZoom } from "../../../../redux/reducers/air-history-reducer.js";
+import {
+	resetZoom,
+	increaseZoom,
+	decreaseZoom,
+} from "../../../../redux/reducers/chart-zoom-reducer.js";
 
-const mapStateToProps = (state) => {
-	return {
-		zoomValue: state.AirHistoryReducer.zoom.value,
-		zoomProcentValue: state.AirHistoryReducer.zoom.procentValue,
-	};
+const mapStateToProps = (state) => ({
+	zoomValue: state.ChartZoomReducer.value,
+});
+
+const mapStateToDispatch = {
+	resetZoom,
+	increaseZoom,
+	decreaseZoom,
 };
 
-export default connect(mapStateToProps, { updateZoom }, null, {
-	forwardRef: true,
-})(ChartHeader);
+export default connect(mapStateToProps, mapStateToDispatch)(ChartHeader);

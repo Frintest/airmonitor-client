@@ -1,33 +1,11 @@
 import React from "react";
 import s from "./Zoom.module.scss";
 
-export const Zoom = React.forwardRef((props, ref) => {
-	const onClickResetZoom = () => {
-		if (ref) {
-			ref.current.resetZoom();
-			const zoom = 1;
-			props.updateZoom(zoom);
-		}
-	};
-
-	const onClickUpZoom = () => {
-		if (ref) {
-			const zoom = props.zoom + 0.1;
-			props.updateZoom(zoom);
-		}
-	};
-
-	const onClickDownZoom = () => {
-		if (ref) {
-			const zoom = props.zoom - 0.1;
-			props.updateZoom(zoom);
-		}
-	};
-
+export const Zoom = (props) => {
 	return (
 		<div className={s.zoom}>
-			<p className={s.zoom__name}>Зумирование: {props.zoomProcentValue}%</p>
-			<button className={s.zoom__btn} onClick={onClickUpZoom}>
+			<p className={s.zoom__name}>Зумирование: {props.zoomValue}%</p>
+			<button className={s.zoom__btn} onClick={props.increaseZoom}>
 				<svg
 					className={s.zoom__icon}
 					width="20"
@@ -44,7 +22,7 @@ export const Zoom = React.forwardRef((props, ref) => {
 				<span className={s.zoom__diff}>+10%</span>
 			</button>
 
-			<button className={s.zoom__btn} onClick={onClickDownZoom}>
+			<button className={s.zoom__btn} onClick={props.decreaseZoom}>
 				<svg
 					className={s.zoom__icon}
 					width="20"
@@ -63,10 +41,10 @@ export const Zoom = React.forwardRef((props, ref) => {
 
 			<button
 				className={s.zoom__btn + " " + s.zoom__reset}
-				onClick={onClickResetZoom}
+				onClick={props.resetZoom}
 			>
 				Сбросить
 			</button>
 		</div>
 	);
-});
+};

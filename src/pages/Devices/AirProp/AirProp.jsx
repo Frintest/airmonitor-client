@@ -57,7 +57,6 @@ export const AirProp = (props) => {
 					<ChartHeaderContainer
 						isHistoryExist={props.isHistoryExist}
 						sensor_name={props.airItem.sensor_name}
-						ref={ref}
 					/>
 
 					<div className={s.chart__container}>
