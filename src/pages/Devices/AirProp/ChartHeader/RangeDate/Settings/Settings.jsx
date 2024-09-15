@@ -13,7 +13,7 @@ export const Settings = (props) => {
 			isVisible={props.isVisible}
 			onClose={() => {
 				props.onClose();
-				props.setActiveQuickRange("custom");
+				props.setActiveQuickRange("last-hour");
 			}}
 		>
 			<div
@@ -60,7 +60,7 @@ export const Settings = (props) => {
 					className={s.settings__closeBtn}
 					onClick={() => {
 						props.onClose();
-						props.setActiveQuickRange("custom");
+						props.setActiveQuickRange("last-hour");
 					}}
 				>
 					Отмена

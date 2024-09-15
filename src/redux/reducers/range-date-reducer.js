@@ -8,11 +8,11 @@ const FILTER_INTERVAL_LABELS = "range/FILTER_INTERVAL_LABELS";
 
 const initialState = {
 	quickRange: {
-		custom: {
-			name: "custom",
-			ui_name: "Пользовательский",
-			isActive: true,
-		},
+		// custom: {
+		// 	name: "custom",
+		// 	ui_name: "Пользовательский",
+		// 	isActive: true,
+		// },
 		"last-hour": {
 			name: "last-hour",
 			ui_name: "Последний час",
@@ -28,18 +28,18 @@ const initialState = {
 			ui_name: "Последняя неделя",
 			isActive: false,
 		},
-		"last-month": {
-			name: "last-month",
-			ui_name: "Последние 30 дней",
-			isActive: false,
-		},
-		"last-year": {
-			name: "last-year",
-			ui_name: "Последний год",
-			isActive: false,
-		},
+		// "last-month": {
+		// 	name: "last-month",
+		// 	ui_name: "Последние 30 дней",
+		// 	isActive: false,
+		// },
+		// "last-year": {
+		// 	name: "last-year",
+		// 	ui_name: "Последний год",
+		// 	isActive: false,
+		// },
 	},
-	quickRangeActive: "custom",
+	quickRangeActive: "last-hour",
 	date: {
 		from: "2024-07-03 08:00:56",
 		to: "2024-07-03 23:20:56",
@@ -158,7 +158,7 @@ export const RangeDateReducer = (state = initialState, action) => {
 							value: 1,
 						},
 						minutes: {
-							value: 0,
+							value: 2,
 						},
 					};
 					break;
@@ -173,7 +173,7 @@ export const RangeDateReducer = (state = initialState, action) => {
 							value: 0,
 						},
 						minutes: {
-							value: 0,
+							value: 2,
 						},
 					};
 					break;
@@ -188,7 +188,7 @@ export const RangeDateReducer = (state = initialState, action) => {
 							value: 0,
 						},
 						minutes: {
-							value: 0,
+							value: 2,
 						},
 					};
 					break;
@@ -206,7 +206,7 @@ export const RangeDateReducer = (state = initialState, action) => {
 							value: 0,
 						},
 						minutes: {
-							value: 0,
+							value: 2,
 						},
 					};
 					break;

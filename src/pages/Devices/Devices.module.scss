@@ -1,7 +1,7 @@
 @import "../../scss/utilities/variables.scss";
 
 .container {
-	width: $container-width;
+	max-width: $container-width;
 	margin: 0 auto;
 	overflow: hidden;
 	display: flex;

@@ -21,9 +21,9 @@ export const RangeDate = (props) => {
 					/>
 				</svg>
 
-				<span className={s.rangeDate__date}>
+				{/* <span className={s.rangeDate__date}>
 					{props.date.from} - {props.date.to}
-				</span>
+				</span> */}
 			</div>
 
 			<SettingsContainer
